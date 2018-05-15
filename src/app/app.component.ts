@@ -2,17 +2,8 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import firebase from 'firebase/app';
-=======
-import Firebase from 'firebase/app';
 import { AngularFirestore } from 'angularfire2/firestore';
->>>>>>> df3a19f91a48b475b396afb37b92a7bdc9ca660e
-=======
-import Firebase from 'firebase/app';
-import { AngularFirestore } from 'angularfire2/firestore';
->>>>>>> df3a19f91a48b475b396afb37b92a7bdc9ca660e
 
 
 @Component({
@@ -21,15 +12,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 export class MyApp {
   rootPage = 'Tab';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-=======
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af:AngularFirestore) {
->>>>>>> df3a19f91a48b475b396afb37b92a7bdc9ca660e
-=======
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af:AngularFirestore) {
->>>>>>> df3a19f91a48b475b396afb37b92a7bdc9ca660e
 
     platform.ready().then(() => {
       af.app.auth().onAuthStateChanged(user=>{
