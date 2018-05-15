@@ -54,10 +54,12 @@ export class DatabaseProvider {
    
   }
 
+  }
+
   /*
   Navn,
   FamilieId,
   BarneIDer
   
   */
-}
+

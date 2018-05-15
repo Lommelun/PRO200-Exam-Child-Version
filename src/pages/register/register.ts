@@ -17,18 +17,18 @@ import { DatabaseProvider } from '../../providers/database/database';
 })
 export class RegisterPage {
  public uuid:string; 
-
+ public family:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private dbProvider:DatabaseProvider) {
-  }
-
-  ionViewDidLoad() {
-   
   }
 
   findUser(uuid?:string){
     if(!uuid) { return; }  
 
-     this.dbProvider.getFamily(uuid)
+     this.family = this.dbProvider.getFamily(uuid);
+     if(this.family.children){
+        this.navCtrl.setRoot('HomePage',{fam:this.family})
+        console.log("Found children")
+     }
   }
 
 }

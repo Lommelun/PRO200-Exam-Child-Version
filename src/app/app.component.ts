@@ -16,7 +16,7 @@ export class MyApp {
 
     platform.ready().then(() => {
       af.app.auth().onAuthStateChanged(user=>{
-          this.rootPage = user ? 'HomePage' : 'RegisterPage'
+          this.rootPage = user ? 'HomePage' : 'HomePage'
 
 
       })
