@@ -11,6 +11,7 @@ import { DatabaseProvider } from '../providers/database/database';
 @NgModule({
   declarations: [
     MyApp,
+    HomePage
     
   ],
   imports: [
