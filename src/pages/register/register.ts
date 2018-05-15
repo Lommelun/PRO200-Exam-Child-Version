@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { DatabaseProvider } from '../../providers/database/database';
 
 /**
  * Generated class for the RegisterPage page.
@@ -17,7 +18,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 export class RegisterPage {
  public uuid:string; 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private af:AngularFirestore) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dbProvider:DatabaseProvider) {
   }
 
   ionViewDidLoad() {
@@ -25,7 +26,9 @@ export class RegisterPage {
   }
 
   findUser(uuid?:string){
-     
+    if(!uuid) { return; }  
+
+     this.dbProvider.getFamily(uuid)
   }
 
 }

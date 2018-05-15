@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore,AngularFirestoreCollection } from 'angularfire2/firestore';
 import { User } from '@firebase/auth-types';
 import { Observable } from 'rxjs/Observable';
-
+import * as _ from 'lodash'
 /*
   Generated class for the DatabaseProvider provider.
 
@@ -20,11 +20,12 @@ export class DatabaseProvider {
     return this.af.app.auth().currentUser;
   }
   addDocToColl(data:any, collection:string){
-    this.af.collection(collection)
-    .add(data);
+    this.af.collection(collection).add(data);
   }
   getDataFromColl(collection:string){
+
     let data:Observable<Object[]>
+
      this.dataColl = this.af.collection(collection)
 
      data = this.dataColl.snapshotChanges().
@@ -34,9 +35,29 @@ export class DatabaseProvider {
          return{id,...data}
        }))
      
-
      return data;
 
   }
 
+  getFamily(token:string):Observable<any>{
+
+    this.dataColl = this.af.collection(`Families`)
+
+   return this.dataColl.snapshotChanges().
+       map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        if(_.includes(data,token)){
+        return { id, ...data };
+        }
+      }))
+   
+  }
+
+  /*
+  Navn,
+  FamilieId,
+  BarneIDer
+  
+  */
 }
