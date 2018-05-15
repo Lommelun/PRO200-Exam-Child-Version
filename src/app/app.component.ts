@@ -9,7 +9,7 @@ import firebase from 'firebase/app';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = 'CategoryOverviewPage';
+  rootPage = 'Tab';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
 

@@ -18,8 +18,8 @@ export class CategoryOverviewPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CategoryOverviewPage');
+  getCategory(): string{
+    return;
   }
 
 }

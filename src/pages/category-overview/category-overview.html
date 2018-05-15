@@ -1,9 +1,3 @@
-<!--
-  Generated template for the CategoryOverviewPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -14,16 +8,12 @@
 
 
 <ion-content padding>
-<ion-searchbar>
-  [(ngModel)]="myInput"
-  [showCancelButton]="shouldShowCancel"
-  (ionInput)="onInput($event)"
-  (ionCancel)="onCancel($event)">
-</ion-searchbar>
-<button>frokost</button>
-<button>lunsj</button>
-<button>middag</button>
-<button>frukt</button>
-<button>snacks</button>
-<button>drikke</button>
+
+  <button ion-button (click)="getCategory(breakfast)">frokost</button>
+  <button ion-button (click)="getCategory(lunch)">lunsj</button>
+  <button ion-button (click)="getCategory(dinner)">middag</button>
+  <button ion-button (click)="getCategory(fruit)">frukt</button>
+  <button ion-button (click)="getCategory(snack)">snacks</button>
+  <button ion-button (click)="getCategory(drink)">drikke</button>
+
 </ion-content>
