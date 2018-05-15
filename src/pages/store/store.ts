@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DatabaseProvider } from '../../providers/database/database';
 
 /**
  * Generated class for the StorePage page.
@@ -15,11 +16,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class StorePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dbProvider:DatabaseProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad StorePage');
-  }
+  
 
 }

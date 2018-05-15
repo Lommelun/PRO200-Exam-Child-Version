@@ -16,10 +16,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class WishlistPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
 
+<<<<<<< HEAD:src/pages/wishlist/wishlist.ts
   ionViewDidLoad() {
     console.log('ionViewDidLoad WishlistPage');
+=======
+>>>>>>> df3a19f91a48b475b396afb37b92a7bdc9ca660e:src/pages/home/home.ts
   }
 
+  goToStore(child?) {
+    
+    if (child) {
+      this.navCtrl.setRoot('StorePage', { child: child });
+    } else {
+      this.navCtrl.setRoot('StorePage');
+    }
+
+  }
 }
