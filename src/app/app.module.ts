@@ -10,12 +10,19 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 import { MyApp } from './app.component';
 <<<<<<< HEAD
 =======
 import { HomePage } from '../pages/home/home';
 
 import env from '../env';
+<<<<<<< HEAD
+>>>>>>> df3a19f91a48b475b396afb37b92a7bdc9ca660e
+=======
 >>>>>>> df3a19f91a48b475b396afb37b92a7bdc9ca660e
 import { DatabaseProvider } from '../providers/database/database';
 
@@ -26,6 +33,9 @@ import { DatabaseProvider } from '../providers/database/database';
 =======
     MyApp,
     HomePage
+<<<<<<< HEAD
+>>>>>>> df3a19f91a48b475b396afb37b92a7bdc9ca660e
+=======
 >>>>>>> df3a19f91a48b475b396afb37b92a7bdc9ca660e
   ],
   imports: [
