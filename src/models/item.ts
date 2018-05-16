@@ -1,8 +1,9 @@
 export interface item{
     name:string,
     price:number,
-    category:string,
+    category:string[],
     size:string,
     allergens?:string[],
     EAN:number
+    //
 }
