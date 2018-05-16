@@ -12,7 +12,9 @@ import * as _ from 'lodash'
 */
 @Injectable()
 export class DatabaseProvider {
+
   dataColl: AngularFirestoreCollection<any>;
+
   constructor(public http: HttpClient, private af: AngularFirestore) {
     console.log('Hello DatabaseProvider Provider');
   }
@@ -36,7 +38,6 @@ export class DatabaseProvider {
       }))
 
     return data;
-
   }
 
   getFamily(token: string): Observable<any> {
@@ -54,19 +55,16 @@ export class DatabaseProvider {
   }
 
   addItemsToUser(familyId: string, uid: string, item: any) {
+
     this.dataColl = this.af.collection(`Families`);
+
     this.dataColl.doc(familyId).collection(`Items`).doc(uid).set(item);
   }
  getStoreItemsWithCategory(category:string){
-   
+
  }
 
 }
 
-  /*
-  Navn,
-  FamilieId,
-  BarneIDer
   
-  */
 
