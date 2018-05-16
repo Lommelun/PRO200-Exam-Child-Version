@@ -4,6 +4,7 @@ export interface item{
     category:string[],
     size:string,
     allergens?:string[],
-    EAN:number
+    EAN:number,
+    image:string
     //
 }
