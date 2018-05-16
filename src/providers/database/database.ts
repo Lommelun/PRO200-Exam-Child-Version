@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFirestore,AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { User } from '@firebase/auth-types';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash'
@@ -12,49 +12,56 @@ import * as _ from 'lodash'
 */
 @Injectable()
 export class DatabaseProvider {
-  dataColl:AngularFirestoreCollection<any>;
-  constructor(public http: HttpClient,private af: AngularFirestore) {
+  dataColl: AngularFirestoreCollection<any>;
+  constructor(public http: HttpClient, private af: AngularFirestore) {
     console.log('Hello DatabaseProvider Provider');
   }
-  getCurrentUser():User{
+  getCurrentUser(): User {
     return this.af.app.auth().currentUser;
   }
-  addDocToColl(data:any, collection:string){
+  addDocToColl(data: any, collection: string) {
     this.af.collection(collection).add(data);
   }
-  getDataFromColl(collection:string){
+  getDataFromColl(collection: string) {
 
-    let data:Observable<Object[]>
+    let data: Observable<Object[]>
 
-     this.dataColl = this.af.collection(collection)
+    this.dataColl = this.af.collection(collection)
 
-     data = this.dataColl.snapshotChanges().
-       map(actions => actions.map(a=>{
-         const data = a.payload.doc.data();
-         const id = a.payload.doc.id;
-         return{id,...data}
-       }))
-     
-     return data;
+    data = this.dataColl.snapshotChanges().
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data }
+      }))
+
+    return data;
 
   }
 
-  getFamily(token:string):Observable<any>{
+  getFamily(token: string): Observable<any> {
 
     this.dataColl = this.af.collection(`Families`)
 
-   return this.dataColl.snapshotChanges().
-       map(actions => actions.map(a => {
+    return this.dataColl.snapshotChanges().
+      map(actions => actions.map(a => {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;
-        if(_.includes(data,token)){
-        return { id, ...data };
+        if (_.includes(data, token)) {
+          return { id, ...data };
         }
       }))
-   
   }
 
+  addItemsToUser(familyId: string, uid: string, item: any) {
+    this.dataColl = this.af.collection(`Families`);
+    this.dataColl.doc(familyId).collection(`Items`).doc(uid).set(item);
   }
+ getStoreItemsWithCategory(category:string){
+   
+ }
+
+}
 
   /*
   Navn,
