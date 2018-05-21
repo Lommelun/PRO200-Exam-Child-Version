@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase/app';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 @Component({
@@ -12,12 +12,10 @@ import { AngularFirestore } from 'angularfire2/firestore';
 export class MyApp {
   rootPage = 'Tab';
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af: AngularFirestore) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af: AngularFireAuth) {
     platform.ready().then(() => {
-      af.app.auth().onAuthStateChanged(user => {
+      af.auth.onAuthStateChanged(user => {
         this.rootPage = user ? 'Tab' : 'Tab';
-
-
       })
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

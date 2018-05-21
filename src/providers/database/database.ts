@@ -2,21 +2,22 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { User } from '@firebase/auth-types';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 import * as _ from 'lodash'
 import { QuerySnapshot } from '@firebase/firestore-types';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class DatabaseProvider {
   dataColl: AngularFirestoreCollection<{}>;
 
-  constructor(public http: HttpClient, private af: AngularFirestore) { }
+  constructor(public http: HttpClient, private af: AngularFirestore, private afAuth: AngularFireAuth) { }
 
   getCurrentUser(): User {
-    return this.af.app.auth().currentUser;
+    return this.afAuth.auth.currentUser;
   }
 
-  addDocToColl(data: any, collection: string) {
+  addDocToColl(data: {}, collection: string) {
     this.af.collection(collection).add(data);
   }
 
@@ -54,7 +55,7 @@ export class DatabaseProvider {
     return this.af.collection(collection).ref.where(field, '==', value).get();
   }
 
-  addItemsToUser(familyId: string, uid: string, item: any) {
+  addItemsToUser(familyId: string, uid: string, item: {}) {
 
     this.dataColl = this.af.collection(`Families`);
 
