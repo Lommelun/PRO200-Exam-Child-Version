@@ -18,7 +18,4 @@ export class StorePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private dbProvider:DatabaseProvider) {
   }
-
-  
-
 }

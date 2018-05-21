@@ -17,7 +17,7 @@ export class ItemDetailsPage {
   item:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.item = navParams.get('item')
+    this.item = navParams.get('item');
   }
 
   ionViewDidLoad() {
