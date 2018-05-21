@@ -12,11 +12,10 @@ import { AngularFirestore } from 'angularfire2/firestore';
 export class MyApp {
   rootPage = 'Tab';
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af:AngularFirestore) {
-
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af: AngularFirestore) {
     platform.ready().then(() => {
-      af.app.auth().onAuthStateChanged(user=>{
-          this.rootPage = user ? 'HomePage' : 'HomePage'
+      af.app.auth().onAuthStateChanged(user => {
+        this.rootPage = user ? 'Tab' : 'Tab';
 
 
       })

@@ -26,7 +26,7 @@ export class RegisterPage {
 
      this.family = this.dbProvider.getFamily(uuid);
      if(this.family.children){
-        this.navCtrl.setRoot('HomePage',{fam:this.family})
+        this.navCtrl.setRoot('CategoryOverviewPage',{fam:this.family})
         console.log("Found children")
      }
   }

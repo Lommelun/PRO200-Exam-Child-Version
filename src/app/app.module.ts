@@ -14,6 +14,7 @@ import { MyApp } from './app.component';
 
 import env from '../env';
 import { DatabaseProvider } from '../providers/database/database';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DatabaseProvider } from '../providers/database/database';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(env),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
