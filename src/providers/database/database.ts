@@ -8,7 +8,7 @@ import { QuerySnapshot } from '@firebase/firestore-types';
 
 @Injectable()
 export class DatabaseProvider {
-  dataColl: AngularFirestoreCollection<any>;
+  dataColl: AngularFirestoreCollection<{}>;
 
   constructor(public http: HttpClient, private af: AngularFirestore) { }
 
@@ -22,7 +22,7 @@ export class DatabaseProvider {
 
   getDataFromColl(collection: string) {
 
-    let data: Observable<Object[]>
+    let data: Observable<{}[]>
 
     this.dataColl = this.af.collection(collection)
 
@@ -36,7 +36,7 @@ export class DatabaseProvider {
     return data;
   }
 
-  getFamily(token: string): Observable<any> {
+  getFamily(token: string): Observable<{}> {
 
     this.dataColl = this.af.collection(`Families`)
 
