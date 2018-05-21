@@ -28,7 +28,7 @@ export class Tab {
       .then(() => this.item = this.getItemByBarcode())
       .then(() => {
         let item = this.item;
-        this.navCtrl.push('ItemDetail', { item })
+        this.navCtrl.push('ItemDetails', { item })
       })
       .catch(err => console.error('Error', err));
   }
