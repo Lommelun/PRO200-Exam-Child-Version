@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams  } from 'ionic-angular';
+import { Item } from '../../models/item';
 
 /**
  * Generated class for the ItemDetailPage page.
@@ -14,12 +15,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'item-detail.html',
 })
 export class ItemDetailPage {
-
+  item:Item = {} as Item;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.item = this.navParams.get('item');
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ItemDetailPage');
-  }
-
 }

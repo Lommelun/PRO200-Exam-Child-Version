@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { DatabaseProvider } from '../../providers/database/database';
 import { DocumentData } from '@firebase/firestore-types';
+import { Item } from '../../models/item';
 
 @IonicPage()
 @Component({
@@ -14,7 +15,7 @@ export class Tab {
   tab2 = 'WishlistPage';
 
   barcode: string = "";
-  item: DocumentData;
+  item: Item;
 
   constructor(
     public barcodeScanner: BarcodeScanner,
@@ -22,27 +23,20 @@ export class Tab {
     public navParams: NavParams,
     public db: DatabaseProvider) { }
 
-  getBarScan() {
-    this.barcodeScanner.scan()
-      .then(barcodeData => this.barcode = barcodeData.text)
-      .then(() => this.item = this.getItemByBarcode())
-      .then(() => {
-        let item = this.item;
-        this.navCtrl.push('ItemDetails', { item })
-      })
-      .catch(err => console.error('Error', err));
+  async getBarScan() {
+    await this.barcodeScanner.scan().then(barcodeData => this.barcode = barcodeData.text);
+    await this.getItemByBarcode();
+    this.navCtrl.push('ItemDetailPage', { 'item': this.item })
   }
 
   getItemByBarcode() {
-    let item;
-    this.db.getItemByField('items', 'EAN', this.barcode)
+    return this.db.getItemByField('Marketplace', 'EAN', this.barcode)
       .then(result => result.docs
         .forEach(doc => {
           if (doc.data().EAN == this.barcode) {
-            item = doc.data();
+            this.item = doc.data() as Item;
           }
         }));
-    return item;
   }
 
 }

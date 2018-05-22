@@ -8,7 +8,7 @@
 
 
 <ion-content padding>
-
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <button ion-button (click)="getCategory(breakfast)">frokost</button>
   <button ion-button (click)="getCategory(lunch)">lunsj</button>
   <button ion-button (click)="getCategory(dinner)">middag</button>

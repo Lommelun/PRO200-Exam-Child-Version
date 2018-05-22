@@ -1,4 +1,4 @@
-export interface item{
+export interface Item{
     name:string,
     price:number,
     category:string[],
@@ -6,5 +6,4 @@ export interface item{
     allergens?:string[],
     EAN:number,
     image:string
-    //
 }
