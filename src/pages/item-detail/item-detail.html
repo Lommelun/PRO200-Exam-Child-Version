@@ -4,20 +4,22 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header class="header" no-border>
 
   <ion-navbar>
-    <ion-title>item-detail</ion-title>
+    <ion-title class="title-page">{{item.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<ion-content padding class="background-gradient">
+    <ion-content padding class="background-white">
 
-<ion-content padding>
-  <img [src]="item.image"/>
-    <p> {{item.name}} </p>
-    <p> Pris: {{item.price}},-</p>
-    <p> størrelse:{{item.size}}</p>
-    <p> allergens:{{item.allergens}}</p>
+    <img class="item-picture-detail"[src]="item.image"/>
+    <p class="item-detail-title item-detail-title-name">{{item.name}} </p>
+    <p class="item-detail-title"> <strong>Pris:</strong> {{item.price}} ,- </p>
+    <p class="item-detail-title"> <strong>Størrelse:</strong> {{item.size}}</p>
+    <p class="item-detail-title"> <strong>Allergier:</strong>{{item.allergens}}</p>
 
+</ion-content>
 </ion-content>

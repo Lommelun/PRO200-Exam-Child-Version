@@ -18,3 +18,60 @@
 *::webkit-scrollbar {
      display: none;
 }
+
+// background
+.background-gradient {
+    background: linear-gradient(color($primary-profile, eggeplomme), color($primary-profile, gul));
+    margin: 0 auto;
+}
+
+.background-white {
+    background-color: #fff;
+    width: 100vw;
+    position: relative;
+    margin-left: -50vw;
+    left: 50%;
+}
+// font 
+* {
+    font-family: 'Nunito', sans-serif;
+    color:color($primary-profile, grå);;
+
+  }
+
+  // all buttons 
+.btn {
+    border-radius: 5px; 
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  // header 
+  .header {
+    box-shadow: none !important;
+  }
+
+  // title
+  .title-page {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 200;
+  }
+
+  .small-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding-bottom: 0.6rem;
+}
+
+.small-title-border {
+    border-bottom: 0.5px solid color($primary-profile, grå);;
+}
+
+.tab-button-text {
+    color: #fff;
+}
+
+.toolbar-background {
+    background-color: transparent;
+  }

@@ -1,3 +1,44 @@
 page-category {
+    
+    .item {
+        //background-color: red;
+        border: 0px !important;
+        border-bottom-color: transparent !important;
+        background-image: none !important;
+        border-bottom: none !important;
+    }
 
+    .card {
+        //background-color: yellow;
+        padding: 1rem 1rem 2rem 1rem;
+        margin: 1rem;
+        position: relative;
+        height: 210px;
+        
+    }
+
+    .item-picture {
+        margin: auto;
+        right: 0;
+        left: 0;
+    }
+
+    .item-name {
+        font-weight: 900;
+    }
+
+    .show-item-btn {
+        background-color:  color($primary-profile, eggeplomme);;
+        width: 100px;
+        height: 25px;
+        bottom: 10px;
+        position: absolute;
+        margin: auto;
+        right: 0;
+        left: 0;
+        font-weight: 900;
+        font-size: 2rem;
+    }
+
+  
 }

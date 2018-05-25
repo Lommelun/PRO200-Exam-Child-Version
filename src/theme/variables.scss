@@ -33,33 +33,65 @@ $app-direction: ltr;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
-$colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+$primary-profile: (
+  primary: #000,
+  eggeplomme: #ffa51e,
+  mørk-aubergine: #413746,
+  aubergine: #8255c3,
+  grønn: #1bb776,
+  gul: #FFD403,
+  grå: #313335,
 );
 
+$colors: (
+  primary: #000,
+  frost: rgb(210,235,250), // Frost
+  bringebær: rgb(235,85,75), // Bringebær
+  sort-aubergine: rgb(45,40,50), // Sort aubergine
+  varmgrå: rgb(215,215,210), // Varmgrå
+  lys-varmgrå: rgb(240,240,236), // Lys varmgrå
+  hvit: rgb(255,255,255), // Hvit
+);
+
+//
+$tabs-background: color($primary-profile, mørk-aubergine);;
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
+// active tab
+$tabs-ios-tab-icon-color-active: color($colors, hvit);;
+$tabs-ios-tab-text-color-active: color($colors, hvit);;
+
+// intactive tab
+$tabs-ios-tab-text-color: color($colors, hvit);;
+$tabs-ios-tab-icon-color: color($colors, varmgrå);;
 
 
+// size tab 
+$tabs-ios-tab-icon-size: 2.7rem;
+$tabs-ios-tab-font-size: 10px;
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+// active tabs
+$tabs-md-tab-text-color-active: color($colors, hvit);;
+$tabs-md-tab-icon-color-active: color($colors, hvit);;
 
+// inactive tabs
+$tabs-md-tab-text-color: color($colors, hvit);;
+$tabs-md-tab-icon-color: color($colors, varmgrå);;
 
+// size tab 
+$tabs-md-tab-icon-size: 2.7rem;
+$tabs-md-tab-font-size: 10px;
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
 
 
 
