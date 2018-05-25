@@ -17,8 +17,9 @@ export class CategoryOverviewPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
-  getCategory(): string {
-    return;
+  getCategory(cat: string) {
+    console.log(cat);
+    this.navCtrl.push('CategoryPage', { 'type': cat });
   }
 
   goToStore(child?) {

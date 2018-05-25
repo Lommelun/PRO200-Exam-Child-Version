@@ -17,6 +17,7 @@ import { Item } from '../../models/item';
 export class ItemDetailPage {
   item:Item = {} as Item;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log('constructor detailpage: ', this.navParams.get('item'));
     this.item = this.navParams.get('item');
   }
 }

@@ -51,7 +51,7 @@ export class DatabaseProvider {
       }))
   }
 
-  getItemByField(collection: string, field: string, value: string): Promise<QuerySnapshot> {
+  getItemByField(collection: string, field: string, value: any): Promise<QuerySnapshot> {
     return this.af.collection(collection).ref.where(field, '==', value).get();
   }
 

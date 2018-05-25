@@ -8,12 +8,15 @@
 
 
 <ion-content padding>
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <button ion-button (click)="getCategory(breakfast)">frokost</button>
-  <button ion-button (click)="getCategory(lunch)">lunsj</button>
-  <button ion-button (click)="getCategory(dinner)">middag</button>
-  <button ion-button (click)="getCategory(fruit)">frukt</button>
-  <button ion-button (click)="getCategory(snack)">snacks</button>
-  <button ion-button (click)="getCategory(drink)">drikke</button>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-row>
+     <ion-col col-4 (click)="getCategory('frokost')"><img src ="empty">frokost </ion-col>
+     <ion-col col-4 (click)="getCategory('lunsj')"><img src ="empty">lunsj</ion-col>
+     <ion-col col-4 (click)="getCategory('middag')"><img src ="empty">middag</ion-col>
+     <ion-col col-4  (click)="getCategory('frukt')"><img src ="empty">frukt</ion-col>
+     <ion-col col-4 (click)="getCategory('snack')"><img src ="empty">snacks</ion-col>
+     <ion-col col-4 (click)="getCategory('drikke')"><img src ="empty">drikke</ion-col>
+ 
+</ion-row>
 
 </ion-content>
