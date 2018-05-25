@@ -4,6 +4,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { isTrueProperty } from 'ionic-angular/util/util';
 import { QueryDocumentSnapshot, DocumentData } from '@firebase/firestore-types';
 import { Observable } from 'rxjs/Rx';
+import { Item } from '../../models/item';
 
 /**
  * Generated class for the CategoryPage page.
@@ -36,5 +37,9 @@ export class CategoryPage {
       .subscribe(result => this.items = Observable.from(result.docs)
         .map(item => item.data())
         .toArray());
+  }
+  pushToDetailPage(item: Item) {
+    console.log(item);
+    this.navCtrl.push('ItemDetailPage', { 'item': item });
   }
 }

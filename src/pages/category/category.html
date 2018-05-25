@@ -15,12 +15,13 @@
 
 <ion-content padding>
   <ion-row no-padding>
-    <ion-col col-6 col-sm *ngFor='let item of items | async' no-padding >
-      <ion-card style="height:200px">
-          <img *ngIf="item.image" class="displayed" style="max-height:100px; width:auto" [src]="item.image" />
+    <ion-col col-6 col-sm *ngFor='let item of items | async | slice:0:3' no-padding >
+      <ion-card (click)="pushToDetailPage(item)" style="height:200px">
+          <img class="displayed" style="max-height:100px; width:auto" [src]="item.image" />
         <p>{{item.name}}</p>
         <p>Kr {{item.price}},- </p>
       </ion-card>
+      
     </ion-col>
   </ion-row>
 </ion-content>
