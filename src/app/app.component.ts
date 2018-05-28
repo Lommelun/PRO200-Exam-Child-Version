@@ -10,7 +10,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = 'LoginPinPage';
+  rootPage = 'CategoryOverviewPage';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af: AngularFireAuth) {
     platform.ready().then(() => {

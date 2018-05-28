@@ -15,6 +15,7 @@ import { MyApp } from './app.component';
 import * as env from '../env';
 import { DatabaseProvider } from '../providers/database/database';
 import { HttpClientModule } from '@angular/common/http';
+import { Keyboard } from  '@ionic-native/keyboard';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider,
-    BarcodeScanner
+    BarcodeScanner,
+    Keyboard
   ]
 })
 export class AppModule {}
