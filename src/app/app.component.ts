@@ -10,13 +10,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = 'Tab';
+  rootPage = 'LoginPinPage';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af: AngularFireAuth) {
     platform.ready().then(() => {
-      af.auth.onAuthStateChanged(user => {
-        this.rootPage = user ? 'Tab' : 'Tab';
-      })
+      
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();

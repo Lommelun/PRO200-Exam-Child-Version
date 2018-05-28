@@ -12,7 +12,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { MyApp } from './app.component';
 
-import env from '../env';
+import * as env from '../env';
 import { DatabaseProvider } from '../providers/database/database';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(env),
+    AngularFireModule.initializeApp(env.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     HttpClientModule
