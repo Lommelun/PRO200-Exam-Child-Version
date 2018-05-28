@@ -39,7 +39,7 @@ export class DatabaseProvider {
 
   getFamily(token: string): Observable<{}> {
 
-    this.dataColl = this.af.collection(`Families`)
+    this.dataColl = this.af.collection('families')
 
     return this.dataColl.snapshotChanges().
       map(actions => actions.map(a => {
@@ -51,7 +51,16 @@ export class DatabaseProvider {
       }))
   }
 
+<<<<<<< Updated upstream
   getItemByField(collection: string, field: string, value: any): Promise<QuerySnapshot> {
+=======
+  getChild(token: string) {
+    this.getItemByField('children', 'token', token)
+      .then(child => console.log(child));
+  }
+
+  getItemByField(collection: string, field: string, value: string): Promise<QuerySnapshot> {
+>>>>>>> Stashed changes
     return this.af.collection(collection).ref.where(field, '==', value).get();
   }
 
