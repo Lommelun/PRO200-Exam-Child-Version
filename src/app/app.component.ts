@@ -10,13 +10,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = 'CategoryOverviewPage';
+  rootPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af: AngularFireAuth) {
+    this.rootPage = (localStorage.getItem('users')) ? 'LoginPage' : 'RegisterPage';
     platform.ready().then(() => {
-      
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
     });

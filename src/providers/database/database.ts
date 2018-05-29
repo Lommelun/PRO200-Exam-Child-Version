@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentSnapshot } from 'angularfire2/firestore';
 import { User } from '@firebase/auth-types';
 import { Observable } from 'rxjs/Rx';
 import * as _ from 'lodash'
 import { QuerySnapshot } from '@firebase/firestore-types';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Child } from '../../models/child';
 
 @Injectable()
 export class DatabaseProvider {
@@ -39,7 +40,7 @@ export class DatabaseProvider {
 
   getFamily(token: string): Observable<{}> {
 
-    this.dataColl = this.af.collection(`Families`)
+    this.dataColl = this.af.collection('families')
 
     return this.dataColl.snapshotChanges().
       map(actions => actions.map(a => {
@@ -51,7 +52,13 @@ export class DatabaseProvider {
       }))
   }
 
-  getItemByField(collection: string, field: string, value: any): Promise<QuerySnapshot> {
+  getChild(token: string): Observable<Child> {
+    return Observable.fromPromise(
+      this.getItemByField('children', 'token', token))
+      .map(data => data.docs.find(doc => doc.data().token == token).data() as Child);
+  }
+
+  getItemByField(collection: string, field: string, value: string): Promise<QuerySnapshot> {
     return this.af.collection(collection).ref.where(field, '==', value).get();
   }
 

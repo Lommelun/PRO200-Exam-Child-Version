@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { DatabaseProvider } from '../../providers/database/database';
-
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Child } from '../../models/child';
 
 @IonicPage()
 @Component({
@@ -16,19 +10,37 @@ import { DatabaseProvider } from '../../providers/database/database';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
- public uuid:string; 
- public family:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private dbProvider:DatabaseProvider) {
+  public token: string;
+  public family: any;
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private dbProvider: DatabaseProvider,
+    private toast: ToastController) { }
+
+  registerChild() {
+    if (!this.token) return;
+    this.dbProvider.getChild(this.token)
+      .subscribe(child => this.success(child), error => this.fail());
   }
 
-  findUser(uuid?:string){
-    if(!uuid) { return; }  
+  fail() {
+    this.toast.create({
+      duration: 1500,
+      message: 'Kunne ikke finne et barn med denne koden',
+      position: 'top'
+    }).present();
+  }
 
-     this.family = this.dbProvider.getFamily(uuid);
-     if(this.family.children){
-        this.navCtrl.setRoot('CategoryOverviewPage',{fam:this.family})
-        console.log("Found children")
-     }
+  success(child: Child) {
+    let children = { 'children' : [child] }
+
+    if (localStorage.getItem('users')) {
+      children.children.push(...JSON.parse(localStorage.getItem('users')).children)
+    }
+
+    localStorage.setItem('users', JSON.stringify(children));
+    this.navCtrl.setRoot('LoginPage');
+    this.navCtrl.popToRoot();
   }
 
 }

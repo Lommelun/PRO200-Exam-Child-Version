@@ -15,8 +15,8 @@
 
 <ion-content padding>
   <ion-item no-lines>
-     <ion-input type="text"  [(ngModel)]="uuid" placeholder="Enter the code from KolonialFam"  ></ion-input>
-     
-    </ion-item>
-<button ion-button block (click)="findUser()"> Add user </button>
+    <ion-input type="text" [(ngModel)]="token" placeholder="Legg inn barnets kode"></ion-input>
+  </ion-item>
+
+  <button ion-button block (click)="registerChild()"> Add user </button>
 </ion-content>
