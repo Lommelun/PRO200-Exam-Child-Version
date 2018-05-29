@@ -13,6 +13,8 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private db: DatabaseProvider
-  ) { }
+  ) {
+    console.log(JSON.parse(localStorage.getItem('users')));
+  }
 
 }
