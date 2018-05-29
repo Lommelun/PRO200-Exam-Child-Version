@@ -21,6 +21,7 @@
     <ion-searchbar no-lines class="search-bar" (ionInput)="getItems($event)" placeholder="Søk etter vare her"></ion-searchbar>
 
   <ion-row>
+<<<<<<< HEAD
   <ion-col col-4>
     <button no-border class="category-icon-btn"ion-button (click)="getCategory('breakfast')"><img src="assets/imgs/frokost.png" class="category-icon" alt="Frokost ikon"/></button>
     <button no-border class="category-text-btn" ion-button (click)="getCategory('breakfast')">Frokost</button>
@@ -45,6 +46,15 @@
       <button class="category-icon-btn"ion-button (click)="getCategory('snack')"><img src="assets/imgs/snacks.png" class="category-icon" alt="Snacks ikon"/></button>
       <button class="category-text-btn"ion-button (click)="getCategory('snack')">Snacks</button>
   </ion-col>
+=======
+     <ion-col col-4 (click)="getCategory('frokost')"><img src ="empty">frokost </ion-col>
+     <ion-col col-4 (click)="getCategory('lunsj')"><img src ="empty">lunsj</ion-col>
+     <ion-col col-4 (click)="getCategory('middag')"><img src ="empty">middag</ion-col>
+     <ion-col col-4  (click)="getCategory('frukt')"><img src ="empty">frukt</ion-col>
+     <ion-col col-4 (click)="getCategory('snack')"><img src ="empty">snacks</ion-col>
+     <ion-col col-4 (click)="getCategory('drikke')"><img src ="empty">drikke</ion-col>
+     <button (click)="pushPinPage()"></button>
+>>>>>>> login-pin
  
   <ion-col col-4>
       <button class="category-icon-btn"ion-button (click)="getCategory('drikke')"> <img src="assets/imgs/drikke.png" class="category-icon" alt="Drikke ikon"/></button>

@@ -12,9 +12,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { MyApp } from './app.component';
 
-import env from '../env';
+import * as env from '../env';
 import { DatabaseProvider } from '../providers/database/database';
 import { HttpClientModule } from '@angular/common/http';
+import { Keyboard } from  '@ionic-native/keyboard';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(env),
+    AngularFireModule.initializeApp(env.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     HttpClientModule
@@ -37,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider,
-    BarcodeScanner
+    BarcodeScanner,
+    Keyboard
   ]
 })
 export class AppModule {}
