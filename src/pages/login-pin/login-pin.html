@@ -14,7 +14,21 @@
 
 
 <ion-content padding>
-  <div>
-      <ion-input style="opacity: 0;" type="number" [(ngModel)]="pin" (change)="pinCheck()" #inputToFocus></ion-input>
-  </div>
+  <ion-input style="opacity: 0;" type="number" [(ngModel)]="pinInput" (input)="pinCheck()" #inputToFocus></ion-input>
+
+  <ion-row>
+    <ion-col style="text-align: center;">
+      <ion-icon style="font-size: 50px" [name]="pin_1"></ion-icon>
+    </ion-col>
+    <ion-col style="text-align: center;">
+      <ion-icon style="font-size: 50px" [name]="pin_2"></ion-icon>
+    </ion-col>
+    <ion-col style="text-align: center;">
+      <ion-icon style="font-size: 50px" [name]="pin_3"></ion-icon>
+    </ion-col>
+    <ion-col style="text-align: center;">
+      <ion-icon style="font-size: 50px" [name]="pin_4"></ion-icon>
+    </ion-col>
+  </ion-row>
+
 </ion-content>
