@@ -13,7 +13,9 @@ page-category {
         padding: 1rem 1rem 2rem 1rem;
         margin: 1rem;
         position: relative;
-        height: 210px;
+        height: 220px;
+        border: 1px solid color($colors, varmgrå);;
+        border-radius: 8px;
         
     }
 
@@ -25,6 +27,13 @@ page-category {
 
     .item-name {
         font-weight: 900;
+        margin: 0;
+        //background-color: red;
+    }
+
+    .item-price {
+        //background-color: gray;
+        margin-top: 0;
     }
 
     .show-item-btn {
