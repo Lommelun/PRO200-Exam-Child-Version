@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner'
 
-
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -28,6 +27,7 @@ import { Keyboard } from  '@ionic-native/keyboard';
     AngularFirestoreModule,
     AngularFireAuthModule,
     HttpClientModule
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
