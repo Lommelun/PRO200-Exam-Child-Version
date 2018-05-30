@@ -10,7 +10,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'app.html'
 })
 export class MyApp {
+<<<<<<< HEAD
   rootPage = 'CategoryOverviewPage';
+=======
+  rootPage='CategoryOverviewPage';
+>>>>>>> 0f9c59bca02045575844462d42f16cebc39d0469
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af: AngularFireAuth) {
     //this.rootPage = (localStorage.getItem('users')) ? 'LoginPage' : 'RegisterPage';
