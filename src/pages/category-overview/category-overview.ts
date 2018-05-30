@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import * as algoliasearch from 'algoliasearch'
+import * as env from '../../env'
+import { Item } from '../../models/item';
+
 
 /**
  * Generated class for the CategoryOverviewPage page.
@@ -15,7 +19,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CategoryOverviewPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+  client: any;
+  index: any;
+  ALGOLIA_APP_ID: string = env.algolia.ALGOLIA_APP_ID
+  ALGOLIA_API_KEY: string = env.algolia.ALGOLIA_SEARCH_KEY
+  searchQuery: string = "";
+  items = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.client = algoliasearch(this.ALGOLIA_APP_ID, this.ALGOLIA_API_KEY, { protocol: 'https:' });
+    this.index = this.client.initIndex("Marketplace")
+  }
+
+  search(event) {
+    this.index.search({
+      query: this.searchQuery
+    }).then((data) => {
+      console.log(data.hits)
+      this.items = data.hits;
+
+    })
+  }
 
   getCategory(cat: string) {
     console.log(cat);
@@ -31,4 +55,14 @@ export class CategoryOverviewPage {
     }
 
   }
+<<<<<<< HEAD
+=======
+  pushWishlistPage() {
+    this.navCtrl.push('WishlistPage');
+  }
+  pushToDetailPage(item: Item) {
+    console.log(item);
+    this.navCtrl.push('ItemDetailPage', { 'item': item });
+  }
+>>>>>>> search
 }

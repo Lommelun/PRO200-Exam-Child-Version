@@ -1,4 +1,5 @@
 <ion-header class="header" no-border>
+<<<<<<< HEAD
     <ion-navbar>
         <ion-title>Logget inn som</ion-title>
     </ion-navbar>
@@ -59,7 +60,71 @@
             </button>
             <button class="category-text-btn" ion-button (click)="getCategory('drikke')">Drikke</button>
         </ion-col>
+=======
+
+  <!--<ion-navbar>
+    <ion-title>category-overview</ion-title>
+  </ion-navbar>-->
+
+
+  <ion-row no-padding>
+    <ion-col col>
+        <img src="assets/imgs/gutt.png" class="header-img" alt="Gutt som vinker"/>
+    </ion-col>
+    <ion-col col>
+<h1 class="intro-text">Hei på deg!<br> Er du klar for å handle?</h1>    
+</ion-col>
+  </ion-row>
+</ion-header>
+>>>>>>> search
 
     </ion-row>
 
+<<<<<<< HEAD
 </ion-content>
+=======
+<ion-content class="background-gradient" padding>
+
+    <ion-searchbar [(ngModel)]="searchQuery" debounce="750" no-lines class="search-bar" (ionInput)="search($event)" placeholder="Søk etter vare her"></ion-searchbar>
+
+    <ion-list *ngFor='let item of items'>
+        <ion-card (click)="pushToDetailPage(item)" style="height:200px">
+            <img class="displayed" style="max-height:100px; width:auto" [src]="item.image" />
+          <p>{{item.name}}</p>
+          <p>Kr {{item.price}},- </p>
+        </ion-card>
+    </ion-list> 
+  <ion-row>
+  <ion-col col-4>
+    <button no-border class="category-icon-btn"ion-button (click)="getCategory('breakfast')"><img src="assets/imgs/frokost.png" class="category-icon" alt="Frokost ikon"/></button>
+    <button no-border class="category-text-btn" ion-button (click)="getCategory('breakfast')">Frokost</button>
+  </ion-col>
+
+  <ion-col col-4>
+      <button class="category-icon-btn"ion-button (click)="getCategory('lunch')"><img src="assets/imgs/lunsj.png" class="category-icon" alt="Lunsj ikon"/></button>
+      <button class="category-text-btn" ion-button (click)="getCategory('lunch')">Lunsj</button>
+  </ion-col>
+
+  <ion-col col-4>
+      <button class="category-icon-btn"ion-button (click)="getCategory('dinner')"> <img src="assets/imgs/middag.png" class="category-icon" alt="Middag ikon"/></button>
+      <button class="category-text-btn"ion-button (click)="getCategory('dinner')">Middag</button>
+  </ion-col>
+  
+  <ion-col col-4>
+      <button class="category-icon-btn"ion-button (click)="getCategory('fruit')"> <img src="assets/imgs/frukt.png" class="category-icon" alt="Frukt ikon"/></button>
+      <button class="category-text-btn"ion-button (click)="getCategory('fruit')">Frukt</button>
+  </ion-col>
+
+  <ion-col col-4>
+      <button class="category-icon-btn"ion-button (click)="getCategory('snack')"><img src="assets/imgs/snacks.png" class="category-icon" alt="Snacks ikon"/></button>
+      <button class="category-text-btn"ion-button (click)="getCategory('snack')">Snacks</button>
+  </ion-col>
+ 
+  <ion-col col-4>
+      <button class="category-icon-btn"ion-button (click)="pushWishlistPage()"> <img src="assets/imgs/drikke.png" class="category-icon" alt="Drikke ikon"/></button>
+      <button class="category-text-btn"ion-button (click)="getCategory('drikke')">Drikke</button>
+  </ion-col>
+  </ion-row> 
+
+</ion-content>
+>>>>>>> search
