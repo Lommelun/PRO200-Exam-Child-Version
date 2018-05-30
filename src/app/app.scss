@@ -26,11 +26,14 @@
 }
 
 .background-white {
-    background-color: #fff;
+    background-color:#fff;
     width: 100vw;
     position: relative;
     margin-left: -50vw;
     left: 50%;
+    height: 100%;
+    margin-bottom: 0;
+    padding-bottom: 2rem;
 }
 // font 
 * {
@@ -53,16 +56,23 @@
 
   // title
   .title-page {
-      text-align: center;
+      margin: 1.5rem 0 0 1rem;
       font-size: 1.5rem;
-      font-weight: 200;
+      font-weight: 400;
   }
 
   .small-title {
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 500;
     padding-bottom: 0.6rem;
-}
+    text-align: center;
+    // margin: 3rem 0 0 0;
+    padding: 0.9rem;
+    background-color: color($primary-profile, gul);;
+    width: 100vw;
+    position: relative;
+    margin-left: -50vw;
+    left: 50%;}
 
 .small-title-border {
     border-bottom: 0.5px solid color($primary-profile, grå);;
@@ -75,3 +85,13 @@
 .toolbar-background {
     background-color: transparent;
   }
+
+  .back-button {
+    margin: 1.6rem 0 0 0;
+}
+
+.header-background-orange {
+    background-color: color($primary-profile, eggeplomme);;
+    height: 80px;
+
+}

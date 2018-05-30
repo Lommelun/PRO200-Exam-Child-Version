@@ -4,32 +4,31 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header class="header" no-border>
+<ion-header class="header" no-border class="header-background-orange">
     
   <ion-navbar>
-        <ion-title class="title-page">"Kategori"</ion-title>
+        <ion-title class="title-page">Hovedkategori</ion-title>
       </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding class="background-gradient">
-  <ion-content class="background-white">
+<ion-content padding class="background-white">
   
-      <h2 class="small-title small-title-border">"Underkategori"</h2>
-    <ion-row no-padding>
+    <div>
+      <h2 class="small-title">Underkategori</h2>
+    </div>
+      <ion-row no-padding>
       <ion-col class="item" col-6 col-sm *ngFor='let item of items | async | slice:0:3'no-shadow no-border no-padding >
-      <ion-card class="card" no-shadow no-border no-padding>
+      
+        <div class="card">
+          <div (click)="pushToDetailPage(item)">
           <img class="displayed item-picture" style="max-height:100px; width:auto" [src]="item.image" />
         <p class="item-name">{{item.name}}</p>
         <p class="item-price">Kr {{item.price}},- </p>
-
-        <button class="show-item-btn btn" (click)="pushToDetailPage(item)">+</button>
-      </ion-card>
-      
+          </div>
+        <button class="show-item-btn btn">+</button>
+      </div>
     </ion-col>
   </ion-row>
 
-
-</ion-content>
 </ion-content>
