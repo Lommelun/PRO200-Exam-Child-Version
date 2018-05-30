@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseProvider } from '../../providers/database/database';
 import { isTrueProperty } from 'ionic-angular/util/util';
-import { QueryDocumentSnapshot, DocumentData } from '@firebase/firestore-types';
+import { QueryDocumentSnapshot, DocumentData, QuerySnapshot } from '@firebase/firestore-types';
 import { Observable } from 'rxjs/Rx';
 import { Item } from '../../models/item';
 
@@ -38,6 +38,7 @@ export class CategoryPage {
         .map(item => item.data())
         .toArray());
   }
+
   pushToDetailPage(item: Item) {
     console.log(item);
     this.navCtrl.push('ItemDetailPage', { 'item': item });

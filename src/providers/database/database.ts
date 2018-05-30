@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, DocumentSnapshot } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { User } from '@firebase/auth-types';
 import { Observable } from 'rxjs/Rx';
 import * as _ from 'lodash'
@@ -58,7 +58,7 @@ export class DatabaseProvider {
       .map(data => data.docs.find(doc => doc.data().token == token).data() as Child);
   }
 
-  getItemByField(collection: string, field: string, value: string): Promise<QuerySnapshot> {
+  getItemByField(collection: string, field: string, value: any): Promise<QuerySnapshot> {
     return this.af.collection(collection).ref.where(field, '==', value).get();
   }
 
