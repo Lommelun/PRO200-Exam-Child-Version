@@ -55,8 +55,6 @@ export class CategoryOverviewPage {
     }
 
   }
-<<<<<<< HEAD
-=======
   pushWishlistPage() {
     this.navCtrl.push('WishlistPage');
   }
@@ -64,5 +62,4 @@ export class CategoryOverviewPage {
     console.log(item);
     this.navCtrl.push('ItemDetailPage', { 'item': item });
   }
->>>>>>> search
 }
