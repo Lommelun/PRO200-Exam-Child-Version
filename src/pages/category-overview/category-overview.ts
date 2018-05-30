@@ -31,7 +31,4 @@ export class CategoryOverviewPage {
     }
 
   }
-  pushPinPage(){
-    this.navCtrl.push('LoginPinPage');
-  }
 }
