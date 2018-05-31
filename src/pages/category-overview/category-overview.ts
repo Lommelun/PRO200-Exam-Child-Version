@@ -24,7 +24,7 @@ export class CategoryOverviewPage {
   ALGOLIA_APP_ID: string = env.algolia.ALGOLIA_APP_ID
   ALGOLIA_API_KEY: string = env.algolia.ALGOLIA_SEARCH_KEY
   searchQuery: string = "";
-  items = [];
+  items: any[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.client = algoliasearch(this.ALGOLIA_APP_ID, this.ALGOLIA_API_KEY, { protocol: 'https:' });

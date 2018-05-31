@@ -1,12 +1,11 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
 <ion-content padding>
+
+  <div class="card" *ngFor="let user of users" (click)="login()">
+    <img src="{{user.img}}" />
+    <p>User {{user.name}}</p>
+  </div>
+
+  <button ion-button (click)="addUser()">Legg til flere brukere</button>
+  <button ion-button (click)="addUser()">Fjern brukere</button>
 
 </ion-content>
