@@ -1,3 +1,16 @@
 page-login {
-
+    .scroll-container { 
+        height: 170px;
+        width: 100%;
+    }
+    .card {
+        display: inline-block;
+        width: 100px; height: 150px;
+        box-shadow: 1px 1px 2px;
+        margin: 0 10px 10px 0;
+        img {
+            max-height:100px; 
+            background-color: #CCCCCC
+        }
+    }
 }

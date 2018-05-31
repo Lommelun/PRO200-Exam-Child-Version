@@ -10,10 +10,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage='Tab';
+  rootPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af: AngularFireAuth) {
-    //this.rootPage = (localStorage.getItem('users')) ? 'LoginPage' : 'RegisterPage';
+    this.rootPage = (localStorage.getItem('users')) ? 'LoginPage' : 'RegisterPage';
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
