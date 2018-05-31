@@ -1,6 +1,6 @@
 page-item-detail {
     .item-picture-detail {
-        width: 100%;
+        width: 50%;
         margin: auto;
         right: 0;
         left: 0;
@@ -10,4 +10,17 @@ page-item-detail {
     .item-detail-title-name {
         font-size: 2rem;
     }
+
+    .container-item-detail {
+        background-color: #fff;
+        padding: 1rem;
+    }
+
+    .container-margin-top {
+        margin-top: 1rem;
+    }
+
+   
+
+   
 }

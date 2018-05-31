@@ -12,12 +12,19 @@
 
 </ion-header>
 
-<ion-content padding class="background-white">
-  <div class="background-white">
-    <img class="item-picture-detail"[src]="item.image"/>
-    <p class="item-detail-title item-detail-title-name">{{item.name}} </p>
+<ion-content padding class="background-grey">
+
+    <div class="container-item-detail">
+      <img class="item-picture-detail"[src]="item.image"/>
+      <p class="item-detail-title item-detail-title-name">{{item.name}} </p>
+    </div>
+
+    <div class="container-item-detail container-margin-top">
     <p class="item-detail-title"> <strong>Pris:</strong> {{item.price}} ,- </p>
     <p class="item-detail-title"> <strong>Størrelse:</strong> {{item.size}}</p>
     <p class="item-detail-title"> <strong>Allergier:</strong>{{item.allergens}}</p>
   </div>
+
+  <button class="btn-orange btn btn-margin btn-padding">Legg til i ønsker</button>
+
 </ion-content>

@@ -12,11 +12,38 @@
 </ion-header>
 
 
-<ion-content padding class="background-white">
+<ion-content padding class="background-grey"  no-padding no-margin>  
+
+  <div class="subcategory-container" no-padding>
+    <ion-list no-padding>
+        <button ion-item no-lines detail-none class="subcategory" no-padding>
+            <ion-row no-padding>    
+                <ion-col col-10><h2 class="category-title">Underkategori</h2></ion-col>
+                <ion-col col-2 class="next-page-button">&#9657;</ion-col>
+              </ion-row>     
+            </button>
+      </ion-list>
+
+      <ion-list no-padding>
+          <button ion-item no-lines detail-none class="subcategory" no-padding>
+              <ion-row no-padding>    
+                  <ion-col col-10><h2 class="category-title">Underkategori</h2></ion-col>
+                  <ion-col col-2 class="next-page-button">&#9657;</ion-col>
+                </ion-row>     
+              </button>
+        </ion-list>
+
+            <ion-list no-padding>
+        <button ion-item no-lines detail-none class="subcategory" no-padding>
+            <ion-row no-padding>    
+                <ion-col col-10><h2 class="category-title">Underkategori</h2></ion-col>
+                <ion-col col-2 class="next-page-button">&#9657;</ion-col>
+              </ion-row>     
+            </button>
+      </ion-list>
+  </div>
+
   
-    <div>
-      <h2 class="small-title">Underkategori</h2>
-    </div>
       <ion-row no-padding>
       <ion-col class="item" col-6 col-sm *ngFor='let item of items | async | slice:0:3'no-shadow no-border no-padding >
       
@@ -29,6 +56,6 @@
         <button class="show-item-btn btn">+</button>
       </div>
     </ion-col>
-  </ion-row>
+  </ion-row> 
 
 </ion-content>

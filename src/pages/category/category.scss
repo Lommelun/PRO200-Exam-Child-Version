@@ -9,13 +9,14 @@ page-category {
     }
 
     .card {
-        //background-color: yellow;
+        background-color: #fff;
         padding: 1rem 1rem 2rem 1rem;
         margin: 1rem;
         position: relative;
         height: 220px;
         border: 1px solid color($colors, varmgrå);;
         border-radius: 8px;
+    
         
     }
 
@@ -49,5 +50,31 @@ page-category {
         font-size: 2rem;
     }
 
-  
+    // container with all the categorys inside a main-category
+    .subcategory-container {
+        background-color: color($colors, lys-varmgrå);;
+        width: 100vw;
+        position: relative;
+        margin-left: -50vw;
+        left: 50%;
+    }
+
+    .subcategory {
+        padding: 1rem 0 0 4rem;
+        margin: 0 !important;
+        background-color: #fff;
+    }
+
+    .scroll-content{
+        padding:0px !important;
+        }
+        
+    .input-wrapper{
+        padding:0px !important;
+    }
+
+     .next-page-button {
+         text-align: right;
+     }
+
 }

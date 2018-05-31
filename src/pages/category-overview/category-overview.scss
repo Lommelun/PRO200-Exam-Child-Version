@@ -7,7 +7,9 @@ page-category-overview {
         }
 
         .intro-text {
-            margin: 8rem 0 0 0;
+            position: absolute;
+            top: 6rem;
+            left: 2rem;
             font-size: 1.8rem;
             color:color($primary-profile, grå);;
             font-weight: 400;
@@ -26,8 +28,9 @@ page-category-overview {
         $button-md-outline-border-style: none;
         $button-md-outline-border-color: transparent; 
 
+        // the img - icon
         .category-icon {
-            width: 100%;
+            width: 120%;
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -39,7 +42,6 @@ page-category-overview {
             height: auto;
             width: 100%;
             box-shadow: none !important;
-
         }
 
         .category-text-btn{
@@ -51,8 +53,18 @@ page-category-overview {
             width: 100%;
             font-size: 1.8rem;            
             font-weight: 400;
-            margin-top: -0.5rem;
             color:color($primary-profile, grå);;
             text-transform: none;
+        }
+
+        .catogory-container {
+            background-color: #fff;
+            position: relative;
+            width: 80px;
+            padding: 1rem;
+            margin: 1.3rem;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px grey;  
+            overflow: hidden;
         }
 }

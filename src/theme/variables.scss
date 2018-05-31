@@ -53,6 +53,16 @@ $colors: (
   hvit: rgb(255,255,255), // Hvit
 );
 
+$headercolors: (
+  breakfastandlunch: #ffd503,
+  dinner: #c43118,
+  fruitandvegetables: #4b8a32,
+  snacksanddessert: #ca6da9,
+  householdandleisure: #3e519f,
+  all: #ffa51e,
+
+);
+
 //
 $tabs-background: color($primary-profile, mørk-aubergine);;
 
