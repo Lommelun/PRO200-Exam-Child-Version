@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as algoliasearch from 'algoliasearch'
 import * as env from '../../env'
 import { Item } from '../../models/item';
+import { DatabaseProvider } from '../../providers/database/database';
 
 
 /**
@@ -25,8 +26,10 @@ export class CategoryOverviewPage {
   ALGOLIA_API_KEY: string = env.algolia.ALGOLIA_SEARCH_KEY
   searchQuery: string = "";
   items = [];
+  familyId: string = "RCcqNyACgQZFviHpHSvK";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public db: DatabaseProvider, public navCtrl: NavController, public navParams: NavParams) {
     this.client = algoliasearch(this.ALGOLIA_APP_ID, this.ALGOLIA_API_KEY, { protocol: 'https:' });
     this.index = this.client.initIndex("Marketplace")
   }
@@ -35,12 +38,15 @@ export class CategoryOverviewPage {
     this.index.search({
       query: this.searchQuery
     }).then((data) => {
-      console.log(data.hits)
       this.items = data.hits;
-
     })
   }
 
+  addItemToWishlist(item: any) {
+    this.db.getItemFromObjectID(item.objectID)
+      .subscribe(item => this.db.addItemsToUser(this.familyId, { 'id' : item.id, ...item.data() } as Item ));
+  }
+  
   getCategory(cat: string) {
     console.log(cat);
     this.navCtrl.push('CategoryPage', { 'type': cat });
@@ -53,13 +59,9 @@ export class CategoryOverviewPage {
     } else {
       this.navCtrl.setRoot('StorePage');
     }
+  }
 
-  }
-  pushWishlistPage() {
-    this.navCtrl.push('WishlistPage');
-  }
   pushToDetailPage(item: Item) {
-    console.log(item);
     this.navCtrl.push('ItemDetailPage', { 'item': item });
   }
 }

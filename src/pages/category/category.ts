@@ -35,7 +35,7 @@ export class CategoryPage {
   getItemsByCategory() {
     Observable.fromPromise(this.db.getItemByField('Marketplace', 'category.' + this.navParams.get('type'), true))
       .subscribe(result => this.items = Observable.from(result.docs)
-        .map(item => item.data())
+        .map(item => { return  { 'id': item.id, ...item.data() } as Item })
         .toArray());
   }
 

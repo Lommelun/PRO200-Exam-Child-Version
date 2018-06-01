@@ -7,6 +7,8 @@ import * as _ from 'lodash'
 import { QuerySnapshot } from '@firebase/firestore-types';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Child } from '../../models/child';
+import { Item } from '../../models/item';
+import { DocumentSnapshot } from '@firebase/firestore-types';
 
 @Injectable()
 export class DatabaseProvider {
@@ -22,6 +24,10 @@ export class DatabaseProvider {
     this.af.collection(collection).add(data);
   }
 
+  getItemFromObjectID(id: string): Observable<DocumentSnapshot> {
+    return Observable.fromPromise(this.af.firestore.collection("Marketplace").doc(id).get());
+  }
+  
   getDataFromColl(collection: string) {
 
     let data: Observable<{}[]>
@@ -62,15 +68,9 @@ export class DatabaseProvider {
     return this.af.collection(collection).ref.where(field, '==', value).get();
   }
 
-  addItemsToUser(familyId: string, uid: string, item: {}) {
-
-    this.dataColl = this.af.collection(`Families`);
-
-    this.dataColl.doc(familyId).collection(`Items`).doc(uid).set(item);
-  }
-
-  getStoreItemsWithCategory(category: string) {
-
+  addItemsToUser(familyId: string, item: Item) {
+    this.dataColl = this.af.collection(`families`);
+    this.dataColl.doc(familyId).collection(`items`).doc(item.id).set(item);
   }
 
 }

@@ -16,11 +16,12 @@
 
   <ion-searchbar [(ngModel)]="searchQuery" debounce="750" no-lines class="search-bar" (ionInput)="search($event)" placeholder="Søk etter vare her"></ion-searchbar>
 
-  <ion-list *ngFor='let item of items'>
-    <ion-card (click)="pushToDetailPage(item)" style="height:200px">
+  <ion-list >
+    <ion-card *ngFor='let item of items' (click)="pushToDetailPage(item)" style="height:200px">
       <img class="displayed" style="max-height:100px; width:auto" [src]="item.image" />
       <p>{{item.name}}</p>
       <p>Kr {{item.price}},- </p>
+      <button ion-button (click)="addItemToWishlist(item)"></button>
     </ion-card>
   </ion-list>
   <ion-row>
