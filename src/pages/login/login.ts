@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseProvider } from '../../providers/database/database';
 import { Child } from '../../models/child';
+import { Observable } from 'rxjs/Rx';
 
 @IonicPage()
 @Component({
@@ -9,14 +10,14 @@ import { Child } from '../../models/child';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  users: any[];
+  users: Observable<Child[]>;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams
   ) {
-    this.users = JSON.parse(localStorage.getItem('users')).users;
-    console.log(this.users);
+    this.users = Observable.from([(JSON.parse(localStorage.getItem('users')).users as Child[])]);
+    this.users.subscribe(user => console.log(user))
   }
 
   login(user: Child) {

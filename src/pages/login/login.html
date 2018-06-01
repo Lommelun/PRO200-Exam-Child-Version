@@ -1,11 +1,11 @@
 <ion-content padding>
 
-  <div class="card" *ngFor="let user of users" (click)="login()">
+  <div class="card" *ngFor="let user of users | async" (click)="login()">
     <img src="{{user.img}}" />
     <p>User {{user.name}}</p>
   </div>
 
   <button ion-button (click)="addUser()">Legg til flere brukere</button>
-  <button ion-button (click)="addUser()">Fjern brukere</button>
+  <button ion-button (click)="clearUsers()">Fjern brukere</button>
 
 </ion-content>
