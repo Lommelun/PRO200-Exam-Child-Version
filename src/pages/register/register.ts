@@ -40,7 +40,6 @@ export class RegisterPage {
 
   nextStep() {
     this.step++;
-    console.log('' +this.pin1 + this.pin2)
     if (this.pin1 === this.pin2 && this.pin1 != undefined) {
       this.login();
     } else if (this.step > 2) {
