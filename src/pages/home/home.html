@@ -1,5 +1,7 @@
 <ion-header class="header" no-border>
-  <a (click)="logout()">Bytt bruker</a>
+  <ion-navbar>
+    <a (click)="logout()">Bytt bruker</a>
+  </ion-navbar>
 </ion-header>
 
 <ion-content class="background-grey" padding>
@@ -28,63 +30,63 @@
 
     <ion-col col-6>
       <div class="catogory-container breakfastandlunch-container">
-      <button no-border class="category-icon-btn" ion-button (click)="getCategory('breakfastandlunch')">
-        <img src="assets/imgs/frokostoglunsj.png" class="category-icon" alt="Frokost og lunsj ikon" />
-      </button>
-      <button no-border class="category-text-btn" ion-button (click)="getCategory('breakfastandlunch')">Frokost
-        <br>og lunsj</button>
+        <button no-border class="category-icon-btn" ion-button (click)="getCategory('breakfastandlunch')">
+          <img src="assets/imgs/frokostoglunsj.png" class="category-icon" alt="Frokost og lunsj ikon" />
+        </button>
+        <button no-border class="category-text-btn" ion-button (click)="getCategory('breakfastandlunch')">Frokost
+          <br>og lunsj</button>
       </div>
     </ion-col>
 
     <ion-col col-6>
       <div class="catogory-container dinner-container">
-      <button class="category-icon-btn" ion-button (click)="getCategory('dinner')">
-        <img src="assets/imgs/middagogtilbehør.png" class="category-icon" alt="Lunsj ikon" />
-      </button>
-      <button class="category-text-btn" ion-button (click)="getCategory('dinner')">Middag
-        <br>og tilbehør</button>
+        <button class="category-icon-btn" ion-button (click)="getCategory('dinner')">
+          <img src="assets/imgs/middagogtilbehør.png" class="category-icon" alt="Lunsj ikon" />
+        </button>
+        <button class="category-text-btn" ion-button (click)="getCategory('dinner')">Middag
+          <br>og tilbehør</button>
       </div>
     </ion-col>
 
     <ion-col col-6>
       <div class="catogory-container fruitandvegetables-container">
-      <button class="category-icon-btn" ion-button (click)="getCategory('fruitandvegetables')">
-        <img src="assets/imgs/fruktoggrønt.png" class="category-icon" alt="Frukt og grønnsaker ikon" />
-      </button>
-      <button class="category-text-btn" ion-button (click)="getCategory('fruitandvegetables')">Frukt
-        <br>og grønt</button>
+        <button class="category-icon-btn" ion-button (click)="getCategory('fruitandvegetables')">
+          <img src="assets/imgs/fruktoggrønt.png" class="category-icon" alt="Frukt og grønnsaker ikon" />
+        </button>
+        <button class="category-text-btn" ion-button (click)="getCategory('fruitandvegetables')">Frukt
+          <br>og grønt</button>
       </div>
     </ion-col>
 
     <ion-col col-6>
       <div class="catogory-container snacksanddessert-container">
-      <button class="category-icon-btn" ion-button (click)="getCategory('snacksanddessert')">
-        <img src="assets/imgs/snacksogdesserter.png" class="category-icon" alt="Snacks og desserter ikon" />
-      </button>
-      <button class="category-text-btn" ion-button (click)="getCategory('snacksanddessert')">Snacks
-        <br>and dessert</button>
+        <button class="category-icon-btn" ion-button (click)="getCategory('snacksanddessert')">
+          <img src="assets/imgs/snacksogdesserter.png" class="category-icon" alt="Snacks og desserter ikon" />
+        </button>
+        <button class="category-text-btn" ion-button (click)="getCategory('snacksanddessert')">Snacks
+          <br>and dessert</button>
       </div>
     </ion-col>
 
     <ion-col col-6>
-      <div  class="catogory-container householdandleisure-container"> 
-      <button class="category-icon-btn" ion-button (click)="getCategory('householdandleisure')">
-        <img src="assets/imgs/husholdningogfritid.png" class="category-icon" alt="Husholdning og fritid ikon" />
-      </button>
-      <button class="category-text-btn" ion-button (click)="getCategory('household and leisure')">Husholdning
-        <br>og fritid</button>
+      <div class="catogory-container householdandleisure-container">
+        <button class="category-icon-btn" ion-button (click)="getCategory('householdandleisure')">
+          <img src="assets/imgs/husholdningogfritid.png" class="category-icon" alt="Husholdning og fritid ikon" />
+        </button>
+        <button class="category-text-btn" ion-button (click)="getCategory('household and leisure')">Husholdning
+          <br>og fritid</button>
       </div>
     </ion-col>
 
     <ion-col col-6>
       <div class="catogory-container allcategories-container">
-      <button class="category-icon-btn" ion-button (click)="getCategory('drikke')">
-        <img src="assets/imgs/allevarer.png" class="category-icon" alt="Alle kategorier ikon">
-      </button>
-      <button class="category-text-btn" ion-button (click)="getCategory('drikke')">Alle varer</button>
-    </div>
+        <button class="category-icon-btn" ion-button (click)="getCategory('drikke')">
+          <img src="assets/imgs/allevarer.png" class="category-icon" alt="Alle kategorier ikon">
+        </button>
+        <button class="category-text-btn" ion-button (click)="getCategory('drikke')">Alle varer</button>
+      </div>
     </ion-col>
- 
+
   </ion-row>
 
 </ion-content>

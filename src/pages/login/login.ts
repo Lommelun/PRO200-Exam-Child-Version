@@ -17,7 +17,6 @@ export class LoginPage {
     public navParams: NavParams
   ) {
     this.users = Observable.from([(JSON.parse(localStorage.getItem('users')).users as Child[])]);
-    this.users.subscribe(user => console.log(user))
   }
 
   login(user: Child) {

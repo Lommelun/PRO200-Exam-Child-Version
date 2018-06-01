@@ -48,6 +48,8 @@ export class HomePage {
 
   logout(): void {
     localStorage.removeItem('user');
+    this.navCtrl.setRoot('LoginPage');
+    this.navCtrl.popToRoot();
   }
 
 }
