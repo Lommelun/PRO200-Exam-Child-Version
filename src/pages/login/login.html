@@ -1,4 +1,12 @@
-<ion-content padding>
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title class="header-title-white">Velg din profil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="background-gradient">
 
   <div class="card" *ngFor="let user of users" (click)="login()">
     <img src="{{user.img}}" />

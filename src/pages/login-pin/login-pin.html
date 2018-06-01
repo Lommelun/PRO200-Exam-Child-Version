@@ -4,30 +4,30 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header no-border>
 
   <ion-navbar>
-    <ion-title>login-pin</ion-title>
+    <ion-title class="header-title-white">Tast inn ditt passord</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="background-gradient">
   <ion-input style="opacity: 0;" type="number" [(ngModel)]="pinInput" (input)="pinCheck()" #inputToFocus></ion-input>
 
   <ion-row>
     <ion-col style="text-align: center;">
-      <ion-icon style="font-size: 50px" [name]="pin_1"></ion-icon>
+      <ion-icon class="pin" style="font-size: 50px" [name]="pin_1"></ion-icon>
     </ion-col>
     <ion-col style="text-align: center;">
-      <ion-icon style="font-size: 50px" [name]="pin_2"></ion-icon>
+      <ion-icon class="pin" style="font-size: 50px" [name]="pin_2"></ion-icon>
     </ion-col>
     <ion-col style="text-align: center;">
-      <ion-icon style="font-size: 50px" [name]="pin_3"></ion-icon>
+      <ion-icon class="pin" style="font-size: 50px" [name]="pin_3"></ion-icon>
     </ion-col>
     <ion-col style="text-align: center;">
-      <ion-icon style="font-size: 50px" [name]="pin_4"></ion-icon>
+      <ion-icon class="pin" style="font-size: 50px" [name]="pin_4"></ion-icon>
     </ion-col>
   </ion-row>
 
