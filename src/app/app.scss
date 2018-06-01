@@ -58,16 +58,24 @@
     box-shadow: none !important;
   }
 
+  .header-title-white {
+      color: #fff;
+      font-size: 3rem;
+      text-align: center;
+      margin: 3rem 0 0 0;
+  }
+
   // title
   .title-page {
       margin: 1.5rem 0 0 1rem;
       font-size: 1.5rem;
-      font-weight: 400;
+      font-weight: 900;
+      //font-weight: 400;
   }
 
   .small-title {
     font-size: 1.5rem;
-    font-weight: 500;
+    //font-weight: 500;
     padding-bottom: 0.6rem;
     text-align: center;
     // margin: 3rem 0 0 0;

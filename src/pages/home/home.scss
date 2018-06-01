@@ -8,11 +8,12 @@ page-home {
 
         .intro-text {
             position: absolute;
-            top: 6rem;
+            top: 8rem;
             left: 2rem;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color:color($primary-profile, grå);;
-            font-weight: 400;
+            font-weight: 900;
+            text-align: center;
         }
 
         .search-bar {
@@ -51,20 +52,46 @@ page-home {
             margin-left: auto;
             margin-right: auto;
             width: 100%;
-            font-size: 1.8rem;            
-            font-weight: 400;
+            font-size: 1.5rem;            
+            font-weight: 100;
             color:color($primary-profile, grå);;
             text-transform: none;
         }
 
         .catogory-container {
             background-color: #fff;
-            position: relative;
-            width: 80px;
+            width: 90%;
+            height: 93%;
             padding: 1rem;
-            margin: 1.3rem;
             border-radius: 5px;
             box-shadow: 2px 2px 2px grey;  
             overflow: hidden;
+            margin: auto;
+            right: 0;
+            left: 0;
+        }
+
+        .breakfastandlunch-container{
+            border: 3px solid color($headercolors, breakfastandlunch)
+        }
+
+        .dinner-container{
+            border: 3px solid color($headercolors, dinner)
+        }
+
+        .fruitandvegetables-container{
+            border: 3px solid color($headercolors, fruitandvegetables)
+        }
+
+        .snacksanddessert-container{
+            border: 3px solid color($headercolors, snacksanddessert)
+        }
+
+        .householdandleisure-container{
+            border: 3px solid color($headercolors,  householdandleisure)
+        }
+
+        .allcategories-container{
+            border: 3px solid color($headercolors, allcategories)
         }
 }
