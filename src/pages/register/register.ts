@@ -41,6 +41,7 @@ export class RegisterPage {
   nextStep() {
     this.step++;
     if (this.pin1 === this.pin2 && this.pin1 != undefined) {
+      this.user.pin = this.pin1.toString();
       this.login();
     } else if (this.step > 2) {
       this.toast.create({
