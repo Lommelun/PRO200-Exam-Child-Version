@@ -11,17 +11,35 @@ page-login {
     .card {
         display: inline-block;
         width: 100px; height: 150px;
-        box-shadow: 1px 1px 2px;
+        box-shadow: none;
         margin: 0 10px 10px 0;
         text-align: center;
+    }
 
-        img {
-            width: 100%;
-            height: 100px; 
-            background-color: #EEE
-        }
+    .round-img {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
     }
-    .btn {
-        background-color: #fff;
+
+    .profile-img {
+        display: inline;
+        margin: 0 auto;
+        height: 140%;
+        width: auto !important;
     }
+
+    .btn-add-user {
+        width: 60%;
+        margin: auto;
+        left: 0;
+        right: 0;
+
+    }
+
+    * {
+        color: #fff;
+      }
 }

@@ -4,35 +4,72 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header class="header" no-border>
 
   <ion-navbar>
-    <ion-title>Register</ion-title>
+    <h1 class="header-title-white">Register ny barnebruker</h1>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="background-gradient">
+
   <div *ngIf="step < 1">
-    <ion-item no-lines>
-      <ion-input type="text" [(ngModel)]="token" placeholder="Legg inn barnets kode"></ion-input>
-    </ion-item>
+    <ion-label class="label-white">Verifiseringskoden</ion-label>
+      <ion-row>
+        <ion-col col-8>
+          <ion-input class="input input-white" type="text" [(ngModel)]="token" placeholder="Verifiseringskoden"></ion-input>
+        </ion-col>
+      
+        <ion-col col-4>
+          <div class="next-btn-container"><button class="btn btn-aubergine next-btn btn-margin" ion-button block (click)="registerChild()"> Neste </button></div>
+        </ion-col>
+        
+        <ion-col col-12>
+          <div class="info-text-container"> <p class="info-text">For å kunne legge til en ny barnebruker må du opprette brukeren i Kolonial.no-appen, under Familie.</p></div>
+        </ion-col>
+      </ion-row>
+</div>
 
-    <button ion-button block (click)="registerChild()"> Add user </button>
-  </div>
+  <div *ngIf="step > 0" class="test2">
+    <div class="inputgroup" [ngSwitch]="step" class="test">
+      <div *ngSwitchCase="1" no-lines>
+        <ion-label class="label-white block-display">Passord</ion-label>
 
-  <div *ngIf="step > 0">
-    <div class="inputgroup" [ngSwitch]="step">
-      <ion-item *ngSwitchCase="1">
-        <ion-label>Pinkode:</ion-label>
-        <ion-input type="number" [(ngModel)]="pin1"></ion-input>
-      </ion-item>
-      <ion-item *ngSwitchCase="2">
-        <ion-label>Repeter pinkode: </ion-label>
-        <ion-input type="number" [(ngModel)]="pin2"></ion-input>
-      </ion-item>
+        <ion-row>
+          <ion-col col-8>
+            <ion-input class="input input-white block-display" type="number" [(ngModel)]="pin1"></ion-input>
+          </ion-col>
+
+          <ion-col col-4>
+            <button class="btn btn-aubergine next-btn btn-margin" no-shadow ion-button (click)="nextStep()">Neste</button>
+          </ion-col>
+
+          <ion-col col-12>
+              <p class="info-text">Passord skal bestå av fire tall. <br>For eksempel: 1234</p>
+            </ion-col>
+
+        </ion-row>
+      </div>
+      
+      <div *ngSwitchCase="2">
+        <ion-label class="label-white block-display">Repeter passord </ion-label>
+        
+        <ion-row>
+          <ion-col col-8>
+            <ion-input class="input input-white block-display" type="number" [(ngModel)]="pin2"></ion-input>
+          </ion-col>
+
+          <ion-col col-4>
+            <button class="btn btn-green next-btn btn-margin" no-shadow ion-button (click)="nextStep()">Lagre</button>
+          </ion-col>
+
+        </ion-row>
+
+      </div>
     </div>
-    <button class="nextbutton" ion-button (click)="nextStep()">Neste</button>
-  </div>
+
+
+</div>
 </ion-content>

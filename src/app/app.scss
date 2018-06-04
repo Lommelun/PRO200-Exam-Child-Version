@@ -43,35 +43,25 @@
 // font 
 * {
     font-family: 'Nunito', sans-serif;
-    color:color($primary-profile, grå);;
+    //color:color($primary-profile, grå);;
+    text-transform: none;
   }
 
-  // all buttons 
-.btn {
-    border-radius: 5px; 
-    color: #fff;
-    font-size: 1.5rem;
-  }
 
   // header 
   .header {
     box-shadow: none !important;
   }
 
+    // title
+
   .header-title-white {
       color: #fff;
-      font-size: 3rem;
+      font-size: 2rem;
       text-align: center;
-      margin: 3rem 0 0 0;
+      font-weight: bold;
   }
 
-  // title
-  .title-page {
-      margin: 1.5rem 0 0 1rem;
-      font-size: 1.5rem;
-      font-weight: 900;
-      //font-weight: 400;
-  }
 
   .small-title {
     font-size: 1.5rem;
@@ -113,16 +103,24 @@
 
 .btn {
     border-radius: 5px; 
-    color: #fff;
-    font-size: 1.8rem;
+    color: #fff !important;
+    font-size: 1.7rem;
+    $button-md-text-color: #fff !important;
+    $button-ios-text-color: #fff !important;
+    
   }
   
   .btn-green {
     background-color: color($primary-profile, grønn);;
+    color: #fff;
+
+    
   }
   
   .btn-orange {
     background-color: color($primary-profile, eggeplomme);;
+    color: #fff;
+
   }
   
   .btn-red {
@@ -130,6 +128,13 @@
     border: 1px solid color($colors, bringebær);;
     color: color($colors, bringebær);;
   }
+
+  .btn-aubergine {
+    background-color: color($primary-profile, aubergine);;
+    color: #fff;
+
+  }
+
   
   .btn-margin {
     margin: auto;
@@ -146,4 +151,33 @@
       padding: 1rem;
       margin-top: 2rem;
   }
+
+  // all inputs 
+.input {
+    border: 1px solid color($colors, varmgrå);;
+    border-radius: 5px;
+    padding: 1px;
+    width: 90%; 
+    display: block;
+    margin: auto;
+    left:0;
+    right: 0;
+    padding-left:20px;
+}
   
+   // inputs with light background
+   .input-white {
+    background-color: #fff;
+  }
+
+  .label-white {
+      color: #fff;
+      font-size: 2rem;
+      width: 90%;
+      margin: auto;
+      left: 0;
+      right: 0;
+      display: block;
+  }
+
+  $item-ios-divider-background: none; 
