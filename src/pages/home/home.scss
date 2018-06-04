@@ -1,0 +1,97 @@
+page-home {
+
+    // header
+        .header-img {
+            height:150px;
+            margin: 4.5rem 0 0 5rem;
+        }
+
+        .intro-text {
+            position: absolute;
+            top: 8rem;
+            left: 2rem;
+            font-size: 2rem;
+            color:color($primary-profile, grå);;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .search-bar {
+            border-radius: 5px;
+            background-color: transparent;
+            width: 100%;
+            height: 70px;
+            margin: -3rem 0 0 0;
+        }
+
+        $searchbar-md-input-border-radius: 5px;
+        $button-md-box-shadow: transparent;
+        $button-md-outline-border-style: none;
+        $button-md-outline-border-color: transparent; 
+
+        // the img - icon
+        .category-icon {
+            width: 120%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: none;
+        }
+
+        .category-icon-btn {
+            background-color: transparent;
+            height: auto;
+            width: 100%;
+            box-shadow: none !important;
+        }
+
+        .category-text-btn{
+            box-shadow: none !important;
+            background-color: transparent;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            font-size: 1.5rem;            
+            font-weight: 100;
+            color:color($primary-profile, grå);;
+            text-transform: none;
+        }
+
+        .catogory-container {
+            background-color: #fff;
+            width: 90%;
+            height: 93%;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px grey;  
+            overflow: hidden;
+            margin: auto;
+            right: 0;
+            left: 0;
+        }
+
+        .breakfastandlunch-container{
+            border: 3px solid color($headercolors, breakfastandlunch)
+        }
+
+        .dinner-container{
+            border: 3px solid color($headercolors, dinner)
+        }
+
+        .fruitandvegetables-container{
+            border: 3px solid color($headercolors, fruitandvegetables)
+        }
+
+        .snacksanddessert-container{
+            border: 3px solid color($headercolors, snacksanddessert)
+        }
+
+        .householdandleisure-container{
+            border: 3px solid color($headercolors,  householdandleisure)
+        }
+
+        .allcategories-container{
+            border: 3px solid color($headercolors, allcategories)
+        }
+}

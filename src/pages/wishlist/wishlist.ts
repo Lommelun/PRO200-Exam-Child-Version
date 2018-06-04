@@ -27,19 +27,4 @@ export class WishlistPage {
 
   }
 
-  fbToAlgolia() {
-    let arr = [];
-    this.angularfirestore.collection('Marketplace').ref.get().then((docs) => {
-      docs.forEach((doc) => {
-
-        let user = doc.data();
-        user.objectID = doc.id;
-        arr.push(user);
-      })
-
-      let client = algoliasearch(env.algolia.ALGOLIA_APP_ID, env.algolia.ALGOLIA_ADMIN_KEY)
-      let index = client.initIndex(env.algolia.ALGOLIA_INDEX_NAME);
-      index.saveObjects(arr);
-    })
-  }
 }

@@ -66,7 +66,7 @@ export class LoginPinPage {
     this.subscription.unsubscribe();
     if (!this.ifLock) {
       this.ifLock = !this.ifLock
-      this.navCtrl.push('CategoryOverviewPage');
+      this.navCtrl.push('Tab');
     }
   }
 

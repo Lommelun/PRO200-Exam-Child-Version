@@ -1,12 +1,19 @@
-<ion-header>
+<ion-header no-border>
 
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <ion-title class="header-title-white">Velg din profil</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<ion-content padding class="background-gradient">
 
-<ion-content padding>
+  <div class="card" *ngFor="let user of users | async" (click)="login()">
+    <img src="{{user.img}}" />
+    <p>User {{user.name}}</p>
+  </div>
+
+  <button ion-button full class="btn" (click)="addUser()">Legg til flere brukere</button>
+  <a (click)="clearUsers()">Fjern brukere</a>
 
 </ion-content>

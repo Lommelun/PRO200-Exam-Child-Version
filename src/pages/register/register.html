@@ -14,9 +14,25 @@
 
 
 <ion-content padding>
-  <ion-item no-lines>
-    <ion-input type="text" [(ngModel)]="token" placeholder="Legg inn barnets kode"></ion-input>
-  </ion-item>
+  <div *ngIf="step < 1">
+    <ion-item no-lines>
+      <ion-input type="text" [(ngModel)]="token" placeholder="Legg inn barnets kode"></ion-input>
+    </ion-item>
 
-  <button ion-button block (click)="registerChild()"> Add user </button>
+    <button ion-button block (click)="registerChild()"> Add user </button>
+  </div>
+
+  <div *ngIf="step > 0">
+    <div class="inputgroup" [ngSwitch]="step">
+      <ion-item *ngSwitchCase="1">
+        <ion-label>Pinkode:</ion-label>
+        <ion-input type="number" [(ngModel)]="pin1"></ion-input>
+      </ion-item>
+      <ion-item *ngSwitchCase="2">
+        <ion-label>Repeter pinkode: </ion-label>
+        <ion-input type="number" [(ngModel)]="pin2"></ion-input>
+      </ion-item>
+    </div>
+    <button class="nextbutton" ion-button (click)="nextStep()">Neste</button>
+  </div>
 </ion-content>

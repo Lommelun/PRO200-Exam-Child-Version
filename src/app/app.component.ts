@@ -10,14 +10,26 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage='Tab';
+  rootPage = 'HomePage';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af: AngularFireAuth) {
-    //this.rootPage = (localStorage.getItem('users')) ? 'LoginPage' : 'RegisterPage';
+    if (this.checkUserLoggedIn()) { this.rootPage = 'HomePage' }
+    else if (this.checkUsersExist()) { this.rootPage = 'LoginPage' }
+    else { this.rootPage = 'RegisterPage' }
+
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+
+  checkUsersExist(): boolean {
+    return (localStorage.getItem('users') != null);
+  }
+
+  checkUserLoggedIn(): boolean {
+    return (localStorage.getItem('user') != null);
   }
 }
 

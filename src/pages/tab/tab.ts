@@ -11,7 +11,7 @@ import { Item } from '../../models/item';
   templateUrl: 'tab.html',
 })
 export class Tab {
-  tab1 = 'CategoryOverviewPage';
+  tab1 = 'HomePage';
   tab2 = 'WishlistPage';
 
   barcode: string = "";
