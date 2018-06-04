@@ -3,7 +3,56 @@ page-register {
         width: auto;
         float: left;
     }
-    .nextbutton {
+
+    .btn-add-child {
+        color: #fff;
+        width: 40%;
+        margin-left: 5%;
+        padding: 1rem;
+        margin-top:1rem;
         float: right;
     }
-}
+
+    .info-text {
+        margin-left: 5%;
+        width: 80%;
+        color: #fff;
+        display: block;
+    }
+
+    .info-text-container-2 {
+        margin-top: -10px;
+        width: 100%;
+        display: block;
+    }
+
+    .block-display {
+        display: block;
+    }
+
+    .next-btn {
+        display: block;
+    }
+
+    .info-text-container {
+        width: 100%;
+        display: block;
+    }
+
+    .test {
+        width: 100%;
+        display: block;
+    }
+
+    .test2 {
+        width: 100%;
+        display: block;
+
+    }
+
+    .btn-container {
+        width: 100%;
+        display: block;
+        background-color: red;
+    }
+} 

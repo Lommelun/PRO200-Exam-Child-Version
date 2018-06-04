@@ -25,6 +25,7 @@ page-category-overview {
     }
 
     .item-name {
+        color:color($primary-profile, grå);;
         font-weight: 900;
         margin: 0;
         //background-color: red;
@@ -33,6 +34,7 @@ page-category-overview {
     .item-price {
         //background-color: gray;
         margin-top: 0;
+        color:color($primary-profile, grå);;
     }
 
     .show-item-btn {
