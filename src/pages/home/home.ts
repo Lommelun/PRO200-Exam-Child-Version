@@ -31,11 +31,17 @@ export class HomePage {
       .then((data) => this.items = data.hits.filter((item:{}) =>{
 
         const user = JSON.parse(localStorage.getItem(`user`));
-        console.log(user)
+       
 
-        return (user !== null) || user ?
-           _.some(_.keys(item), k => {
-            return !_.includes(_.upperCase(user[`limits`]), _.upperCase(item[k]));
+        return user ?
+           _.some(_.keys(user[`limits`]), k => {
+            console.log(k)
+            console.log("YO WE SEARCHING BOIS",user[`limits`][k])
+            
+            console.log(_.toArray(item))
+            
+            return !_.includes(_.upperCase(_.toArray(item)[k]), _.upperCase(user[`limits`][k]));
+
           }): true;
 
       }));
