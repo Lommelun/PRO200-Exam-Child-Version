@@ -65,7 +65,7 @@
       </div>
     </ion-col>
 
-    <ion-col col-6>
+    <ion-col col-6 *ngIf="!user.candyOnWeekendsOnly">
       <div class="catogory-container snacksanddessert-container">
         <button class="category-icon-btn" ion-button (click)="getCategory('snacksanddessert')">
           <img src="assets/imgs/snacksogdesserter.png" class="category-icon" alt="Snacks og desserter ikon" />
