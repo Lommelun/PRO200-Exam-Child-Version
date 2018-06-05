@@ -20,8 +20,11 @@ export class LoginPage {
   }
 
   login(user: Child) {
-    localStorage.setItem('user', JSON.stringify(user));
+    console.log(JSON.stringify(user))
     
+    localStorage.setItem('user', JSON.stringify(user));
+
+    console.log(JSON.stringify(localStorage.getItem(`user`)))
     this.navCtrl.push('LoginPinPage', { 'user': user });
   }
 

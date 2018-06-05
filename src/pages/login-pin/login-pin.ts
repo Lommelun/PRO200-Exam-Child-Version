@@ -31,7 +31,11 @@ export class LoginPinPage {
     private toast: ToastController) {
 
     this.child = this.navParams.get("child");
+    
+      console.log(this.child)
+
     if (this.child == null) this.child = { age: 0, name: '', tag: 'child', pin: '1234' }
+
     const eventCheck$ = Observable.fromEvent(document, 'onclick')
       .debounceTime(200).subscribe(() => this.pinCheck());
   }
