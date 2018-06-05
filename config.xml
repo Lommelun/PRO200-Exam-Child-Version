@@ -85,8 +85,8 @@
     <allow-navigation href="http://10.32.12.29:8100" />
     <allow-navigation href="http://10.32.12.67:8100" />
     <allow-navigation href="http://10.32.12.18:8100" />
-    <engine name="android" spec="7.0.0" />
-    <engine name="ios" spec="4.5.4" />
     <allow-navigation href="http://10.32.4.20:8100" />
     <allow-navigation href="http://169.254.98.50:8100" />
+    <engine name="android" spec="7.1.0" />
+    <engine name="ios" spec="4.5.4" />
 </widget>
