@@ -10,7 +10,7 @@
 
       <div class="card" *ngFor="let user of users | async" (click)="login()">
           <div class="round-img">
-              <img class="profile-img" alt="Profilbilde" src="assets/imgs/profil.jpg" />
+              <img class="profile-img" alt="Profilbilde" src="{{user.img}}" />
         </div>
         <p>{{user.name}}</p>
       </div>
