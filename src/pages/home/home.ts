@@ -37,10 +37,10 @@ export class HomePage {
            _.some(_.keys(user[`limits`]), k => {
             console.log(k)
             console.log("YO WE SEARCHING BOIS",user[`limits`][k])
-            
+
             console.log(_.toArray(item))
             
-            return !_.includes(_.upperCase(_.toArray(item)[k]), _.upperCase(user[`limits`][k]));
+            return !_.includes(_.upperCase(_.toArray(item)), _.upperCase(user[`limits`][k]));
 
           }): true;
 

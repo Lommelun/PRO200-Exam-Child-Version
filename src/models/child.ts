@@ -6,5 +6,6 @@ export interface Child {
     img?: string,
     tag: string,
     pin?: string,
-    familyId?: string
+    familyId?: string,
+    candyOnWeekendsOnly?:boolean
 }
