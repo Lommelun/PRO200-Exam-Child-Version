@@ -25,6 +25,12 @@
     margin: 0 auto;
 }
 
+.background-gradient-light {
+    background:rgba(255, 0, 0, 0.25),
+    linear-gradient(color($primary-profile, eggeplomme), color($primary-profile, gul));
+    margin: 0 auto;
+}
+
 .background-white {
     background-color:#fff;
     width: 100vw;
@@ -37,7 +43,8 @@
 }
 
 .background-grey {
-    background-color: color($colors, varmgrå);
+    //background-color: color($colors, varmgrå);
+    background-color: #f0f0ec; 
     margin: 0 auto;
 }
 // font 
@@ -55,7 +62,7 @@
 
     // title
 
-  .header-title-white {
+  .header-title-white, .title-page {
       color: #fff;
       font-size: 2rem;
       text-align: center;
@@ -181,3 +188,56 @@
   }
 
   $item-ios-divider-background: none; 
+
+   
+  // item card
+  .item {
+    //background-color: red;
+    border: 0px !important;
+    border-bottom-color: transparent !important;
+    background-image: none !important;
+    border-bottom: none !important;
+}
+
+
+.card {
+    background-color: #fff;
+    padding: 1rem 1rem 2rem 1rem;
+    margin: 1rem;
+    position: relative;
+    height: 220px;
+    border: 1px solid color($colors, varmgrå);;
+    border-radius: 8px;
+}
+
+.item-picture {
+    margin: auto;
+    right: 0;
+    left: 0;
+}
+
+.item-name {
+    color:color($primary-profile, grå);;
+    font-weight: 900;
+    margin: 0;
+    //background-color: red;
+}
+
+.item-price {
+    //background-color: gray;
+    margin-top: 0;
+    color:color($primary-profile, grå);;
+}
+
+
+.show-item-btn {
+    background-color:  color($primary-profile, eggeplomme);;
+    width: 90%;
+    height: 25px;
+    bottom: 10px;
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    font-size: 1.3rem;
+}
