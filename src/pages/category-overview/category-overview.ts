@@ -5,12 +5,14 @@ import { isTrueProperty } from 'ionic-angular/util/util';
 import { QueryDocumentSnapshot, DocumentData, QuerySnapshot } from '@firebase/firestore-types';
 import { Observable } from 'rxjs/Rx';
 import { Item } from '../../models/item';
+import * as _ from 'lodash'
 
 @IonicPage()
 @Component({
   selector: 'page-category-overview',
   templateUrl: 'category-overview.html',
 })
+
 export class CategoryOverviewPage {
   items: Observable<DocumentData[]>;
   category: string;
@@ -29,8 +31,15 @@ export class CategoryOverviewPage {
     Observable.fromPromise(this.db.getItemByField('Marketplace', 'category.' + this.navParams.get('type'), true))
       .subscribe(result => this.items = Observable.from(result.docs)
         .map(item => item.data())
-        .toArray());
-  }
+        .toArray().filter((item) =>{
+          const limits = JSON.parse(localStorage.getItem(`user`))[`limits`];
+          return limits ?
+
+             _.some(_.keys(item), k => {
+              return !_.includes(limits.map(lim => _.upperCase(lim)), _.upperCase(item[k]));
+            }) : true;
+          }));
+        }
 
   pushToDetailPage(item: Item) {
     console.log(item);

@@ -3,6 +3,7 @@ import algoliasearch from 'algoliasearch';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as env from '../../env';
 import { Item } from '../../models/item';
+import * as _ from  'lodash'
 
 @IonicPage()
 @Component({
@@ -23,7 +24,17 @@ export class HomePage {
   search() {
     this.index
       .search({ query: this.searchQuery })
-      .then((data) => this.items = data.hits);
+      .then((data) => this.items = data.hits.filter((item:{}) =>{
+
+        const user = JSON.parse(localStorage.getItem(`user`));
+        console.log(user)
+
+        return (user !== null) || user ?
+           _.some(_.keys(item), k => {
+            return !_.includes(_.upperCase(user[`limits`]), _.upperCase(item[k]));
+          }): true;
+
+      }));
   }
 
   getCategory(cat: string) {
