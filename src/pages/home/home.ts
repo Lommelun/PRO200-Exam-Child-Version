@@ -28,8 +28,6 @@ export class HomePage {
     this.index
       .search({ query: this.searchQuery })
       .then((data) => this.items = data.hits);
-      console.log(this.items);
-      console.log('user',this.user);
   }
 
   getCategory(cat: string) {
