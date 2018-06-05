@@ -28,9 +28,6 @@ export class HomePage {
   search() {
     this.index
       .search({ query: this.searchQuery })
-<<<<<<< HEAD
-      .then((data) => this.items = data.hits);
-=======
       .then((data) => this.items = data.hits.filter((item:{}) =>{
 
         const user = JSON.parse(localStorage.getItem(`user`));
@@ -42,7 +39,6 @@ export class HomePage {
           }): true;
 
       }));
->>>>>>> d716a986ea54b20cc1b3c4074387263506b92060
   }
 
   getCategory(cat: string) {
