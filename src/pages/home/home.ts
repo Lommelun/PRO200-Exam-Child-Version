@@ -33,7 +33,7 @@ export class HomePage {
         const user = JSON.parse(localStorage.getItem(`user`));
        
 
-        return user ?
+        return user[`limits`] ?
            _.some(_.keys(user[`limits`]), k => {
             console.log(k)
             console.log("YO WE SEARCHING BOIS",user[`limits`][k])

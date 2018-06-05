@@ -92,7 +92,10 @@ export class DatabaseProvider {
   addItemToUser(familyId, item: Item) {
     this.af.firestore.collection('families').doc(familyId).collection('wishlist').doc(item.id).get()
       .then(docsnapshot => {
-        if (docsnapshot.exists) {
+        let user = JSON.parse(localStorage.getItem(`user`))
+   
+
+        if (docsnapshot.exists && user[`token`] === item.childToken) {
           this.toast.create({
             duration: 1500,
             message: 'du har allerede ønsket denne varen',
