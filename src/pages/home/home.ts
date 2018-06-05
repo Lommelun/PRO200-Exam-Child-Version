@@ -3,12 +3,9 @@ import algoliasearch from 'algoliasearch';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as env from '../../env';
 import { Item } from '../../models/item';
-<<<<<<< HEAD
-import * as _ from  'lodash'
-=======
+import * as _ from  'lodash';
 import { DatabaseProvider } from '../../providers/database/database';
 import { Child } from '../../models/child';
->>>>>>> d3844100e61a491e7a31cd36cc003d20899f203a
 
 @IonicPage()
 @Component({
