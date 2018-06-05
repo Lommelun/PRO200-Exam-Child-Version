@@ -30,8 +30,7 @@ export class CategoryOverviewPage {
   getItemsByCategory() {
     Observable.fromPromise(this.db.getItemByField('Marketplace', 'category.' + this.navParams.get('type'), true))
       .subscribe(result => this.items = Observable.from(result.docs)
-<<<<<<< HEAD
-        .map(item => item.data())
+        .map(item =>{ return  { 'id': item.id, ...item.data()  as Item }})
         .toArray().filter((item) =>{
           const limits = JSON.parse(localStorage.getItem(`user`))[`limits`];
           return limits ?
@@ -41,11 +40,6 @@ export class CategoryOverviewPage {
             }) : true;
           }));
         }
-=======
-        .map(item => { return { 'id': item.id, ...item.data() } as Item })
-        .toArray());
-  }
->>>>>>> d3844100e61a491e7a31cd36cc003d20899f203a
 
   pushToDetailPage(item: Item) {
     this.navCtrl.push('ItemDetailPage', { 'item': item });

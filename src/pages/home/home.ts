@@ -31,7 +31,6 @@ export class HomePage {
   search() {
     this.index
       .search({ query: this.searchQuery })
-<<<<<<< HEAD
       .then((data) => this.items = data.hits.filter((item:{}) =>{
 
         const user = JSON.parse(localStorage.getItem(`user`));
@@ -43,11 +42,6 @@ export class HomePage {
           }): true;
 
       }));
-=======
-      .then((data) => this.items = data.hits);
-      console.log(this.items);
-      console.log('user',this.user);
->>>>>>> d3844100e61a491e7a31cd36cc003d20899f203a
   }
 
   getCategory(cat: string) {

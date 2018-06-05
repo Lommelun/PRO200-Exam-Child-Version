@@ -31,19 +31,6 @@
     "@ionic/pro": "1.0.20",
     "@ionic/storage": "2.1.3",
     "@types/algoliasearch": "^3.27.4",
-<<<<<<< HEAD
-    "algoliasearch": "^3.27.1",
-    "angularfire2": "^5.0.0-rc.9",
-    "cordova-android": "7.0.0",
-    "cordova-ios": "4.5.4",
-    "cordova-plugin-device": "^2.0.2",
-    "cordova-plugin-ionic-keyboard": "^2.1.2",
-    "cordova-plugin-ionic-webview": "^1.2.1",
-    "cordova-plugin-splashscreen": "^5.0.2",
-    "cordova-plugin-whitelist": "^1.3.3",
-    "dotenv": "^5.0.1",
-    "firebase": "^5.0.3",
-=======
     "algoliasearch": "3.27.1",
     "angularfire2": "^5.0.0-rc.10",
     "cordova-android": "7.1.0",
@@ -54,7 +41,6 @@
     "cordova-plugin-whitelist": "1.3.3",
     "dotenv": "5.0.1",
     "firebase": "5.0.4",
->>>>>>> d3844100e61a491e7a31cd36cc003d20899f203a
     "ionic-angular": "3.9.2",
     "ionic-plugin-keyboard": "2.2.1",
     "ionicons": "4.1.2",
