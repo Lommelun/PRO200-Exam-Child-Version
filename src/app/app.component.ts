@@ -10,10 +10,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = 'HomePage';
-
+  rootPage;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af: AngularFireAuth) {
-    if (this.checkUserLoggedIn()) { this.rootPage = 'HomePage' }
+    if (this.checkUserLoggedIn()) { this.rootPage = 'Tab' }
     else if (this.checkUsersExist()) { this.rootPage = 'LoginPage' }
     else { this.rootPage = 'RegisterPage' }
 

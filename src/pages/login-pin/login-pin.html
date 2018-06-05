@@ -10,7 +10,7 @@
 <ion-content padding class="background-gradient">
   <ion-input style="opacity: 0;" type="number" [(ngModel)]="pinInput" (input)="pinCheck()" #inputToFocus></ion-input>
 
-  <ion-row>
+  <ion-row (click)="openKeyboard()">
     <ion-col style="text-align: center;">
       <ion-icon class="pin" style="font-size: 50px" [name]="pin_1"></ion-icon>
     </ion-col>

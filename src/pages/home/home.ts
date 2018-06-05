@@ -3,6 +3,8 @@ import algoliasearch from 'algoliasearch';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as env from '../../env';
 import { Item } from '../../models/item';
+import { DatabaseProvider } from '../../providers/database/database';
+import { Child } from '../../models/child';
 
 @IonicPage()
 @Component({
@@ -14,16 +16,20 @@ export class HomePage {
   private index: algoliasearch.Index;
   public searchQuery: string = "";
   public items: any[] = [];
+  private user: Child;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams , private db: DatabaseProvider) {
     this.client = algoliasearch(env.algolia.ALGOLIA_APP_ID, env.algolia.ALGOLIA_SEARCH_KEY, { protocol: 'https:' });
     this.index = this.client.initIndex("Marketplace");
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   search() {
     this.index
       .search({ query: this.searchQuery })
       .then((data) => this.items = data.hits);
+      console.log(this.items);
+      console.log('user',this.user);
   }
 
   getCategory(cat: string) {
@@ -40,6 +46,11 @@ export class HomePage {
 
   pushWishlistPage() {
     this.navCtrl.push('WishlistPage');
+  }
+  
+  addItemToWishlist(item: any) {
+    this.db.getItemFromObjectID(item.objectID)
+      .subscribe(item => this.db.addItemToUser(this.user.familyId, { 'id' : item.id, ...item.data() } as Item ));
   }
 
   pushToDetailPage(item: Item) {

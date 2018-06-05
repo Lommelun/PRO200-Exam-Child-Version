@@ -28,12 +28,11 @@ export class CategoryOverviewPage {
   getItemsByCategory() {
     Observable.fromPromise(this.db.getItemByField('Marketplace', 'category.' + this.navParams.get('type'), true))
       .subscribe(result => this.items = Observable.from(result.docs)
-        .map(item => item.data())
+        .map(item => { return { 'id': item.id, ...item.data() } as Item })
         .toArray());
   }
 
   pushToDetailPage(item: Item) {
-    console.log(item);
     this.navCtrl.push('ItemDetailPage', { 'item': item });
   }
 }

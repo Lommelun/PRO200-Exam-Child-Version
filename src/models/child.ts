@@ -5,5 +5,6 @@ export interface Child {
     token?: string,
     img?: string,
     tag: string,
-    pin?: string
+    pin?: string,
+    familyId?: string
 }
