@@ -8,7 +8,7 @@
 
 <ion-content padding class="background-gradient">
 
-      <div class="card" *ngFor="let user of users | async" (click)="login()">
+      <div class="card" *ngFor="let user of users | async" (click)="login(user)">
           <div class="round-img">
               <img class="profile-img" alt="Profilbilde" src="{{user.img}}" />
         </div>
