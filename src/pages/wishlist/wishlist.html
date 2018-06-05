@@ -1,25 +1,23 @@
 <ion-header class="header" no-border class="header-background-orange">
-    
-    <ion-navbar>
-          <ion-title class="title-page">Ønsker</ion-title>
-        </ion-navbar>
-  
-  </ion-header>
+
+</ion-header>
 
 <ion-content class="background-grey" padding>
 
 
-    <div class="wishlist-container" no-padding>
-        <ion-list no-padding>
-            <button ion-item no-lines detail-none class="subcategory" no-padding>
-                <ion-row no-padding>    
-                    <ion-col col-10><h2 class="category-title">Ønsker</h2></ion-col>
-                    <ion-col col-2 class="show-more-button">&#9663;</ion-col>
-                  </ion-row>     
-                </button>
-          </ion-list>
+    <ion-row no-padding>
+        <ion-col class="item" *ngFor="let item of items | async | slice:0:3" no-shadow no-border no-padding>
 
-      </div>
+            <div class="card">
+                <div (click)="pushToDetailPage(item)">
+                    <img class="displayed item-picture" style="max-height:100px; width:auto" [src]="item.image" />
+                    <p class="item-name">{{item.name}}</p>
+                    <p class="item-price">Kr {{item.price}},- </p>
+                    <p class="item-status">Status: {{item.status}}</p>
+                </div>
 
+            </div>
+        </ion-col>
+    </ion-row>
 
 </ion-content>

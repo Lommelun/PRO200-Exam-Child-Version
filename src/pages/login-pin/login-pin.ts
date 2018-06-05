@@ -41,13 +41,16 @@ export class LoginPinPage {
 
 
   ionViewDidLoad() {
+  this.openKeyboard();
+}
+    
 
+  openKeyboard(){
     setTimeout(() => {
       this.inputToFocus.setFocus();
       this.keyboard.show();
     }, 400)
   }
-
   pinCheck() {
     this.pin.next(this.pinInput);
     this.subscription = this.pin$

@@ -1,25 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { User } from '@firebase/auth-types';
 import { Observable } from 'rxjs/Rx';
 import * as _ from 'lodash'
 import { QuerySnapshot } from '@firebase/firestore-types';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Child } from '../../models/child';
+import { Item } from '../../models/item';
+import { DocumentSnapshot } from '@firebase/firestore-types';
+import { Toast, ToastController } from 'ionic-angular';
 
 @Injectable()
 export class DatabaseProvider {
   dataColl: AngularFirestoreCollection<{}>;
+  user: Child;
 
-  constructor(public http: HttpClient, private af: AngularFirestore, private afAuth: AngularFireAuth) { }
+  constructor(private toast: ToastController,
+    public http: HttpClient,
+    private af: AngularFirestore,
+    private afAuth: AngularFireAuth) {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    console.log(this.user);
+  }
 
-  getCurrentUser(): User {
+  getCurrentUser() {
     return this.afAuth.auth.currentUser;
   }
 
   addDocToColl(data: {}, collection: string) {
     this.af.collection(collection).add(data);
+  }
+
+  getItemsFromFamily(familyID: string): Observable<Item[]> {
+    return this.af.collection('families').doc(familyID).collection<Item>('wishlist')
+      .valueChanges();
+  }
+
+  getItemFromObjectID(id: string): Observable<DocumentSnapshot> {
+    return Observable.fromPromise(this.af.firestore.collection("Marketplace").doc(id).get());
   }
 
   getDataFromColl(collection: string) {
@@ -62,15 +80,33 @@ export class DatabaseProvider {
     return this.af.collection(collection).ref.where(field, '==', value).get();
   }
 
-  addItemsToUser(familyId: string, uid: string, item: {}) {
 
-    this.dataColl = this.af.collection(`Families`);
+  addItemToWishlist(familyId: string, item: Item) {
+    item.status = "venter"
+    item.childToken = this.user.token;
+    this.dataColl = this.af.collection(`families`);
+    this.dataColl.doc(familyId).collection(`wishlist`).doc(item.id).set(item);
 
-    this.dataColl.doc(familyId).collection(`Items`).doc(uid).set(item);
+
   }
-
-  getStoreItemsWithCategory(category: string) {
-
+  addItemToUser(familyId, item: Item) {
+    this.af.firestore.collection('families').doc(familyId).collection('wishlist').doc(item.id).get()
+      .then(docsnapshot => {
+        if (docsnapshot.exists) {
+          this.toast.create({
+            duration: 1500,
+            message: 'du har allerede ønsket denne varen',
+            position: 'top'
+          }).present();
+        } else {
+          this.addItemToWishlist(familyId, item);
+          this.toast.create({
+            duration: 1500,
+            message: 'vare lagt til ønskeliste',
+            position: 'top'
+          }).present();
+        }
+      })
   }
 
 }

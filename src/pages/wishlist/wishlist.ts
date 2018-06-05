@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFirestore } from 'angularfire2/firestore';
-import algoliasearch from 'algoliasearch';
-import * as env from '../../env'
+import { DatabaseProvider } from '../../providers/database/database';
+import { Item } from '../../models/item';
+import { Observable } from 'rxjs/Rx';
+import { DocumentData } from '@firebase/firestore-types';
+import { Child } from '../../models/child';
 
 
 @IonicPage()
@@ -12,19 +15,27 @@ import * as env from '../../env'
 })
 
 export class WishlistPage {
+  items: Observable<DocumentData[]>;
+  user:Child;
 
-  constructor(public angularfirestore: AngularFirestore, public navCtrl: NavController, public navParams: NavParams) {
 
+  constructor(public db: DatabaseProvider,
+    public angularfirestore: AngularFirestore,
+    public navCtrl: NavController,
+    public navParams: NavParams) {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.getItemsfromWishlist();
   }
 
-  goToStore(child?) {
+  getItemsfromWishlist() {
+    this.items = this.db.getItemsFromFamily(this.user.familyId);
 
-    if (child) {
-      this.navCtrl.setRoot('StorePage', { child: child });
-    } else {
-      this.navCtrl.setRoot('StorePage');
-    }
-
+  }
+  pushToDetailPage(item: Item) {
+    this.navCtrl.push('ItemDetailPage', { 'item': item });
   }
 
 }
+
+
+

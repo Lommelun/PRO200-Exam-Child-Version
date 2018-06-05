@@ -1,4 +1,5 @@
 export interface Item{
+    id?:string,
     name:string,
     price:number,
     category:string[],
@@ -6,4 +7,6 @@ export interface Item{
     allergens?:string[],
     EAN:number,
     image:string
+    childToken?:string,
+    status?:string
 }
