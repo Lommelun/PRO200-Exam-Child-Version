@@ -96,26 +96,21 @@ export class DatabaseProvider {
       .then(docsnapshot => {
 
         let user = JSON.parse(localStorage.getItem(`user`))
-        console.log(user[`name`])
-        console.log(user[`token`])
-        console.log(user)
-        console.log(item.childToken)
 
-        if (docsnapshot.exists && user[`token`] === item.childToken) {
+        if (docsnapshot.exists) {
           this.toast.create({
             duration: 1500,
-            message: 'du har allerede ønsket denne varen',
+            message: 'Du har allerede ønsket denne varen',
             position: 'top'
           }).present();
         } else {
           this.addItemToWishlist(familyId, item);
           this.toast.create({
             duration: 1500,
-            message: 'vare lagt til ønskeliste',
+            message: 'Vare lagt til ønskeliste',
             position: 'top'
           }).present();
         }
       })
   }
-
 }

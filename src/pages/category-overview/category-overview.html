@@ -28,7 +28,7 @@
 
   
       <ion-row no-padding>
-      <ion-col class="item" col-6 col-sm *ngFor="let item of items | async | slice:0:3" no-shadow no-border no-padding >
+      <ion-col class="item" col-6 col-sm *ngFor="let item of items | async | slice:0:99" no-shadow no-border no-padding >
       
         <div class="card">
           <div (click)="pushToDetailPage(item)">

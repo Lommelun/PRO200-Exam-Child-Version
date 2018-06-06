@@ -21,7 +21,7 @@
   <ion-searchbar [(ngModel)]="searchQuery" debounce="750" no-lines class="search-bar" (ionInput)="search()" placeholder="Søk etter vare her"></ion-searchbar>
 
 
-  <ion-row no-padding>
+  <ion-row no-padding *ngIf="searchQuery.length > 0">
       <ion-col class="item" col-6 col-sm *ngFor='let item of items' no-shadow no-border no-padding >
           <ion-card>
             <ion-icon name="checkmark" *ngIf="item.childToken  == user.token"></ion-icon>
@@ -33,7 +33,7 @@
       </ion-col>
     </ion-row> 
 
-  <ion-row>
+  <ion-row *ngIf="searchQuery.length === 0">
 
     <ion-col col-6>
       <div class="catogory-container breakfastandlunch-container">
@@ -87,10 +87,11 @@
 
     <ion-col col-6>
       <div class="catogory-container allcategories-container">
-        <button class="category-icon-btn" ion-button (click)="getCategory('drikke')">
+        <button class="category-icon-btn" ion-button (click)="getCategory('')">
           <img src="assets/imgs/allevarer.png" class="category-icon" alt="Alle kategorier ikon">
+
         </button>
-        <button class="category-text-btn" ion-button (click)="getCategory('drikke')">Alle varer</button>
+        <button class="category-text-btn" ion-button (click)="getCategory('')">Alle varer</button>
       </div>
     </ion-col>
 

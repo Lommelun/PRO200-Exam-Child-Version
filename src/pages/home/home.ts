@@ -19,6 +19,7 @@ export class HomePage {
   public items: any[] = [];
   private user: Child;
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams , private db: DatabaseProvider) {
     this.client = algoliasearch(env.algolia.ALGOLIA_APP_ID, env.algolia.ALGOLIA_SEARCH_KEY, { protocol: 'https:' });
     this.index = this.client.initIndex("Marketplace");
@@ -32,13 +33,10 @@ export class HomePage {
 
         const user = JSON.parse(localStorage.getItem(`user`));
        
-
         return user[`limits`] ?
-           _.some(_.keys(user[`limits`]), k => {
-            console.log(k)
-            console.log("YO WE SEARCHING BOIS",user[`limits`][k])
 
-            console.log(_.toArray(item))
+           _.some(_.keys(user[`limits`]), k => {
+           
             
             return !_.includes(_.upperCase(_.toArray(item)), _.upperCase(user[`limits`][k]));
 
@@ -48,7 +46,10 @@ export class HomePage {
   }
 
   getCategory(cat: string) {
+
+  
     this.navCtrl.push('CategoryOverviewPage', { 'type': cat });
+    
   }
 
   goToStore(child?) {
