@@ -10,30 +10,18 @@
 <ion-content padding class="background-grey"  no-padding no-margin>  
 
   <div class="subcategory-container" no-padding>
-    <ion-list no-padding>
-        <button ion-item no-lines detail-none class="subcategory" no-padding>
-            <ion-row no-padding>    
-                <ion-col col-10><h2 class="category-title">Underkategori</h2></ion-col>
-                <ion-col col-2 class="next-page-button">&#9657;</ion-col>
-              </ion-row>     
+
+    <ion-list>
+        <button ion-item no-lines class="subcategory" no-padding>
+                <h2 class="category-title">Brød og frokostblandinger</h2>
             </button>
-      </ion-list>
 
-      <ion-list no-padding>
-          <button ion-item no-lines detail-none class="subcategory" no-padding>
-              <ion-row no-padding>    
-                  <ion-col col-10><h2 class="category-title">Underkategori</h2></ion-col>
-                  <ion-col col-2 class="next-page-button">&#9657;</ion-col>
-                </ion-row>     
+          <button ion-item no-lines class="subcategory" no-padding>
+                  <h2 class="category-title">Pålegg</h2>
               </button>
-        </ion-list>
 
-            <ion-list no-padding>
-        <button ion-item no-lines detail-none class="subcategory" no-padding>
-            <ion-row no-padding>    
-                <ion-col col-10><h2 class="category-title">Underkategori</h2></ion-col>
-                <ion-col col-2 class="next-page-button">&#9657;</ion-col>
-              </ion-row>     
+        <button ion-item no-lines class="subcategory" no-padding>
+            <h2 class="category-title">Drikke</h2>
             </button>
       </ion-list>
   </div>
@@ -48,8 +36,8 @@
         <p class="item-name">{{item.name}}</p>
         <p class="item-price">Kr {{item.price}},- </p>
           </div>
-        <button class="show-item-btn btn"> + </button>
-      </div>
+          <button class="btn-orange btn show-item-btn" ion-button (click)="addItemToWishlist(item)">Legg til i ønsker</button>
+        </div>
     </ion-col>
   </ion-row> 
 </ion-content>

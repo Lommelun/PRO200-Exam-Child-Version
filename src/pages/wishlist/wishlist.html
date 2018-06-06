@@ -1,12 +1,16 @@
 <ion-header class="header" no-border class="header-background-orange">
-
-</ion-header>
+    
+        <ion-navbar>
+              <ion-title class="title-page">Ønsker</ion-title>
+            </ion-navbar>
+            
+      </ion-header>
 
 <ion-content class="background-grey" padding>
 
 
     <ion-row no-padding>
-        <ion-col class="item" *ngFor="let item of items | async | slice:0:3" no-shadow no-border no-padding>
+        <ion-col col-6 class="item" *ngFor="let item of items | async | slice:0:3" no-shadow no-border no-padding>
 
             <div class="card">
                 <div (click)="pushToDetailPage(item)">
@@ -15,7 +19,6 @@
                     <p class="item-price">Kr {{item.price}},- </p>
                     <p class="item-status">Status: {{item.status}}</p>
                 </div>
-
             </div>
         </ion-col>
     </ion-row>

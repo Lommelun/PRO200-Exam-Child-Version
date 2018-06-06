@@ -1,54 +1,5 @@
 page-category-overview {
-    
-    .item {
-        //background-color: red;
-        border: 0px !important;
-        border-bottom-color: transparent !important;
-        background-image: none !important;
-        border-bottom: none !important;
-    }
-
-    .card {
-        background-color: #fff;
-        padding: 1rem 1rem 2rem 1rem;
-        margin: 1rem;
-        position: relative;
-        height: 220px;
-        border: 1px solid color($colors, varmgrå);;
-        border-radius: 8px;
-    }
-
-    .item-picture {
-        margin: auto;
-        right: 0;
-        left: 0;
-    }
-
-    .item-name {
-        color:color($primary-profile, grå);;
-        font-weight: 900;
-        margin: 0;
-        //background-color: red;
-    }
-
-    .item-price {
-        //background-color: gray;
-        margin-top: 0;
-        color:color($primary-profile, grå);;
-    }
-
-    .show-item-btn {
-        background-color:  color($primary-profile, eggeplomme);;
-        width: 100px;
-        height: 25px;
-        bottom: 10px;
-        position: absolute;
-        margin: auto;
-        right: 0;
-        left: 0;
-        font-weight: 900;
-        font-size: 2rem;
-    }
+   
 
     // container with all the categorys inside a main-category
     .subcategory-container {
@@ -60,9 +11,16 @@ page-category-overview {
     }
 
     .subcategory {
-        padding: 1rem 0 0 4rem;
-        margin: 0 !important;
+        //padding: 1rem 0 0 4rem;
+        //margin: 0 !important;
+        //background-color: #fff;
+        margin: 0.2rem 0 0.2rem 0;
         background-color: #fff;
+        height: 50px;
+    }
+
+    .category-title {
+        margin-left: 20px;
     }
 
     .scroll-content{

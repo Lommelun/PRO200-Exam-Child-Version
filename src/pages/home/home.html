@@ -1,11 +1,12 @@
 <ion-header class="header" no-border>
   <ion-navbar>
-    <a (click)="logout()">Bytt bruker</a>
+    <p class="logout-text"><a (click)="logout()">Logg ut</a></p>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="background-grey" padding>
+<ion-content class="background-gradient" padding>
 
+  <div class="intro-container">
   <ion-row no-padding>
     <ion-col col>
       <img src="assets/imgs/gutt.png" class="header-img" alt="Gutt som vinker" />
@@ -15,18 +16,22 @@
         <br>Er du klar for å handle?</h1>
     </ion-col>
   </ion-row>
+</div>
 
   <ion-searchbar [(ngModel)]="searchQuery" debounce="750" no-lines class="search-bar" (ionInput)="search()" placeholder="Søk etter vare her"></ion-searchbar>
 
-  <ion-list *ngFor='let item of items'>
-    <ion-card>
-      <ion-icon name="checkmark"></ion-icon>
-      <img (click)="pushToDetailPage(item)" style="height:200px" class="displayed" style="max-height:100px; width:auto" [src]="item.image" />
-      <p>{{item.name}}</p>
-      <p>Kr {{item.price}},-</p>
-      <button ion-button (click)="addItemToWishlist(item)"></button>
-    </ion-card>
-  </ion-list>
+
+  <ion-row no-padding>
+      <ion-col class="item" col-6 col-sm *ngFor='let item of items' no-shadow no-border no-padding >
+          <ion-card>
+            <ion-icon name="checkmark" *ngIf="item.childToken  == user.token"></ion-icon>
+            <img class="item-picture" (click)="pushToDetailPage(item)" style="height:200px" class="displayed" style="max-height:100px; width:auto" [src]="item.image" />
+            <p class="item-name">{{item.name}}</p>
+            <p class="item-price">Kr {{item.price}},-</p>
+            <button class="btn-orange btn show-item-btn" ion-button (click)="addItemToWishlist(item)">Legg til i ønsker</button>
+        </ion-card>
+      </ion-col>
+    </ion-row> 
 
   <ion-row>
 
@@ -60,7 +65,7 @@
       </div>
     </ion-col>
 
-    <ion-col col-6>
+    <ion-col col-6 *ngIf="!user.candyOnWeekendsOnly">
       <div class="catogory-container snacksanddessert-container">
         <button class="category-icon-btn" ion-button (click)="getCategory('snacksanddessert')">
           <img src="assets/imgs/snacksogdesserter.png" class="category-icon" alt="Snacks og desserter ikon" />
