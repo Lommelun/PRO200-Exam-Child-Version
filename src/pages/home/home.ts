@@ -94,14 +94,6 @@ export class HomePage {
     this.navCtrl.push('CategoryOverviewPage', { 'type': cat });
   }
 
-  goToStore(child?) {
-    if (child) {
-      this.navCtrl.setRoot('StorePage', { 'child': child });
-    } else {
-      this.navCtrl.setRoot('StorePage');
-    }
-  }
-
   pushWishlistPage() {
     this.navCtrl.push('WishlistPage');
   }

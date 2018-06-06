@@ -33,9 +33,9 @@ export class RegisterPage {
     });
     loading.present();
 
-    this.dbProvider.getChild(this.token)
-      .subscribe(child => { loading.dismiss(); this.user = child; this.success(); },
-        error => { loading.dismiss(); this.fail() });
+    this.dbProvider.getChildByToken(this.token)
+      .then(child => { loading.dismiss(); this.user = child; this.success(); })
+      .catch(error => { loading.dismiss(); this.fail() });
   }
 
   nextStep() {

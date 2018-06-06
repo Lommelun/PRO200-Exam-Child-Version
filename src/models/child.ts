@@ -1,4 +1,5 @@
 export interface Child {
+    id?: string,
     name: string,
     lastname?: string,
     age: number,

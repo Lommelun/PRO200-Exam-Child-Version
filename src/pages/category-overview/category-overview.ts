@@ -54,5 +54,9 @@ export class CategoryOverviewPage {
    this.items = this.db.getDataFromColl(`Marketplace`)
     
   }
+
+  addItemToWishlist(item){
+    this.db.addItemToWishlist(JSON.parse(localStorage.getItem('user'))['familyId'], item);
+  }
 }
 

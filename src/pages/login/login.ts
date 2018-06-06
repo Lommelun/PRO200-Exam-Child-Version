@@ -10,13 +10,12 @@ import { Observable } from 'rxjs/Rx';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  users: Observable<Child[]>;
+  users: Child[];
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams
-  ) {
-    this.users = Observable.from([(JSON.parse(localStorage.getItem('users')).users as Child[])]);
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    let users = JSON.parse(localStorage.getItem('users'));
+    this.users = (users) ? users['users'] as Child[] : [] as Child[];
+    if (this.users.length == 0) { navCtrl.setRoot('RegisterPage'); }
   }
 
   login(user: Child) {
@@ -35,6 +34,8 @@ export class LoginPage {
 
   clearUsers() {
     localStorage.clear();
+    this.navCtrl.setRoot('RegisterPage');
+    this.navCtrl.popToRoot();
   }
 
 }

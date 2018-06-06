@@ -24,8 +24,11 @@ export class DatabaseProvider {
     this.user = JSON.parse(localStorage.getItem('user'));
   }
 
-  getCurrentUser() {
-    return this.afAuth.auth.currentUser;
+  getCurrentUser(): Promise<Child> {
+    return this.af.collection('children')
+      .doc(this.user.id).ref.get().then(result => {
+        return (result.exists) ? result.data() as Child : null
+      });
   }
 
   addDocToColl(data: {}, collection: string) {
@@ -72,10 +75,14 @@ export class DatabaseProvider {
       }))
   }
 
-  getChild(token: string): Observable<Child> {
-    return Observable.fromPromise(
-      this.getItemByField('children', 'token', token))
-      .map(data => data.docs.find(doc => doc.data().token == token).data() as Child);
+  getChildByToken(token: string): Promise<Child> {
+    return this.getItemByField('children', 'token', token)
+      .then(data => {
+        if (!data.empty) {
+          let docData = data.docs.find(doc => doc.data().token == token);
+          return { ...docData.data(), 'id': docData.id } as Child;
+        }
+      });
   }
 
   getItemByField(collection: string, field: string, value: any): Promise<QuerySnapshot> {
