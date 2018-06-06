@@ -30,7 +30,7 @@ export class LoginPinPage {
     public navParams: NavParams,
     private toast: ToastController) {
 
-    this.child = this.navParams.get("child");
+    this.child = this.navParams.get("user");
     
       console.log(this.child)
 

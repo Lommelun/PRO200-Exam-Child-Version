@@ -33,6 +33,7 @@ export class DatabaseProvider {
   }
 
   getItemsFromFamily(familyID: string): Observable<Item[]> {
+    console.log(familyID)
     return this.af.collection('families').doc(familyID).collection<Item>('wishlist')
       .valueChanges();
   }

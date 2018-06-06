@@ -20,51 +20,74 @@ export class HomePage {
   public items: any[] = [];
   private user: Child;
   public wishlistItems: Observable<Item[]>;
+  public wishlistItems2;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: DatabaseProvider) {
-    this.client = algoliasearch(env.algolia.ALGOLIA_APP_ID, env.algolia.ALGOLIA_SEARCH_KEY, { protocol: 'https:' });
-    this.index = this.client.initIndex("Marketplace");
-    this.user = JSON.parse(localStorage.getItem('user')); 
-    this.wishlistItems = this.db.getItemswishedByUser(this.user.familyId, this.user)
-    console.log(this.wishlistItems)
-  }
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.init();
+    this.wishlistItems =  this.db.getItemswishedByUser(this.user.familyId, this.user)
 
+
+  }
+  async init() {
+    this.client = await algoliasearch(env.algolia.ALGOLIA_APP_ID, env.algolia.ALGOLIA_SEARCH_KEY, { protocol: 'https:' });
+    this.index = await this.client.initIndex("Marketplace");
+
+    
+    this.wishlistItems2 =  this.db.getItemsFromFamily(this.user.familyId);
+  }
   search() {
     this.index
-    .search({ query: this.searchQuery })
-    .then((data) => this.items = data.hits.filter((item: {}) => {
+      .search({ query: this.searchQuery })
+      .then((data) => this.items = data.hits.filter((item: {}) => {
 
-      const user = JSON.parse(localStorage.getItem(`user`));
+        const user = JSON.parse(localStorage.getItem(`user`));
 
 
-      return user[`limits`] ?
-        _.some(_.keys(user[`limits`]), k => {
-         
-        
+        return user[`limits`] ?
+          _.some(_.keys(user[`limits`]), k => {
 
-          return !_.includes(_.upperCase(_.toArray(item)), _.upperCase(user[`limits`][k]));
 
-        }) : true;
-    }));
-    
 
+            return !_.includes(_.upperCase(_.toArray(item)), _.upperCase(user[`limits`][k]));
+
+          }) : true;
+      }));
+
+    this.checkIfSearchItemsAreOnWishlist();
   }
+
   checkIfSearchItemsAreOnWishlist() {
-    this.index
-    .search({ query: this.searchQuery })
-    .then((data) => this.items = data.hits.filter((item: {}) => {
+    this.init();
+    this.wishlistItems2.subscribe(res => {
 
+      const wishListArr = res.filter(i => i[`childToken`] === JSON.parse(localStorage.getItem(`user`))[`token`])
+      console.log("YO", res)
 
-      return this.wishlistItems ?
-        _.some(_.keys(this.wishlistItems), k => {
-         this.wishlistItems[k]['EAN']
-         console.log('key',k)
-         console.log('her',this.wishlistItems[k]['EAN'])
+      this.index
+        .search({ query: this.searchQuery })
 
-          return _.includes(_.upperCase(_.toArray(item)), _.upperCase(this.wishlistItems[k]));
+        .then((data) => data.hits.filter((item) => {
+          console.log("YO");
+          return res ?
 
-        }) : true;
-    }));
+            _.some(_.keys(wishListArr), k => {
+
+              res.forEach(item => {
+                if (item[`EAN`] === wishListArr[k][`EAN`])
+                  this.items.forEach(e => {
+                    if (e[`EAN`] === item[`EAN`]) {
+                      //  DO SOMETHING WITH IT 
+                      e[`wish`]=true;
+
+                    }
+                  })
+              });
+
+            }) : true;
+        })
+        )
+    })
   }
 
   getCategory(cat: string) {
@@ -98,5 +121,7 @@ export class HomePage {
     this.navCtrl.popToRoot();
   }
 
-
+  getStyle(item){
+    return item[`wish`] ? {"background-color": "pink" } :  {};
+  }
 }

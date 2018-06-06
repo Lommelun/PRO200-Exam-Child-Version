@@ -15,8 +15,8 @@ import { Child } from '../../models/child';
 })
 
 export class WishlistPage {
-  items: Observable<DocumentData[]>;
-  user: Child;
+  items;
+  user:Child;
 
 
   constructor(public db: DatabaseProvider,
@@ -28,10 +28,11 @@ export class WishlistPage {
   }
 
   getItemsfromWishlist() {
-  //this.items = this.db.getItemsFromFamily(this.user.familyId);
-  this.items =  this.db.getItemswishedByUser(this.user.familyId, this.user.token);
-  console.log(this.items)  }
-  
+    this.db.getItemsFromFamily(this.user.familyId).subscribe(res=> 
+      this.items = res.filter(i => i[`childToken`] === JSON.parse(localStorage.getItem(`user`))[`token`]));
+
+
+  }
   pushToDetailPage(item: Item) {
     this.navCtrl.push('ItemDetailPage', { 'item': item });
   }
