@@ -33,10 +33,8 @@ export class Tab {
     return this.db.getItemByField('Marketplace', 'EAN', this.barcode)
       .then(result => result.docs
         .forEach(doc => {
-          console.log('itembybarc: ', doc.data());
           if (doc.data().EAN == this.barcode) {
             this.item = doc.data() as Item;
-            console.log('here')
           }
         }));
   }

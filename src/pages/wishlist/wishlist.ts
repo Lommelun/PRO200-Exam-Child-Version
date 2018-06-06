@@ -16,7 +16,7 @@ import { Child } from '../../models/child';
 
 export class WishlistPage {
   items: Observable<DocumentData[]>;
-  user:Child;
+  user: Child;
 
 
   constructor(public db: DatabaseProvider,
@@ -28,9 +28,9 @@ export class WishlistPage {
   }
 
   getItemsfromWishlist() {
-    this.items = this.db.getItemsFromFamily(this.user.familyId);
-
-  }
+  this.items = this.db.getItemsFromFamily(this.user.familyId);
+  //this.items =  this.db.checkifItem(this.user.familyId, this.user.token);
+  console.log(this.db.checkifItem)  }
   pushToDetailPage(item: Item) {
     this.navCtrl.push('ItemDetailPage', { 'item': item });
   }

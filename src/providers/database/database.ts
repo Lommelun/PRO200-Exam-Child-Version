@@ -9,18 +9,19 @@ import { Child } from '../../models/child';
 import { Item } from '../../models/item';
 import { DocumentSnapshot } from '@firebase/firestore-types';
 import { Toast, ToastController } from 'ionic-angular';
+import { DocumentData } from '@firebase/firestore-types';
 
 @Injectable()
 export class DatabaseProvider {
   dataColl: AngularFirestoreCollection<{}>;
   user: Child;
+  items: Observable<DocumentData[]>;
 
   constructor(private toast: ToastController,
     public http: HttpClient,
     private af: AngularFirestore,
     private afAuth: AngularFireAuth) {
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.user);
   }
 
   getCurrentUser() {
@@ -108,5 +109,14 @@ export class DatabaseProvider {
         }
       })
   }
-
+ 
+  checkifItem(familyID: string, token: any): Promise<DocumentData[]> {
+    this.dataColl = this.af.collection('families').doc(familyID).collection('wishlist')
+    var query = this.dataColl.ref.where('childToken', '==', token);
+    return query.get().then(querysnapshot => {
+      return querysnapshot.docs.map(documentSnapshot => {
+        return documentSnapshot.data();
+      });
+    });
+  }
 }
