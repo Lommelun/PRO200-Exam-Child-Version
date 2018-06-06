@@ -83,7 +83,9 @@ export class DatabaseProvider {
 
   addItemToWishlist(familyId: string, item: Item) {
     item.status = "venter"
-    item.childToken = this.user.token;
+    item.childToken = JSON.parse(localStorage.getItem(`user`))[`token`]
+    console.log("id",item.childToken)
+    console.log("id",item)
     this.dataColl = this.af.collection(`families`);
     this.dataColl.doc(familyId).collection(`wishlist`).doc(item.id).set(item);
 
@@ -96,6 +98,8 @@ export class DatabaseProvider {
         let user = JSON.parse(localStorage.getItem(`user`))
         console.log(user[`name`])
         console.log(user[`token`])
+        console.log(user)
+        console.log(item.childToken)
 
         if (docsnapshot.exists && user[`token`] === item.childToken) {
           this.toast.create({
