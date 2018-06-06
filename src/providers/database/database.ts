@@ -114,14 +114,22 @@ export class DatabaseProvider {
         }
       })
   }
- 
-  checkifItem(familyID: string, token: any): Promise<DocumentData[]> {
+
+  getItemswishedByUser(familyID: string, token: any) {
     this.dataColl = this.af.collection('families').doc(familyID).collection('wishlist')
     var query = this.dataColl.ref.where('childToken', '==', token);
-    return query.get().then(querysnapshot => {
+    return Observable.fromPromise(query.get().then(querysnapshot => {
       return querysnapshot.docs.map(documentSnapshot => {
-        return documentSnapshot.data();
+        return documentSnapshot.data() as Item;
       });
-    });
+    }));
+  }
+  compareSearchToWishlist(familyID:string, token:any,ean:string){
+    this.getItemswishedByUser(familyID, token)
+    .forEach(DocumentSnapshot=>{
+      DocumentSnapshot.map(data =>
+        {
+      })
+    })
   }
 }

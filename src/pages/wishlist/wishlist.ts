@@ -28,9 +28,10 @@ export class WishlistPage {
   }
 
   getItemsfromWishlist() {
-  this.items = this.db.getItemsFromFamily(this.user.familyId);
-  //this.items =  this.db.checkifItem(this.user.familyId, this.user.token);
-  console.log(this.db.checkifItem)  }
+  //this.items = this.db.getItemsFromFamily(this.user.familyId);
+  this.items =  this.db.getItemswishedByUser(this.user.familyId, this.user.token);
+  console.log(this.items)  }
+  
   pushToDetailPage(item: Item) {
     this.navCtrl.push('ItemDetailPage', { 'item': item });
   }

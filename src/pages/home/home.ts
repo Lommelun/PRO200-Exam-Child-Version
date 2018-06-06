@@ -3,10 +3,11 @@ import algoliasearch from 'algoliasearch';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as env from '../../env';
 import { Item } from '../../models/item';
-import * as _ from  'lodash';
+import * as _ from 'lodash';
 import { DatabaseProvider } from '../../providers/database/database';
 import { Child } from '../../models/child';
-
+import { Observable } from 'rxjs/Rx';
+import { DocumentData, DocumentSnapshot } from '@firebase/firestore-types';
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -18,33 +19,54 @@ export class HomePage {
   public searchQuery: string = "";
   public items: any[] = [];
   private user: Child;
+  public wishlistItems: Observable<Item[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams , private db: DatabaseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private db: DatabaseProvider) {
     this.client = algoliasearch(env.algolia.ALGOLIA_APP_ID, env.algolia.ALGOLIA_SEARCH_KEY, { protocol: 'https:' });
     this.index = this.client.initIndex("Marketplace");
-    this.user = JSON.parse(localStorage.getItem('user'));
+    this.user = JSON.parse(localStorage.getItem('user')); 
+    this.wishlistItems = this.db.getItemswishedByUser(this.user.familyId, this.user)
+    console.log(this.wishlistItems)
+    console.log(this.db.getItemsFromFamily)
+
   }
 
   search() {
     this.index
-      .search({ query: this.searchQuery })
-      .then((data) => this.items = data.hits.filter((item:{}) =>{
+    .search({ query: this.searchQuery })
+    .then((data) => this.items = data.hits.filter((item: {}) => {
 
-        const user = JSON.parse(localStorage.getItem(`user`));
-       
+      const user = JSON.parse(localStorage.getItem(`user`));
 
-        return user[`limits`] ?
-           _.some(_.keys(user[`limits`]), k => {
-            console.log(k)
-            console.log("YO WE SEARCHING BOIS",user[`limits`][k])
 
-            console.log(_.toArray(item))
-            
-            return !_.includes(_.upperCase(_.toArray(item)), _.upperCase(user[`limits`][k]));
+      return user[`limits`] ?
+        _.some(_.keys(user[`limits`]), k => {
+         
+        
 
-          }): true;
+          return !_.includes(_.upperCase(_.toArray(item)), _.upperCase(user[`limits`][k]));
 
-      }));
+        }) : true;
+    }));
+    
+
+  }
+  checkIfSearchItemsAreOnWishlist() {
+    this.index
+    .search({ query: this.searchQuery })
+    .then((data) => this.items = data.hits.filter((item: {}) => {
+
+
+      return this.wishlistItems ?
+        _.some(_.keys(this.wishlistItems), k => {
+         this.wishlistItems[k]['EAN']
+         console.log('key',k)
+         console.log('her',this.wishlistItems[k]['EAN'])
+
+          return _.includes(_.upperCase(_.toArray(item)), _.upperCase(this.wishlistItems[k]));
+
+        }) : true;
+    }));
   }
 
   getCategory(cat: string) {
@@ -62,10 +84,10 @@ export class HomePage {
   pushWishlistPage() {
     this.navCtrl.push('WishlistPage');
   }
-  
+
   addItemToWishlist(item: any) {
     this.db.getItemFromObjectID(item.objectID)
-      .subscribe(item => this.db.addItemToUser(this.user.familyId, { 'id' : item.id, ...item.data() } as Item ));
+      .subscribe(item => this.db.addItemToUser(this.user.familyId, { 'id': item.id, ...item.data() } as Item));
   }
 
   pushToDetailPage(item: Item) {
@@ -77,5 +99,6 @@ export class HomePage {
     this.navCtrl.setRoot('LoginPage');
     this.navCtrl.popToRoot();
   }
+
 
 }
