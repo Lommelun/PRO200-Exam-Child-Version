@@ -84,7 +84,7 @@
     left: 50%;}
 
 .small-title-border {
-    border-bottom: 0.5px solid color($primary-profile, grå);;
+    border-bottom: 0.5px solid color($primary-profile, gra);;
 }
 
 .tab-button-text {
@@ -118,7 +118,7 @@
   }
   
   .btn-green {
-    background-color: color($primary-profile, grønn);;
+    background-color: color($primary-profile, gronn);;
     color: #fff;
 
     
@@ -132,8 +132,8 @@
   
   .btn-red {
     background-color:transparent;
-    border: 1px solid color($colors, bringebær);;
-    color: color($colors, bringebær);;
+    border: 1px solid color($colors, bringebar);;
+    color: color($colors, bringebar);;
   }
 
   .btn-aubergine {
@@ -161,7 +161,7 @@
 
   // all inputs 
 .input {
-    border: 1px solid color($colors, varmgrå);;
+    border: 1px solid color($colors, varmgra);;
     border-radius: 5px;
     padding: 1px;
     width: 90%; 
@@ -206,7 +206,7 @@
     margin: 1rem;
     position: relative;
     height: 220px;
-    border: 1px solid color($colors, varmgrå);;
+    border: 1px solid color($colors, varmgra);;
     border-radius: 8px;
 }
 
@@ -217,7 +217,7 @@
 }
 
 .item-name {
-    color:color($primary-profile, grå);;
+    color:color($primary-profile, gra);;
     font-weight: 900;
     margin: 0;
     //background-color: red;
@@ -226,7 +226,7 @@
 .item-price {
     //background-color: gray;
     margin-top: 0;
-    color:color($primary-profile, grå);;
+    color:color($primary-profile, gra);;
 }
 
 
@@ -241,3 +241,16 @@
     left: 0;
     font-size: 1.3rem;
 }
+
+// toast
+.redToastStyle{
+    > div{
+        background-color:color($colors, bringebar)!important;;
+    }
+ }
+
+ .greenToastStyle {
+    > div{
+        background-color:color($primary-profile, gronn)!important;;
+    }
+ }
