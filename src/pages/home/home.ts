@@ -25,7 +25,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: DatabaseProvider) {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.init();
-    this.wishlistItems =  this.db.getItemswishedByUser(this.user.familyId, this.user)
+    this.wishlistItems =  this.db.getItemswishedByUser();
 
 
   }

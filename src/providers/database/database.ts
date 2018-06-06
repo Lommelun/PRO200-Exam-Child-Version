@@ -10,6 +10,7 @@ import { Item } from '../../models/item';
 import { DocumentSnapshot } from '@firebase/firestore-types';
 import { Toast, ToastController } from 'ionic-angular';
 import { DocumentData } from '@firebase/firestore-types';
+import { ObservableLike } from 'rxjs';
 
 @Injectable()
 export class DatabaseProvider {
@@ -123,14 +124,9 @@ export class DatabaseProvider {
       })
   }
 
-  getItemswishedByUser(familyID: string, token: any) {
-    this.dataColl = this.af.collection('families').doc(familyID).collection('wishlist')
-    var query = this.dataColl.ref.where('childToken', '==', token);
-    return Observable.fromPromise(query.get().then(querysnapshot => {
-      return querysnapshot.docs.map(documentSnapshot => {
-        return documentSnapshot.data() as Item;
-      });
-    }));
+  getItemswishedByUser(): Observable<Item[]> {
+    return this.getItemsFromFamily(this.user.familyId).switchMap(res =>
+      res.filter(i => i[`childToken`] === JSON.parse(localStorage.getItem(`user`))[`token`])).toArray();
   }
 
 }
