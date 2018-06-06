@@ -27,8 +27,6 @@ export class HomePage {
     this.user = JSON.parse(localStorage.getItem('user')); 
     this.wishlistItems = this.db.getItemswishedByUser(this.user.familyId, this.user)
     console.log(this.wishlistItems)
-    console.log(this.db.getItemsFromFamily)
-
   }
 
   search() {

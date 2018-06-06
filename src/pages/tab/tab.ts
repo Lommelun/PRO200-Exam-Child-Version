@@ -24,19 +24,21 @@ export class Tab {
     public db: DatabaseProvider) { }
 
   async getBarScan() {
-    await this.barcodeScanner.scan().then(barcodeData => this.barcode = barcodeData.text);
+    await this.barcodeScanner.scan().then((barcodeData?) => this.barcode = barcodeData.text);
     await this.getItemByBarcode();
     this.navCtrl.push('ItemDetailPage', { 'item': this.item })
   }
 
   getItemByBarcode() {
+    if(this.barcode){
     return this.db.getItemByField('Marketplace', 'EAN', this.barcode)
-      .then(result => result.docs
+      .then((result) => result.docs
         .forEach(doc => {
           if (doc.data().EAN == this.barcode) {
             this.item = doc.data() as Item;
           }
         }));
+      }
   }
 
 }

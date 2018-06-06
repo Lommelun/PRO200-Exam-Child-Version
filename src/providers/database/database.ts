@@ -84,7 +84,7 @@ export class DatabaseProvider {
 
   addItemToWishlist(familyId: string, item: Item) {
     item.status = "venter"
-    item.childToken = this.user.token;
+    item.childToken = JSON.parse(localStorage.getItem(`user`))[`token`];
     this.dataColl = this.af.collection(`families`);
     this.dataColl.doc(familyId).collection(`wishlist`).doc(item.id).set(item);
 
@@ -101,14 +101,14 @@ export class DatabaseProvider {
         if (docsnapshot.exists && user[`token`] === item.childToken) {
           this.toast.create({
             duration: 1500,
-            message: 'du har allerede ønsket denne varen',
+            message: 'Du har allerede ønsket denne varen',
             position: 'top'
           }).present();
         } else {
           this.addItemToWishlist(familyId, item);
           this.toast.create({
             duration: 1500,
-            message: 'vare lagt til ønskeliste',
+            message: 'Vare lagt til ønskeliste',
             position: 'top'
           }).present();
         }
@@ -124,12 +124,5 @@ export class DatabaseProvider {
       });
     }));
   }
-  compareSearchToWishlist(familyID:string, token:any,ean:string){
-    this.getItemswishedByUser(familyID, token)
-    .forEach(DocumentSnapshot=>{
-      DocumentSnapshot.map(data =>
-        {
-      })
-    })
-  }
+
 }

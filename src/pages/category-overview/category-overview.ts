@@ -20,7 +20,13 @@ export class CategoryOverviewPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public db: DatabaseProvider) {
-    this.getItemsByCategory();
+    if (this.navParams.get('type')[length] > 0) {
+      console.log(this.navParams.get('type')[length])
+
+      this.getItemsByCategory();
+    } else {
+      this.getAllItems();
+    }
   }
 
   ionViewDidLoad() {
@@ -30,18 +36,23 @@ export class CategoryOverviewPage {
   getItemsByCategory() {
     Observable.fromPromise(this.db.getItemByField('Marketplace', 'category.' + this.navParams.get('type'), true))
       .subscribe(result => this.items = Observable.from(result.docs)
-        .map(item =>{ return  { 'id': item.id, ...item.data()  as Item }})
-        .toArray().filter((item) =>{
+        .map(item => { return { 'id': item.id, ...item.data() as Item } })
+        .toArray().filter((item) => {
           const limits = JSON.parse(localStorage.getItem(`user`))[`limits`];
           return limits ?
 
-             _.some(_.keys(item), k => {
+            _.some(_.keys(item), k => {
               return !_.includes(limits.map(lim => _.upperCase(lim)), _.upperCase(item[k]));
             }) : true;
-          }));
-        }
+        }));
+  }
 
   pushToDetailPage(item: Item) {
     this.navCtrl.push('ItemDetailPage', { 'item': item });
   }
+  getAllItems() {
+   this.items = this.db.getDataFromColl(`Marketplace`)
+    
+  }
 }
+

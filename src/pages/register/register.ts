@@ -45,9 +45,13 @@ export class RegisterPage {
       this.login();
     } else if (this.step > 2) {
       this.toast.create({
-        duration: 1500,
-        message: 'Sørg for at du skriver riktig pinkode',
-        position: 'top'
+        duration: 4000,
+        message: 'Sørg for at du skriver riktig passord',
+        position: 'top',
+        cssClass: "redToastStyle",
+        showCloseButton: true,
+        closeButtonText: "Lukk"
+
       }).present();
       this.step = 1;
     }
@@ -55,17 +59,24 @@ export class RegisterPage {
 
   fail() {
     this.toast.create({
-      duration: 1500,
-      message: 'Kunne ikke finne et barn med denne koden',
-      position: 'top'
+      duration: 5000,
+      message: 'Kunne ikke finne et barn med denne verifiseringskoden',
+      position: 'top',
+      cssClass: "redToastStyle",
+      showCloseButton: true,
+      closeButtonText: "Lukk"
     }).present();
   }
 
   success() {
     this.toast.create({
-      duration: 1500,
+      duration: 5000,
       message: 'Fant ' + this.user.name + '!',
-      position: 'top'
+      position: 'top',
+      cssClass: "greenToastStyle",
+      showCloseButton: true,
+      closeButtonText: "Lukk"
+
     }).present();
     this.nextStep();
   }

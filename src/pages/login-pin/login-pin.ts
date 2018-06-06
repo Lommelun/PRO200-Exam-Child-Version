@@ -97,9 +97,13 @@ export class LoginPinPage {
     if (!this.ifLock) {
     this.ifLock = !this.ifLock
       this.toast.create({
-        duration: 2000,
+        duration: 5000,
         position: 'top',
-        message: 'Feil pinkode'
+        message: 'Feil passord',
+        cssClass: "redToastStyle",
+        showCloseButton: true,
+        closeButtonText: "Lukk"
+
       }).present();
       this.reset();
     }
