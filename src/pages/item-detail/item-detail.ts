@@ -4,7 +4,8 @@ import { Item } from '../../models/item';
 import { DatabaseProvider } from '../../providers/database/database';
 import { firestore } from 'firebase';
 import { Child } from '../../models/child';
-
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import * as _ from 'lodash'
 /**
  * Generated class for the ItemDetailPage page.
  *
@@ -21,14 +22,14 @@ export class ItemDetailPage {
   item: Item = {} as Item;
   user: Child;
 
-  constructor(public db: DatabaseProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public db: DatabaseProvider, public navCtrl: NavController, public navParams: NavParams, private toast: ToastController) {
     this.item = navParams.get('item');
     this.user = navParams.get('user');
     this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   addItemToWishlist(item: Item) {
-    console.log(item)
     this.db.addItemToUser(this.user.familyId, this.item);
   }
 }
+

@@ -4,6 +4,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { DatabaseProvider } from '../../providers/database/database';
 import { DocumentData } from '@firebase/firestore-types';
 import { Item } from '../../models/item';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 @IonicPage()
 @Component({
@@ -21,7 +22,8 @@ export class Tab {
     public barcodeScanner: BarcodeScanner,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public db: DatabaseProvider) { }
+    public db: DatabaseProvider,
+  private toast: ToastController) { }
 
   async getBarScan() {
     await this.barcodeScanner.scan().then((barcodeData?) => this.barcode = barcodeData.text);
@@ -30,6 +32,7 @@ export class Tab {
     console.log(this.item)
     this.navCtrl.push('ItemDetailPage', { 'item': this.item })
   }
+
 
   getItemByBarcode() {
     if (this.barcode) {
@@ -42,5 +45,6 @@ export class Tab {
           }));
     }
   }
-
 }
+
+

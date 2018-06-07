@@ -32,6 +32,7 @@ export class WishlistPage {
       this.items = res.filter(i => i[`childToken`] === JSON.parse(localStorage.getItem(`user`))[`token`]));
   }
   
+  
   pushToDetailPage(item: Item) {
     this.navCtrl.push('ItemDetailPage', { 'item': item });
   }
