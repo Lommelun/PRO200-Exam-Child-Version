@@ -25,7 +25,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: DatabaseProvider) {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.init();
-    this.wishlistItems =  this.db.getItemswishedByUser();
+    this.wishlistItems = this.db.getItemswishedByUser();
 
 
   }
@@ -33,11 +33,11 @@ export class HomePage {
     this.client = await algoliasearch(env.algolia.ALGOLIA_APP_ID, env.algolia.ALGOLIA_SEARCH_KEY, { protocol: 'https:' });
     this.index = await this.client.initIndex("Marketplace");
 
-    if(this.user && this.user.familyId){
-    this.wishlistItems2 =  this.db.getItemsFromFamily(this.user.familyId);
+    if (this.user && this.user.familyId) {
+      this.wishlistItems2 = this.db.getItemsFromFamily(this.user.familyId);
     }
   }
-  search() {
+  async search() {
     this.index
       .search({ query: this.searchQuery })
       .then((data) => this.items = data.hits.filter((item: {}) => {
@@ -55,7 +55,7 @@ export class HomePage {
           }) : true;
       }));
 
-    this.checkIfSearchItemsAreOnWishlist();
+   await this.checkIfSearchItemsAreOnWishlist();
   }
 
   checkIfSearchItemsAreOnWishlist() {
@@ -79,7 +79,7 @@ export class HomePage {
                   this.items.forEach(e => {
                     if (e[`EAN`] === item[`EAN`]) {
                       //  DO SOMETHING WITH IT 
-                      e[`wish`]=true;
+                      e[`wish`] = true;
 
                     }
                   })
@@ -101,11 +101,12 @@ export class HomePage {
 
   addItemToWishlist(item: any) {
     this.db.getItemFromObjectID(item.objectID)
-      .subscribe(item => this.db.addItemToUser(this.user.familyId, { 'id': item.id, ...item.data() } as Item));
+      .then(item => this.db.addItemToUser(this.user.familyId, item));
   }
 
-  pushToDetailPage(item: Item) {
-    this.navCtrl.push('ItemDetailPage', { 'item': item });
+  pushToDetailPage(item: any) {
+    this.db.getItemFromObjectID(item.objectID)
+      .then(item => this.navCtrl.push('ItemDetailPage', { 'item': item }));
   }
 
   logout(): void {
@@ -114,7 +115,7 @@ export class HomePage {
     this.navCtrl.popToRoot();
   }
 
-  getStyle(item){
-    return item[`wish`] ? {"background-color": "lightgrey" } :  {};
+  getStyle(item) {
+    return item[`wish`] ? { "background-color": "lightgrey" } : {};
   }
 }

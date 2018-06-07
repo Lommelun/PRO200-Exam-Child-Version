@@ -58,16 +58,7 @@ export class CategoryOverviewPage {
   }
 
   addItemToWishlist(item){
-    this.db.addItemToWishlist(JSON.parse(localStorage.getItem('user'))['familyId'], item);
-    this.toast.create({
-      message: `Lagt til i dine ønsker!`,
-      duration: 2000,
-      position: `top`,
-      cssClass: `greenToastStyle`,
-      showCloseButton: true,
-      closeButtonText:"Lukk"
-    })
-  
+    this.db.addItemToUser(JSON.parse(localStorage.getItem('user'))['familyId'], item);
   }
 }
 
