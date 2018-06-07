@@ -20,8 +20,8 @@ import * as _ from 'lodash'
 })
 export class ItemDetailPage {
   item: Item = {} as Item;
-  user: Child;
-
+  user:Child;
+  
   constructor(public db: DatabaseProvider, public navCtrl: NavController, public navParams: NavParams, private toast: ToastController) {
     this.item = navParams.get('item');
     this.user = navParams.get('user');
@@ -29,7 +29,18 @@ export class ItemDetailPage {
   }
 
   addItemToWishlist(item: Item) {
-    this.db.addItemToUser(this.user.familyId, this.item);
+   
+      this.db.addItemToUser(this.user.familyId, this.item);
+        this.toast.create({
+          message: `Lagt til i dine ønsker!`,
+          duration: 2000,
+          position: `top`,
+          cssClass: `greenToastStyle`,
+          showCloseButton: true,
+          closeButtonText:"Lukk"
+        }).present();
+      
+      
+      }
   }
-}
 
