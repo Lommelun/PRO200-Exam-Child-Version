@@ -111,14 +111,20 @@ export class DatabaseProvider {
           this.toast.create({
             duration: 1500,
             message: 'Du har allerede ønsket denne varen',
-            position: 'top'
+            position: 'top',
+            cssClass: "redToastStyle",
+            showCloseButton: true,
+            closeButtonText: "Lukk"
           }).present();
         } else {
           this.addItemToWishlist(familyId, item);
           this.toast.create({
             duration: 1500,
             message: 'Vare lagt til ønskeliste',
-            position: 'top'
+            position: 'top',
+            cssClass: "greenToastStyle",
+            showCloseButton: true,
+            closeButtonText: "Lukk"
           }).present();
         }
       })

@@ -114,6 +114,6 @@ export class HomePage {
   }
 
   getStyle(item){
-    return item[`wish`] ? {"background-color": "pink" } :  {};
+    return item[`wish`] ? {"background-color": "lightgrey" } :  {};
   }
 }
