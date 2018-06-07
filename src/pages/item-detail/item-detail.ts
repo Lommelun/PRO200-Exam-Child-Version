@@ -4,6 +4,7 @@ import { Item } from '../../models/item';
 import { DatabaseProvider } from '../../providers/database/database';
 import { firestore } from 'firebase';
 import { Child } from '../../models/child';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 /**
  * Generated class for the ItemDetailPage page.
@@ -21,7 +22,7 @@ export class ItemDetailPage {
   item: Item = {} as Item;
   user:Child;
   
-  constructor(public db: DatabaseProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public db: DatabaseProvider, public navCtrl: NavController, public navParams: NavParams, private toast: ToastController) {
     this.item = navParams.get('item');
     this.user = navParams.get('user');
     this.user  = JSON.parse(localStorage.getItem('user'));
@@ -29,6 +30,20 @@ export class ItemDetailPage {
 
   addItemToWishlist(item: Item) {
     this.db.getItemFromObjectID(item['objectID'])
-      .subscribe(item => this.db.addItemToUser(this.user.familyId, { 'id' : item.id, ...item.data() } as Item));
+      .subscribe(item => {
+        this.db.addItemToUser(this.user.familyId, { 'id' : item.id, ...item.data() } as Item);
+        this.toast.create({
+          message: `Lagt til i dine ønsker!`,
+          duration: 2000,
+          position: `top`,
+          cssClass: `greenToastStyle`,
+          showCloseButton: true,
+          closeButtonText:"Lukk"
+          
+          
+        })
+      
+      
+      });
   }
 }

@@ -23,11 +23,17 @@ export class Tab {
     public navParams: NavParams,
     public db: DatabaseProvider) { }
 
-  async getBarScan() {
-    await this.barcodeScanner.scan().then((barcodeData?) => this.barcode = barcodeData.text);
-    await this.getItemByBarcode();
-    this.navCtrl.push('ItemDetailPage', { 'item': this.item })
+   getBarScan() {
+     console.log("hello")
+     this.barcodeScanner.scan().then((barcodeData) => this.barcode = barcodeData.text).then(()=> {
+      
+      this.getItemByBarcode();
+  
+     })
+   
+  
   }
+  
 
   getItemByBarcode() {
     if(this.barcode){
@@ -36,6 +42,8 @@ export class Tab {
         .forEach(doc => {
           if (doc.data().EAN == this.barcode) {
             this.item = doc.data() as Item;
+            this.navCtrl.push('ItemDetailPage', { 'item': this.item });
+
           }
         }));
       }

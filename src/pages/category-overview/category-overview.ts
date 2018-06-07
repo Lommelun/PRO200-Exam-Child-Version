@@ -6,6 +6,7 @@ import { QueryDocumentSnapshot, DocumentData, QuerySnapshot } from '@firebase/fi
 import { Observable } from 'rxjs/Rx';
 import { Item } from '../../models/item';
 import * as _ from 'lodash'
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,8 @@ export class CategoryOverviewPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public db: DatabaseProvider) {
+    public db: DatabaseProvider,
+  private toast: ToastController) {
     if (this.navParams.get('type')[length] > 0) {
       console.log(this.navParams.get('type')[length])
 
@@ -57,6 +59,15 @@ export class CategoryOverviewPage {
 
   addItemToWishlist(item){
     this.db.addItemToWishlist(JSON.parse(localStorage.getItem('user'))['familyId'], item);
+    this.toast.create({
+      message: `Lagt til i dine ønsker!`,
+      duration: 2000,
+      position: `top`,
+      cssClass: `greenToastStyle`,
+      showCloseButton: true,
+      closeButtonText:"Lukk"
+    })
+  
   }
 }
 
