@@ -33,8 +33,9 @@ export class HomePage {
     this.client = await algoliasearch(env.algolia.ALGOLIA_APP_ID, env.algolia.ALGOLIA_SEARCH_KEY, { protocol: 'https:' });
     this.index = await this.client.initIndex("Marketplace");
 
-    
+    if(this.user && this.user.familyId){
     this.wishlistItems2 =  this.db.getItemsFromFamily(this.user.familyId);
+    }
   }
   search() {
     this.index

@@ -3,7 +3,7 @@
     <name>Kid-app</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://10.32.4.6:8102" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -89,6 +89,7 @@
     <allow-navigation href="http://169.254.98.50:8100" />
     <allow-navigation href="http://10.32.12.15:8100" />
     <allow-navigation href="http://10.32.4.6:8102" />
+    <allow-navigation href="http://10.32.4.6:8101" />
     <engine name="android" spec="7.1.0" />
     <engine name="ios" spec="4.5.4" />
 </widget>

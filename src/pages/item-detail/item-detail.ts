@@ -5,7 +5,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { firestore } from 'firebase';
 import { Child } from '../../models/child';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
-
+import * as _ from 'lodash'
 /**
  * Generated class for the ItemDetailPage page.
  *
@@ -29,9 +29,15 @@ export class ItemDetailPage {
   }
 
   addItemToWishlist(item: Item) {
-    this.db.getItemFromObjectID(item['objectID'])
-      .subscribe(item => {
-        this.db.addItemToUser(this.user.familyId, { 'id' : item.id, ...item.data() } as Item);
+   
+      console.log("famid",this.user.familyId)
+        this.db.addItemToUser(this.user.familyId, { 'id' : item.id, ...item } as Item);
+       
+       
+       
+       
+       
+       
         this.toast.create({
           message: `Lagt til i dine ønsker!`,
           duration: 2000,
@@ -44,6 +50,6 @@ export class ItemDetailPage {
         })
       
       
-      });
+      }
   }
-}
+

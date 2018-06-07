@@ -100,6 +100,7 @@ export class DatabaseProvider {
 
   }
   addItemToUser(familyId, item: Item) {
+    console.log("id" , item.id)
     this.af.firestore.collection('families').doc(familyId).collection('wishlist').doc(item.id).get()
       .then(docsnapshot => {
 
@@ -131,8 +132,13 @@ export class DatabaseProvider {
   }
 
   getItemswishedByUser(): Observable<Item[]> {
+    if(this.user){
     return this.getItemsFromFamily(this.user.familyId).switchMap(res =>
       res.filter(i => i[`childToken`] === JSON.parse(localStorage.getItem(`user`))[`token`])).toArray();
+    }else{
+      return Observable.empty();
+    }
+
   }
 
 }
