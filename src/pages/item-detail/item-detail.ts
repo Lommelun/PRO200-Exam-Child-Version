@@ -19,16 +19,16 @@ import { Child } from '../../models/child';
 })
 export class ItemDetailPage {
   item: Item = {} as Item;
-  user:Child;
-  
+  user: Child;
+
   constructor(public db: DatabaseProvider, public navCtrl: NavController, public navParams: NavParams) {
     this.item = navParams.get('item');
     this.user = navParams.get('user');
-    this.user  = JSON.parse(localStorage.getItem('user'));
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   addItemToWishlist(item: Item) {
-    this.db.getItemFromObjectID(item['objectID'])
-      .subscribe(item => this.db.addItemToUser(this.user.familyId, { 'id' : item.id, ...item.data() } as Item));
+    console.log(item)
+    this.db.addItemToUser(this.user.familyId, this.item);
   }
 }
