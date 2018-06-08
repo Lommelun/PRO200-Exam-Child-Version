@@ -27,7 +27,6 @@ page-wishlist {
         text-align: right;
     }
 
-<<<<<<< Updated upstream
     .wish-text {
         width: 90%;
         margin: auto;
@@ -35,16 +34,13 @@ page-wishlist {
         left: 0;
         padding: 1rem;
     }
-=======
+    
     .status-img {
-        position: relative;
-        top: -10rem;
-        height: 100px;
-        width: 100px;
-        margin: auto;
-        left: 0;
-        right: 0;
+        height: 60px;
+        width: 60px;
         display: block;
+        margin-top: -15rem;
+
     }
 
     .wish-info-text{
@@ -92,5 +88,8 @@ page-wishlist {
         margin-bottom: 0rem;
     }
 
->>>>>>> Stashed changes
+    .card-wishlist {
+        height: 180px;
+    }
+
 }

@@ -3,26 +3,15 @@
 
     <ion-navbar>
         <div class="navbar-with-back">
-<<<<<<< Updated upstream
-          <h1 class="header-title-white header-title-with-back">Kategori</h1>
-        </div>
-      </ion-navbar>
-=======
         <h1 class="header-title-white title-without-back">Kategori</h1>
         </div>
     </ion-navbar>
->>>>>>> Stashed changes
       
 </ion-header>
 
 <ion-content padding class="background-grey"  no-padding no-margin>  
 
-<<<<<<< Updated upstream
- <!-- <div class="subcategory-container" no-padding>
-
-=======
   <!--<div class="subcategory-container" no-padding>
->>>>>>> Stashed changes
     <ion-list>
         <button ion-item no-lines class="subcategory" no-padding>
                 <h2 class="category-title">Brød og frokostblandinger</h2>
@@ -36,11 +25,7 @@
             <h2 class="category-title">Drikke</h2>
             </button>
       </ion-list>
-<<<<<<< Updated upstream
-  </div> -->
-=======
   </div>-->
->>>>>>> Stashed changes
 
   
       <ion-row no-padding>
@@ -50,12 +35,7 @@
           <div (click)="pushToDetailPage(item)">
           <img class="displayed item-picture" style="max-height:100px; width:auto" [src]="item.image" />
         <p class="item-name">{{item.name}}</p>
-<<<<<<< HEAD
-        
-        <p class="item-price">Kr {{item.price}},- </p>
-=======
         <p class="item-price">Kr {{item.price}}</p>
->>>>>>> de617ae5439d41e4d759acd7f9cc245018e8c481
           </div>
           <button *ngIf="!item.wish" class="btn-orange btn show-item-btn" ion-button (click)="addItemToWishlist(item)">Legg til i ønsker</button>
         </div>

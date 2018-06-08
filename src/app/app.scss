@@ -68,7 +68,6 @@
       color: #fff;
       font-size: 2rem;
       text-align: center;
-<<<<<<< Updated upstream
       font-weight: 500;
   }
 
@@ -88,15 +87,6 @@
     margin-left: 0.7rem;
 }
 
-=======
-      font-weight: 300;
-  }
-
-  .navbar-with-back {
-      width: 80%;
-      margin-left: 0.1rem;
-  }
->>>>>>> Stashed changes
 
   .small-title {
     font-size: 1.5rem;
@@ -135,12 +125,9 @@
 .back-button {
     margin: 1.6rem 0 0 0;
     color: #fff;
-<<<<<<< Updated upstream
 }
 ion-header ion-icon.back-button-icon.icon{
     color: #fff;
-=======
->>>>>>> Stashed changes
 }
 
 .btn {
@@ -252,12 +239,15 @@ ion-header ion-icon.back-button-icon.icon{
     margin: auto;
     right: 0;
     left: 0;
+    display: block;
+    padding-top: 2rem;
 }
 
 .item-name {
     color:color($primary-profile, gra);;
     font-weight: 900;
     margin: 0;
+    margin-top: 1rem;
     //background-color: red;
 }
 
