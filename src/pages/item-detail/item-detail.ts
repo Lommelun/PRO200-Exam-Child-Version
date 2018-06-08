@@ -31,15 +31,7 @@ export class ItemDetailPage {
   addItemToWishlist(item: Item) {
    
       this.db.addItemToUser(this.user.familyId, this.item);
-        this.toast.create({
-          message: `Lagt til i dine ønsker!`,
-          duration: 2000,
-          position: `top`,
-          cssClass: `greenToastStyle`,
-          showCloseButton: true,
-          closeButtonText:"Lukk"
-        }).present();
-      
+       
       
       }
   }

@@ -17,14 +17,22 @@ import { ToastController } from 'ionic-angular/components/toast/toast-controller
 export class CategoryOverviewPage {
   items: Observable<DocumentData[]>;
   category: string;
+  public wishlistItems: Observable<Item[]>;
+  public wishlistItems2;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public db: DatabaseProvider,
+<<<<<<< HEAD
     private toast: ToastController) {
     if (this.navParams.get('type')[length] > 0) {
       console.log(this.navParams.get('type')[length])
+=======
+  private toast: ToastController) {
+>>>>>>> 3f1c4c100ba554cecd4c833ea3c661791d982e86
 
+    if (!(this.navParams.get('type')=="")) {
+      console.log(this.navParams.get('type')[length])
       this.getItemsByCategory();
     } else {
       this.getAllItems();
@@ -32,11 +40,15 @@ export class CategoryOverviewPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.navParams.get('type'));
+   
   }
 
   getItemsByCategory() {
+<<<<<<< HEAD
 
+=======
+    console.log('hello');
+>>>>>>> 3f1c4c100ba554cecd4c833ea3c661791d982e86
     Observable.fromPromise(this.db.getItemByField('Marketplace', 'category.' + this.navParams.get('type'), true))
       .subscribe(result => {
       this.items = Observable.from(result.docs)
@@ -49,6 +61,12 @@ export class CategoryOverviewPage {
             _.some(_.keys(item), k => {
               return !_.includes(limits.map(lim => _.upperCase(lim)), _.upperCase(item[k]));
             }) : true;
+<<<<<<< HEAD
+=======
+        }));
+  }
+  
+>>>>>>> 3f1c4c100ba554cecd4c833ea3c661791d982e86
 
         })
         const user = JSON.parse(localStorage.getItem(`user`));
@@ -78,10 +96,15 @@ export class CategoryOverviewPage {
               }) : true;
           })
 
+<<<<<<< HEAD
 
 
         }
         })
+=======
+  addItemToWishlist(item){
+    this.db.addItemToUser(JSON.parse(localStorage.getItem('user'))['familyId'], item);
+>>>>>>> 3f1c4c100ba554cecd4c833ea3c661791d982e86
   }
       )
 }

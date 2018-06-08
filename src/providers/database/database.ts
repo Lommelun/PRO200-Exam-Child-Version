@@ -42,8 +42,10 @@ export class DatabaseProvider {
       .valueChanges();
   }
 
-  getItemFromObjectID(id: string): Observable<DocumentSnapshot> {
-    return Observable.fromPromise(this.af.firestore.collection("Marketplace").doc(id).get());
+  getItemFromObjectID(id: string): Promise<Item> {
+    return this.af.collection('Marketplace').doc<Item>(id).ref.get().then(i => {
+      return { 'id': i.id, ...i.data() } as Item;
+    });
   }
 
   getDataFromColl(collection: string) {
@@ -100,8 +102,12 @@ export class DatabaseProvider {
 
   }
   addItemToUser(familyId, item: Item) {
+<<<<<<< HEAD
     console.log("id" , item.id)
     
+=======
+    console.log("id", item.id)
+>>>>>>> 3f1c4c100ba554cecd4c833ea3c661791d982e86
     this.af.firestore.collection('families').doc(familyId).collection('wishlist').doc(item.id).get()
       .then(docsnapshot => {
 
@@ -109,7 +115,7 @@ export class DatabaseProvider {
         console.log(user[`name`])
         console.log(user[`token`])
 
-        if (docsnapshot.exists && user[`token`] === item.childToken) {
+        if (docsnapshot.exists) {
           this.toast.create({
             duration: 1500,
             message: 'Du har allerede ønsket denne varen',
@@ -133,10 +139,10 @@ export class DatabaseProvider {
   }
 
   getItemswishedByUser(): Observable<Item[]> {
-    if(this.user){
-    return this.getItemsFromFamily(this.user.familyId).switchMap(res =>
-      res.filter(i => i[`childToken`] === JSON.parse(localStorage.getItem(`user`))[`token`])).toArray();
-    }else{
+    if (this.user) {
+      return this.getItemsFromFamily(this.user.familyId).switchMap(res =>
+        res.filter(i => i[`childToken`] === JSON.parse(localStorage.getItem(`user`))[`token`])).toArray();
+    } else {
       return Observable.empty();
     }
 
