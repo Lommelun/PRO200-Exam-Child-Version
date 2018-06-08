@@ -4,15 +4,28 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
-
+import { Observable } from 'rxjs/Rx';
+import { Child } from '../models/child';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { DatabaseProvider } from '../providers/database/database';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private af: AngularFireAuth) {
-    if (this.checkUserLoggedIn()) { this.rootPage = 'Tab' }
+  user$: Observable<Child>;
+
+  constructor(platform: Platform,
+    statusBar: StatusBar,
+    splashScreen: SplashScreen,
+    private af: AngularFireAuth,
+    private afs: AngularFirestore,
+    private db: DatabaseProvider) {
+    if (this.checkUserLoggedIn()) {
+      this.rootPage = 'Tab';
+      this.user$ = db.getCurrentUserSnapshot();
+    }
     else if (this.checkUsersExist()) { this.rootPage = 'LoginPage' }
     else { this.rootPage = 'RegisterPage' }
 
@@ -22,7 +35,6 @@ export class MyApp {
     });
   }
 
-
   checkUsersExist(): boolean {
     return (localStorage.getItem('users') != null);
   }
@@ -31,4 +43,3 @@ export class MyApp {
     return (localStorage.getItem('user') != null);
   }
 }
-

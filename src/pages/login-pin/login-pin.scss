@@ -6,7 +6,6 @@ page-login-pin {
     .pin {
         color: #fff;
         font-size: 50px;
-        padding: -10rem;
     }
 
 
@@ -14,9 +13,14 @@ page-login-pin {
         color: #fff;
       }
 
-      .pin-container {
-          margin-top: -3rem;
-          text-align: center;
+    .log-in-text {
+        display: block;
+        font-size: 1.8rem;
+        text-align: center;
+    }
 
-      }
+    .pin-container {
+        margin-top: -3rem;
+    }
+
 }

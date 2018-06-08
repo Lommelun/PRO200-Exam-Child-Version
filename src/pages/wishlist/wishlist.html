@@ -1,29 +1,55 @@
 <ion-header class="header" no-border class="header-background-orange">
-    
+
         <ion-navbar>
-                <div>
-                  <h1 class="header-title-white">Ønsker</h1>
-                </div>
-              </ion-navbar>
-            
-      </ion-header>
+                <h1 class="header-title-white title-without-back">Ønsker</h1>
+            </ion-navbar>
+
+</ion-header>
 
 <ion-content class="background-grey" padding>
+    <div class="wish-info-text">
+        <!--<p class="wish-info-text-first">Her er dine ønsker, og du kan se om varene: </p> -->
+        <ion-row no-padding no-margin class="wish-info-text-container">
+            <ion-col col-1 no-padding no-margin>
+                <p class="round-wish-approved">&#9679;</p> 
+            </ion-col>
+            <ion-col col-11>
+                <p class="text-wish-approved">Er godkjent og blir kjøpt.</p>
+            </ion-col>
 
-    <p class="wish-text">
-        Her kan du se om ønskene dine er godkjent, som betyr at de blir kjøpt inn. 
-        Eller avslått, som betyr at de ikke blir kjøpt inn.  
-    </p>
+            <ion-col col-1 no-padding no-margin>
+                <p class="round-wish-waiting">&#9679;</p> 
+            </ion-col>
+            <ion-col col-11>
+                <p class="text-wish-waiting">Venter på godkjenning </p>
+            </ion-col>
+
+            <ion-col col-1 no-padding no-margin>
+                <p class="round-wish-denied">&#9679;</p> 
+            </ion-col>
+             <ion-col col-11>
+                <p class="text-wish-denied">Er avslått, og blir ikke kjøpt.</p>
+            </ion-col>
+
+        </ion-row>
+    </div>
 
     <ion-row no-padding>
         <ion-col col-6 class="item" *ngFor="let item of items  " no-shadow no-border no-padding>
+            
+            <div class="card card-wishlist">
 
-            <div class="card">
                 <div (click)="pushToDetailPage(item)">
                     <img class="displayed item-picture" style="max-height:100px; width:auto" [src]="item.image" />
                     <p class="item-name">{{item.name}}</p>
-                    <p class="item-price">Kr {{item.price}} </p>
-                    <p class="item-status">Status: {{item.status}}</p>
+                    <p class="item-price">Kr {{item.price}},- </p>
+                    
+                    <div [ngSwitch]="item.status">
+                            <img class="status-img" *ngSwitchCase="'venter'" src="assets/imgs/venter.png">
+                            <img class="status-img" *ngSwitchCase="'ikke godkjent'" src="assets/imgs/avslatt.png">
+                            <img class="status-img" *ngSwitchCase="'godkjent'" src="assets/imgs/godkjent.png">
+                        </div>
+                        
                 </div>
             </div>
         </ion-col>

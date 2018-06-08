@@ -32,6 +32,19 @@ export class DatabaseProvider {
       });
   }
 
+  getCurrentUserSnapshot(): Observable<Child> {
+    return this.af.collection('children').doc<Child>(this.user.familyId)
+      .snapshotChanges()
+      .map(doc => doc.payload.data() as Child);
+  }
+
+  updateUsers(users: Child[]): Observable<Child>[] {
+    return users.map(user =>
+      this.af.collection('children').doc<Child>(user.id)
+        .snapshotChanges()
+        .map(doc => { return { 'id': doc.payload.id, ...doc.payload.data() } as Child }));
+  }
+
   addDocToColl(data: {}, collection: string) {
     this.af.collection(collection).add(data);
   }
@@ -108,8 +121,8 @@ export class DatabaseProvider {
 
   }
   addItemToUser(familyId, item: Item) {
-    console.log("id" , item.id)
-    
+    console.log("id", item.id)
+
     this.af.firestore.collection('families').doc(familyId).collection('wishlist').doc(item.id).get()
       .then(docsnapshot => {
 
