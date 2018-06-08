@@ -1,15 +1,24 @@
 <ion-header no-border>
 
+<<<<<<< Updated upstream
   <ion-navbar>
     <div class="navbar-with-back">
       <h1 class="header-title-white header-title-with-back">Logg inn</h1>
     </div>
   </ion-navbar>
+=======
+    <ion-navbar>
+        <div class="navbar-with-back">
+        <h1 class="header-title-white title-without-back">Logg inn</h1>
+        </div>
+    </ion-navbar>
+>>>>>>> Stashed changes
 
 </ion-header>
 
 
 <ion-content padding class="background-gradient">
+<<<<<<< Updated upstream
   <h2 class="second-title-white">Tast inn ditt passord</h2>
   <ion-input style="opacity: 0;" type="number" [(ngModel)]="pinInput" (input)="pinCheck()" #inputToFocus></ion-input>
 
@@ -30,6 +39,34 @@
     </ion-col>
     <ion-col col-2 style="text-align: center;">
       </ion-col>
+=======
+
+  <p class="log-in-text">Tast inn ditt passord for å logge inn</p>
+  <ion-input style="opacity: 0;" type="number" [(ngModel)]="pinInput" (input)="pinCheck()" #inputToFocus></ion-input>
+
+  <ion-row (click)="openKeyboard()" class="pin-container">
+    <ion-col col-2 style="text-align: center;">
+    </ion-col>
+      
+    <ion-col col-2 style="text-align: center;">
+        <ion-icon class="pin" [name]="pin_1"></ion-icon>
+      </ion-col>
+      
+      <ion-col col-2 style="text-align: center;">
+        <ion-icon class="pin" [name]="pin_2"></ion-icon>
+      </ion-col>
+    
+      <ion-col col-2 style="text-align: center;">
+        <ion-icon class="pin" [name]="pin_3"></ion-icon>
+      </ion-col>
+    
+    <ion-col col-2 style="text-align: center;">
+      <ion-icon class="pin" [name]="pin_4"></ion-icon>
+    </ion-col>
+    
+    <ion-col col-2 style="text-align: center;">
+    </ion-col>
+>>>>>>> Stashed changes
   </ion-row>
 
 </ion-content>

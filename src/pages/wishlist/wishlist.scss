@@ -27,6 +27,7 @@ page-wishlist {
         text-align: right;
     }
 
+<<<<<<< Updated upstream
     .wish-text {
         width: 90%;
         margin: auto;
@@ -34,4 +35,62 @@ page-wishlist {
         left: 0;
         padding: 1rem;
     }
+=======
+    .status-img {
+        position: relative;
+        top: -10rem;
+        height: 100px;
+        width: 100px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        display: block;
+    }
+
+    .wish-info-text{
+        font-size: 1.5rem;
+        width: 95%;
+        // background-color: #fff;
+        margin: auto;
+        right: 0;
+        left: 0;
+        margin-top: 2rem;
+       // border: 1px solid color($colors, varmgra);;
+       // border-radius: 8px;
+        
+    }
+
+    .text-wish-approved, .text-wish-waiting, .text-wish-denied, .round-wish-approved, .round-wish-waiting, .round-wish-denied {
+        padding: 0;
+        margin: 0;
+    }
+
+    .round-wish-approved {
+        color: color($primary-profile, gronn);
+        font-size: 2rem;
+        text-align: center;
+        margin-top: 0.2rem;
+    }
+
+    .round-wish-denied {
+        color: color($colors, bringebar);
+        font-size: 2rem;
+        text-align: center;
+        margin-top: 0.2rem;
+
+    }
+
+    .round-wish-waiting {
+        color: color($primary-profile, eggeplomme);
+        font-size: 2rem;
+        text-align: center;
+        margin-top: 0.2rem;
+
+    }
+
+    .wish-info-text-first {
+        margin-bottom: 0rem;
+    }
+
+>>>>>>> Stashed changes
 }

@@ -64,10 +64,11 @@
 
     // title
 
-  .header-title-white, .title-page {
+  .header-title-white {
       color: #fff;
       font-size: 2rem;
       text-align: center;
+<<<<<<< Updated upstream
       font-weight: 500;
   }
 
@@ -87,6 +88,15 @@
     margin-left: 0.7rem;
 }
 
+=======
+      font-weight: 300;
+  }
+
+  .navbar-with-back {
+      width: 80%;
+      margin-left: 0.1rem;
+  }
+>>>>>>> Stashed changes
 
   .small-title {
     font-size: 1.5rem;
@@ -125,9 +135,12 @@
 .back-button {
     margin: 1.6rem 0 0 0;
     color: #fff;
+<<<<<<< Updated upstream
 }
 ion-header ion-icon.back-button-icon.icon{
     color: #fff;
+=======
+>>>>>>> Stashed changes
 }
 
 .btn {
