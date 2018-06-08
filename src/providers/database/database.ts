@@ -110,7 +110,7 @@ export class DatabaseProvider {
         console.log(user[`name`])
         console.log(user[`token`])
 
-        if (docsnapshot.exists && user[`token`] === item.childToken) {
+        if (docsnapshot.exists) {
           this.toast.create({
             duration: 1500,
             message: 'Du har allerede ønsket denne varen',

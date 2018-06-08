@@ -17,14 +17,16 @@ import { ToastController } from 'ionic-angular/components/toast/toast-controller
 export class CategoryOverviewPage {
   items: Observable<DocumentData[]>;
   category: string;
+  public wishlistItems: Observable<Item[]>;
+  public wishlistItems2;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public db: DatabaseProvider,
   private toast: ToastController) {
-    if (this.navParams.get('type')[length] > 0) {
-      console.log(this.navParams.get('type')[length])
 
+    if (!(this.navParams.get('type')=="")) {
+      console.log(this.navParams.get('type')[length])
       this.getItemsByCategory();
     } else {
       this.getAllItems();
@@ -32,10 +34,11 @@ export class CategoryOverviewPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.navParams.get('type'));
+   
   }
 
   getItemsByCategory() {
+    console.log('hello');
     Observable.fromPromise(this.db.getItemByField('Marketplace', 'category.' + this.navParams.get('type'), true))
       .subscribe(result => this.items = Observable.from(result.docs)
         .map(item => { return { 'id': item.id, ...item.data() as Item } })
@@ -48,6 +51,7 @@ export class CategoryOverviewPage {
             }) : true;
         }));
   }
+  
 
   pushToDetailPage(item: Item) {
     this.navCtrl.push('ItemDetailPage', { 'item': item });

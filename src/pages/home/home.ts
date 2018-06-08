@@ -22,7 +22,9 @@ export class HomePage {
   public wishlistItems: Observable<Item[]>;
   public wishlistItems2;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private db: DatabaseProvider) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private db: DatabaseProvider) {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.init();
     this.wishlistItems = this.db.getItemswishedByUser();
@@ -37,13 +39,12 @@ export class HomePage {
       this.wishlistItems2 = this.db.getItemsFromFamily(this.user.familyId);
     }
   }
-  async search() {
+  search() {
     this.index
       .search({ query: this.searchQuery })
-      .then((data) => this.items = data.hits.filter((item: {}) => {
+      .then((data) => this.items = data.hits.filter( (item: {}) => {
 
         const user = JSON.parse(localStorage.getItem(`user`));
-
 
         return user[`limits`] ?
           _.some(_.keys(user[`limits`]), k => {
@@ -53,9 +54,8 @@ export class HomePage {
             return !_.includes(_.upperCase(_.toArray(item)), _.upperCase(user[`limits`][k]));
 
           }) : true;
-      }));
-
-   await this.checkIfSearchItemsAreOnWishlist();
+      })).then(()=> this.checkIfSearchItemsAreOnWishlist());
+  
   }
 
   checkIfSearchItemsAreOnWishlist() {
