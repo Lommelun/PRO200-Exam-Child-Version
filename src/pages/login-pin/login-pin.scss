@@ -6,12 +6,21 @@ page-login-pin {
     .pin {
         color: #fff;
         font-size: 50px;
-        font-weight: bold;
-        padding: -10rem;
     }
 
 
     * {
         color: #fff;
       }
+
+    .log-in-text {
+        display: block;
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .pin-container {
+        margin-top: -3rem;
+    }
+
 }

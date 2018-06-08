@@ -32,6 +32,19 @@ export class DatabaseProvider {
       });
   }
 
+  getCurrentUserSnapshot(): Observable<Child> {
+    return this.af.collection('children').doc<Child>(this.user.familyId)
+      .snapshotChanges()
+      .map(doc => doc.payload.data() as Child);
+  }
+
+  updateUsers(users: Child[]): Observable<Child>[] {
+    return users.map(user =>
+      this.af.collection('children').doc<Child>(user.id)
+        .snapshotChanges()
+        .map(doc => { return { 'id': doc.payload.id, ...doc.payload.data() } as Child }));
+  }
+
   addDocToColl(data: {}, collection: string) {
     this.af.collection(collection).add(data);
   }
@@ -94,15 +107,22 @@ export class DatabaseProvider {
 
 
   addItemToWishlist(familyId: string, item: Item) {
+
     item.status = "venter"
+  
     item.childToken = JSON.parse(localStorage.getItem(`user`))[`token`];
     this.dataColl = this.af.collection(`families`);
-    this.dataColl.doc(familyId).collection(`wishlist`).doc(item.id).set(item);
+
+    this.dataColl.doc(familyId).collection(`wishlist`)
+    
+    
+    .doc(item.id).set(item);
 
 
   }
   addItemToUser(familyId, item: Item) {
     console.log("id", item.id)
+
     this.af.firestore.collection('families').doc(familyId).collection('wishlist').doc(item.id).get()
       .then(docsnapshot => {
 
@@ -116,18 +136,16 @@ export class DatabaseProvider {
             message: 'Du har allerede ønsket denne varen',
             position: 'top',
             cssClass: "redToastStyle",
-            showCloseButton: true,
-            closeButtonText: "Lukk"
+
           }).present();
         } else {
           this.addItemToWishlist(familyId, item);
           this.toast.create({
             duration: 1500,
-            message: 'Vare lagt til i dine ønsker',
+           message: ` ${item.name} er lagt til i dine ønsker!`,
             position: 'top',
             cssClass: "greenToastStyle",
-            showCloseButton: true,
-            closeButtonText: "Lukk"
+           
           }).present();
         }
       })
@@ -139,7 +157,7 @@ export class DatabaseProvider {
         res.filter(i => i[`childToken`] === JSON.parse(localStorage.getItem(`user`))[`token`])).toArray();
     } else {
       return Observable.empty();
-    }
+    }//ok
 
   }
 

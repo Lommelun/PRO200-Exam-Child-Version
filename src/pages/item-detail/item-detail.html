@@ -6,9 +6,11 @@
 -->
 <ion-header class="header" no-border class="header-background-orange">
 
-  <ion-navbar>
-    <ion-title class="title-page">{{item.name}}</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <div class="navbar-with-back">
+        <h1 class="header-title-white title-without-back">{{item.name}}</h1>
+        </div>
+    </ion-navbar>
 
 </ion-header>
 
@@ -20,7 +22,7 @@
     </div>
 
     <div class="container-item-detail container-margin-top">
-    <p class="item-detail-title"> <strong>Pris:</strong> {{item.price}} ,- </p>
+    <p class="item-detail-title"> <strong>Pris:</strong> {{item.price}} </p>
     <p class="item-detail-title"> <strong>Størrelse:</strong> {{item.size}}</p>
   </div>
 

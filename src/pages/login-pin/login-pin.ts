@@ -101,8 +101,7 @@ export class LoginPinPage {
         position: 'top',
         message: 'Feil passord',
         cssClass: "redToastStyle",
-        showCloseButton: true,
-        closeButtonText: "Lukk"
+       
 
       }).present();
       this.reset();

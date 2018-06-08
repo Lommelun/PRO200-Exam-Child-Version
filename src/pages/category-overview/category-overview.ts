@@ -15,7 +15,7 @@ import { ToastController } from 'ionic-angular/components/toast/toast-controller
 })
 
 export class CategoryOverviewPage {
-  items: Observable<DocumentData[]>;
+  items: Item[] = [];
   category: string;
   public wishlistItems: Observable<Item[]>;
   public wishlistItems2;
@@ -23,46 +23,101 @@ export class CategoryOverviewPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public db: DatabaseProvider,
-  private toast: ToastController) {
+    private toast: ToastController) {
 
-    if (!(this.navParams.get('type')=="")) {
-      console.log(this.navParams.get('type')[length])
+    if (!(this.navParams.get('type') == "")) {
+      
       this.getItemsByCategory();
     } else {
       this.getAllItems();
     }
   }
 
-  ionViewDidLoad() {
-   
-  }
 
   getItemsByCategory() {
-    console.log('hello');
-    Observable.fromPromise(this.db.getItemByField('Marketplace', 'category.' + this.navParams.get('type'), true))
-      .subscribe(result => this.items = Observable.from(result.docs)
-        .map(item => { return { 'id': item.id, ...item.data() as Item } })
-        .toArray().filter((item) => {
-          const limits = JSON.parse(localStorage.getItem(`user`))[`limits`];
-          return limits ?
 
-            _.some(_.keys(item), k => {
-              return !_.includes(limits.map(lim => _.upperCase(lim)), _.upperCase(item[k]));
-            }) : true;
-        }));
+    Observable.fromPromise(this.db.getItemByField('Marketplace', 'category.' + this.navParams.get('type'), true))
+      .subscribe(result => {
+
+        
+        result.docs
+          .map(item => {
+            
+            this.items.push({ 'id': item.id, ...item.data() as Item })
+            
+
+            return { 'id': item.id, ...item.data() as Item }
+          })
+          .filter((item) => {
+            const limits = JSON.parse(localStorage.getItem(`user`))[`limits`];
+
+            return limits ?
+
+              _.some(_.keys(item), k => {
+                return !_.includes(limits.map(lim => _.upperCase(lim)), _.upperCase(item[k]));
+              }) : true;
+
+          })
+
+        const user = JSON.parse(localStorage.getItem(`user`));
+
+        this.db.getItemsFromFamily(user.familyId).subscribe(res => {
+
+
+          const wishListArr = res.filter(i => i[`childToken`] === JSON.parse(localStorage.getItem(`user`))[`token`])
+          
+          let counter = 0;
+          wishListArr.forEach((item2) => {
+          this.items.forEach((item1) => {
+              
+                if (item1[`EAN`] === wishListArr[counter][`EAN`]) {
+
+                  item1[`wish`] = true;
+
+                }
+            
+              if (counter === wishListArr.length) {
+                return;
+              }
+            })
+            counter++
+          });
+
+        })
+      })
+
+
+
   }
-  
 
   pushToDetailPage(item: Item) {
     this.navCtrl.push('ItemDetailPage', { 'item': item });
   }
   getAllItems() {
-   this.items = this.db.getDataFromColl(`Marketplace`)
-    
+    this.db.getDataFromColl(`Marketplace`).subscribe(res => {
+      this.items = res as Item[];
+    })
+
   }
 
-  addItemToWishlist(item){
-    this.db.addItemToUser(JSON.parse(localStorage.getItem('user'))['familyId'], item);
+  addItemToWishlist(item) {
+    
+    this.db.addItemToWishlist(JSON.parse(localStorage.getItem('user'))['familyId'], item);
+    this.toast.create({
+      message: ` ${item.name} er lagt til i dine ønsker!`,
+      duration: 2000,
+      position: `top`,
+      cssClass: `greenToastStyle`,
+
+    }).present();
+
+  }
+  getStyle(item) {
+    
+    return item[`wish`] ? { "background-color": "lightgrey" } : {};
   }
 }
+
+
+
 
