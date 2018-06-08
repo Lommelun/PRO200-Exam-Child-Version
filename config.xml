@@ -43,9 +43,6 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
-            <string>To scan barcodes</string>
-        </edit-config>
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
         <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
         <icon height="40" src="resources/ios/icon/icon-40.png" width="40" />
@@ -92,7 +89,6 @@
     <allow-navigation href="http://169.254.98.50:8100" />
     <allow-navigation href="http://10.32.12.15:8100" />
     <allow-navigation href="http://10.32.4.6:8102" />
-    <allow-navigation href="http://10.32.4.6:8101" />
     <engine name="android" spec="7.1.0" />
     <engine name="ios" spec="4.5.4" />
 </widget>

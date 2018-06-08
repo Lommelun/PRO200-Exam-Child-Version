@@ -101,6 +101,7 @@ export class DatabaseProvider {
   }
   addItemToUser(familyId, item: Item) {
     console.log("id" , item.id)
+    
     this.af.firestore.collection('families').doc(familyId).collection('wishlist').doc(item.id).get()
       .then(docsnapshot => {
 
