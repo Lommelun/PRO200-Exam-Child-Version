@@ -50,6 +50,7 @@
                     <p class="item-name">{{item.name}}</p>
                     <p class="item-price">Kr {{item.price}},- </p>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <div *ngSwitch="item['status']">
                             <img *ngSwitchCase="'venter'" src="assets/imgs/frokostoglunsj.png">
                             <img *ngSwitchCase="'ikke godkjent'" src="assets/imgs/middagogtilbehør.png">
@@ -64,9 +65,14 @@
                         </div>
                         
 >>>>>>> 7c2a0c9398ccd70647329ec53df87f8231563caa
+=======
+                    <div [ngSwitch]="item.status">
+                        <img *ngSwitchCase="'venter'" src="assets/imgs/frokostoglunsj.png">
+                        <img *ngSwitchCase="'ikke godkjent'" src="assets/imgs/middagogtilbehør.png">
+                        <img *ngSwitchCase="'godkjent'" src="assets/imgs/fruktoggrønt.png">
+                    </div>
+>>>>>>> servant
                 </div>
-
-            </div>
             </div>
         </ion-col>
     </ion-row>

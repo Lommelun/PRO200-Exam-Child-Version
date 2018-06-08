@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import algoliasearch from 'algoliasearch';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import * as env from '../../env';
 import { Item } from '../../models/item';
 import * as _ from 'lodash';
@@ -8,11 +8,13 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { Child } from '../../models/child';
 import { Observable } from 'rxjs/Rx';
 import { DocumentData, DocumentSnapshot } from '@firebase/firestore-types';
+import { Keyboard } from '@ionic-native/keyboard';
 @IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
 })
+
 export class HomePage {
   private client: algoliasearch.Client;
   private index: algoliasearch.Index;
@@ -21,15 +23,15 @@ export class HomePage {
   private user: Child;
   public wishlistItems: Observable<Item[]>;
   public wishlistItems2;
-
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
+  @ViewChild('foot') foo_ter: ElementRef;
+  constructor(private keyboard:Keyboard,
+    private platform:Platform,
+    public navCtrl: NavController,
+    public navParams: NavParams,
     private db: DatabaseProvider) {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.init();
     this.wishlistItems = this.db.getItemswishedByUser();
-
-
   }
   async init() {
     this.client = await algoliasearch(env.algolia.ALGOLIA_APP_ID, env.algolia.ALGOLIA_SEARCH_KEY, { protocol: 'https:' });
@@ -42,7 +44,7 @@ export class HomePage {
   search() {
     this.index
       .search({ query: this.searchQuery })
-      .then((data) => this.items = data.hits.filter( (item: {}) => {
+      .then((data) => this.items = data.hits.filter((item: {}) => {
 
         const user = JSON.parse(localStorage.getItem(`user`));
 
@@ -54,8 +56,8 @@ export class HomePage {
             return !_.includes(_.upperCase(_.toArray(item)), _.upperCase(user[`limits`][k]));
 
           }) : true;
-      })).then(()=> this.checkIfSearchItemsAreOnWishlist());
-  
+      })).then(() => this.checkIfSearchItemsAreOnWishlist());
+
   }
 
   checkIfSearchItemsAreOnWishlist() {

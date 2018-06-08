@@ -29,6 +29,7 @@ export class CategoryOverviewPage {
       
       this.getItemsByCategory();
     } else {
+      this.category = 'Alle varer';
       this.getAllItems();
     }
   }

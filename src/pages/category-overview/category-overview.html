@@ -1,11 +1,13 @@
 <ion-header class="header" no-border class="header-background-orange">
     
-
-    <ion-navbar>
-        <div class="navbar-with-back">
-        <h1 class="header-title-white title-without-back">Kategori</h1>
-        </div>
-    </ion-navbar>
+    <ion-navbar [ngSwitch]="category">
+        <ion-title *ngSwitchCase="'breakfastandlunch'" class="title-page">Frokost og lunsj</ion-title>
+        <ion-title *ngSwitchCase="'dinner'" class="title-page">Middag og tilbehør</ion-title>
+        <ion-title *ngSwitchCase="'fruitandvegetables'" class="title-page">Frukt og grønt</ion-title>
+        <ion-title *ngSwitchCase="'snack'" class="title-page">Snacks og dessert</ion-title>
+        <ion-title *ngSwitchCase="'householdandleisure'" class="title-page">husholdning og fritid</ion-title>
+        <ion-title *ngSwitchCase="'Alle varer'" class="title-page">Alle varer</ion-title>
+      </ion-navbar>
       
 </ion-header>
 

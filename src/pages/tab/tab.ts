@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { DatabaseProvider } from '../../providers/database/database';
-import { DocumentData } from '@firebase/firestore-types';
 import { Item } from '../../models/item';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { Keyboard } from '@ionic-native/keyboard';
 
 @IonicPage()
 @Component({
+
   selector: 'page-tab',
   templateUrl: 'tab.html',
 })
+
 export class Tab {
+
   tab1 = 'HomePage';
   tab2 = 'WishlistPage';
 
@@ -20,18 +22,16 @@ export class Tab {
   item: Item;
 
   constructor(
+    private platform:Platform,
     public keyboard: Keyboard,
     public barcodeScanner: BarcodeScanner,
     public navCtrl: NavController,
     public navParams: NavParams,
     public db: DatabaseProvider,
     private toast: ToastController) {
+  
 
   }
-
-
-
-
 
 
   async getBarScan() {

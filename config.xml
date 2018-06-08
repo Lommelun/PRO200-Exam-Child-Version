@@ -19,6 +19,7 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
+    <preference name="android-manifest/application/activity/@android:windowSoftInputMode" value="adjustPan" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -91,5 +92,4 @@
     <allow-navigation href="http://10.32.4.6:8102" />
     <engine name="android" spec="7.1.0" />
     <engine name="ios" spec="4.5.4" />
-    <allow-navigation href="http://10.32.12.20:8100" />
 </widget>
