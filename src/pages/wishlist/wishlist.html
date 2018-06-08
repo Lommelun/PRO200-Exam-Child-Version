@@ -1,10 +1,10 @@
 <ion-header class="header" no-border class="header-background-orange">
-    
-        <ion-navbar>
-              <ion-title class="title-page">Ønsker</ion-title>
-            </ion-navbar>
-            
-      </ion-header>
+
+    <ion-navbar>
+        <ion-title class="title-page">Ønsker</ion-title>
+    </ion-navbar>
+
+</ion-header>
 
 <ion-content class="background-grey" padding>
 
@@ -17,8 +17,14 @@
                     <img class="displayed item-picture" style="max-height:100px; width:auto" [src]="item.image" />
                     <p class="item-name">{{item.name}}</p>
                     <p class="item-price">Kr {{item.price}},- </p>
-                    <p class="item-status">Status: {{item.status}}</p>
+                    <div *ngSwitch="item['status']">
+                            <img *ngSwitchCase="'venter'" src="assets/imgs/frokostoglunsj.png">
+                            <img *ngSwitchCase="'ikke godkjent'" src="assets/imgs/middagogtilbehør.png">
+                            <img *ngSwitchCase="'godkjent'" src="assets/imgs/middagogtilbehør.png">
+                                  
                 </div>
+
+            </div>
             </div>
         </ion-col>
     </ion-row>

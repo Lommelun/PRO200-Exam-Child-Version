@@ -5,6 +5,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { DocumentData } from '@firebase/firestore-types';
 import { Item } from '../../models/item';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import { Keyboard } from '@ionic-native/keyboard';
 
 @IonicPage()
 @Component({
@@ -19,11 +20,18 @@ export class Tab {
   item: Item;
 
   constructor(
+    public keyboard: Keyboard,
     public barcodeScanner: BarcodeScanner,
     public navCtrl: NavController,
     public navParams: NavParams,
     public db: DatabaseProvider,
-  private toast: ToastController) { }
+    private toast: ToastController) {
+
+  }
+
+
+
+
 
 
   async getBarScan() {
@@ -39,22 +47,22 @@ export class Tab {
 
         .then((result) => {
 
-          if(result.docs){
-          result.docs
-            .forEach(doc => {
+          if (result.docs) {
+            result.docs
+              .forEach(doc => {
 
-              console.log("FINDING")
+                console.log("FINDING")
 
-              if (doc.data().EAN == this.barcode) {
-                this.item = { ...doc.data(), 'id': doc.id } as Item;
-                this.navCtrl.push('ItemDetailPage', { 'item': this.item });
+                if (doc.data().EAN == this.barcode) {
+                  this.item = { ...doc.data(), 'id': doc.id } as Item;
+                  this.navCtrl.push('ItemDetailPage', { 'item': this.item });
 
-              }
-            })
-          }else{
+                }
+              })
+          } else {
             this.toast.create({
-              message:'Vi har dessverre ikke denne varen',
-              duration:2000,
+              message: 'Vi har dessverre ikke denne varen',
+              duration: 2000,
               position: 'top'
             })
           }
