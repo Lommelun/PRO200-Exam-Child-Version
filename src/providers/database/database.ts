@@ -99,7 +99,7 @@ export class DatabaseProvider {
   
     item.childToken = JSON.parse(localStorage.getItem(`user`))[`token`];
     this.dataColl = this.af.collection(`families`);
-    
+
     this.dataColl.doc(familyId).collection(`wishlist`)
     
     
@@ -129,7 +129,7 @@ export class DatabaseProvider {
           this.addItemToWishlist(familyId, item);
           this.toast.create({
             duration: 1500,
-            message: 'Vare lagt til i dine ønsker',
+           message: ` ${item.name} er lagt til i dine ønsker!`,
             position: 'top',
             cssClass: "greenToastStyle",
            
