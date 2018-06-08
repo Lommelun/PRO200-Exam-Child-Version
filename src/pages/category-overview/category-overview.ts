@@ -101,10 +101,10 @@ export class CategoryOverviewPage {
   }
 
   addItemToWishlist(item) {
-    console.log("ADDING ITEM")
+    
     this.db.addItemToWishlist(JSON.parse(localStorage.getItem('user'))['familyId'], item);
     this.toast.create({
-      message: `Lagt til i dine ønsker!`,
+      message: ` ${item.name} er lagt til i dine ønsker!`,
       duration: 2000,
       position: `top`,
       cssClass: `greenToastStyle`,
@@ -117,6 +117,7 @@ export class CategoryOverviewPage {
     return item[`wish`] ? { "background-color": "lightgrey" } : {};
   }
 }
+
 
 
 
