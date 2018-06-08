@@ -12,7 +12,9 @@ import { Observable } from 'rxjs/Rx';
 export class LoginPage {
   users: Child[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private db: DatabaseProvider) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private db: DatabaseProvider) {
     let users = JSON.parse(localStorage.getItem('users'));
     this.users = (users) ? users['users'] as Child[] : [] as Child[];
     if (this.users.length == 0) { navCtrl.setRoot('RegisterPage'); }
@@ -20,7 +22,7 @@ export class LoginPage {
     let counter = 0;
     this.db.updateUsers(this.users).forEach(child$ => child$.subscribe(user => {
       this.users.forEach(u => {
-        if (u.token === user.token) { this.users[counter] = user; }
+        if (u.token === user.token) { this.users[counter] = { ...user, 'pin': u.pin } }
         counter++;
       });
     }));
