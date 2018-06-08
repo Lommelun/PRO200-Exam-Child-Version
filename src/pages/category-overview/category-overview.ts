@@ -15,7 +15,7 @@ import { ToastController } from 'ionic-angular/components/toast/toast-controller
 })
 
 export class CategoryOverviewPage {
-  items: Observable<DocumentData[]>;
+  items: Item[] = [];
   category: string;
   public wishlistItems: Observable<Item[]>;
   public wishlistItems2;
@@ -26,7 +26,7 @@ export class CategoryOverviewPage {
     private toast: ToastController) {
 
     if (!(this.navParams.get('type') == "")) {
-      console.log(this.navParams.get('type')[length])
+      
       this.getItemsByCategory();
     } else {
       this.getAllItems();
@@ -35,11 +35,20 @@ export class CategoryOverviewPage {
 
 
   getItemsByCategory() {
+
     Observable.fromPromise(this.db.getItemByField('Marketplace', 'category.' + this.navParams.get('type'), true))
       .subscribe(result => {
-        this.items = Observable.from(result.docs)
-          .map(item => { return { 'id': item.id, ...item.data() as Item } })
-          .toArray().filter((item) => {
+
+        
+        result.docs
+          .map(item => {
+            
+            this.items.push({ 'id': item.id, ...item.data() as Item })
+            
+
+            return { 'id': item.id, ...item.data() as Item }
+          })
+          .filter((item) => {
             const limits = JSON.parse(localStorage.getItem(`user`))[`limits`];
 
             return limits ?
@@ -49,56 +58,63 @@ export class CategoryOverviewPage {
               }) : true;
 
           })
+
         const user = JSON.parse(localStorage.getItem(`user`));
 
         this.db.getItemsFromFamily(user.familyId).subscribe(res => {
 
+
           const wishListArr = res.filter(i => i[`childToken`] === JSON.parse(localStorage.getItem(`user`))[`token`])
+          
+          let counter = 0;
+          wishListArr.forEach((item2) => {
+          this.items.forEach((item1) => {
+              
+                if (item1[`EAN`] === wishListArr[counter][`EAN`]) {
 
-          console.log(this.items)
-          this.items.filter((item) => {
+                  item1[`wish`] = true;
 
-            return res ?
-
-              _.some(_.keys(wishListArr), k => {
-
-                res.forEach(item => {
-                  if (item[`EAN`] === wishListArr[k][`EAN`])
-                    this.items.forEach(e => {
-                      if (e[`EAN`] === item[`EAN`]) {
-                        console.log("AOSDFKOASDKFOASKDFOASKDFAOSKFOAKSDFOASKDFOSKFOASKFOASDKFASODFK")
-                        e[`wish`] = true;
-
-                      }
-                    })
-                });
-
-              }) : true;
-          })
+                }
+            
+              if (counter === wishListArr.length) {
+                return;
+              }
+            })
+            counter++
+          });
 
         })
       })
+
+
+
   }
 
   pushToDetailPage(item: Item) {
     this.navCtrl.push('ItemDetailPage', { 'item': item });
   }
   getAllItems() {
-    this.items = this.db.getDataFromColl(`Marketplace`)
+    this.db.getDataFromColl(`Marketplace`).subscribe(res => {
+      this.items = res as Item[];
+    })
 
   }
 
   addItemToWishlist(item) {
+    console.log("ADDING ITEM")
     this.db.addItemToWishlist(JSON.parse(localStorage.getItem('user'))['familyId'], item);
     this.toast.create({
       message: `Lagt til i dine ønsker!`,
       duration: 2000,
       position: `top`,
       cssClass: `greenToastStyle`,
-      showCloseButton: true,
-      closeButtonText: "Lukk"
-    })
 
+    }).present();
+
+  }
+  getStyle(item) {
+    
+    return item[`wish`] ? { "background-color": "lightgrey" } : {};
   }
 }
 

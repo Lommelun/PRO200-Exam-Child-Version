@@ -32,10 +32,19 @@ export class RegisterPage {
       enableBackdropDismiss: false
     });
     loading.present();
-
+    try{
     this.dbProvider.getChildByToken(this.token)
-      .then(child => { loading.dismiss(); this.user = child; this.success(); })
-      .catch(error => { loading.dismiss(); this.fail() });
+      .then(child => 
+        { this.user = child; this.success(); 
+      })
+      .catch(error => { 
+         this.fail() 
+        });
+      }catch(e){
+        console.log("YOOO", e)
+      }finally{
+        loading.dismiss();
+      }
   }
 
   nextStep() {
@@ -49,8 +58,7 @@ export class RegisterPage {
         message: 'Sørg for at du skriver riktig passord',
         position: 'top',
         cssClass: "redToastStyle",
-        showCloseButton: true,
-        closeButtonText: "Lukk"
+
 
       }).present();
       this.step = 1;
@@ -63,8 +71,7 @@ export class RegisterPage {
       message: 'Kunne ikke finne et barn med denne verifiseringskoden',
       position: 'top',
       cssClass: "redToastStyle",
-      showCloseButton: true,
-      closeButtonText: "Lukk"
+
     }).present();
   }
 
@@ -74,8 +81,7 @@ export class RegisterPage {
       message: 'Fant ' + this.user.name + '!',
       position: 'top',
       cssClass: "greenToastStyle",
-      showCloseButton: true,
-      closeButtonText: "Lukk"
+
 
     }).present();
     this.nextStep();

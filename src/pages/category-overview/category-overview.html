@@ -28,15 +28,16 @@
 
   
       <ion-row no-padding>
-      <ion-col class="item" col-6 col-sm *ngFor="let item of items | async | slice:0:99" no-shadow no-border no-padding >
+      <ion-col class="item" col-6 col-sm *ngFor="let item of items" no-shadow no-border no-padding >
       
-        <div class="card">
+        <div class="card" [ngStyle]="getStyle(item)">
           <div (click)="pushToDetailPage(item)">
           <img class="displayed item-picture" style="max-height:100px; width:auto" [src]="item.image" />
         <p class="item-name">{{item.name}}</p>
+        
         <p class="item-price">Kr {{item.price}},- </p>
           </div>
-          <button class="btn-orange btn show-item-btn" ion-button (click)="addItemToWishlist(item)">Legg til i ønsker</button>
+          <button *ngIf="!item.wish" class="btn-orange btn show-item-btn" ion-button (click)="addItemToWishlist(item)">Legg til i ønsker</button>
         </div>
     </ion-col>
   </ion-row> 

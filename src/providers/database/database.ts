@@ -94,10 +94,16 @@ export class DatabaseProvider {
 
 
   addItemToWishlist(familyId: string, item: Item) {
+
     item.status = "venter"
+  
     item.childToken = JSON.parse(localStorage.getItem(`user`))[`token`];
     this.dataColl = this.af.collection(`families`);
-    this.dataColl.doc(familyId).collection(`wishlist`).doc(item.id).set(item);
+    
+    this.dataColl.doc(familyId).collection(`wishlist`)
+    
+    
+    .doc(item.id).set(item);
 
 
   }
@@ -117,8 +123,7 @@ export class DatabaseProvider {
             message: 'Du har allerede ønsket denne varen',
             position: 'top',
             cssClass: "redToastStyle",
-            showCloseButton: true,
-            closeButtonText: "Lukk"
+
           }).present();
         } else {
           this.addItemToWishlist(familyId, item);
@@ -127,8 +132,7 @@ export class DatabaseProvider {
             message: 'Vare lagt til i dine ønsker',
             position: 'top',
             cssClass: "greenToastStyle",
-            showCloseButton: true,
-            closeButtonText: "Lukk"
+           
           }).present();
         }
       })
