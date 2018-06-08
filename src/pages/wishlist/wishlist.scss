@@ -36,11 +36,12 @@ page-wishlist {
     }
     
     .status-img {
-        height: 60px;
-        width: 60px;
-        display: block;
-        margin-top: -15rem;
-
+        height: 30px;
+        width: 30px;
+        margin-top: 3rem;
+        margin-left: 11rem;
+        position: absolute;
+        z-index: 100;
     }
 
     .wish-info-text{
@@ -89,7 +90,13 @@ page-wishlist {
     }
 
     .card-wishlist {
-        height: 180px;
+        height: 195px;
+    }
+
+    .item-text {
+        position: absolute;
+        bottom: 0;
+        padding: 1rem;
     }
 
 }

@@ -37,18 +37,26 @@ page-home {
 
         // the img - icon
         .category-icon {
-            width: 120%;
+            width: 75%;
+            margin: auto;
+            right: 0;
+            left: 0;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
             border: none;
+            margin-top: 1rem;
         }
 
         .category-icon-btn {
             background-color: transparent;
-            height: auto;
-            width: 100%;
+            height: 140px;
+            width: 88%;
+            margin: auto;
+            right: 0;
+            left: 0;
+            display: block;
+            margin-top: 1rem;
             box-shadow: none !important;
+            background-color: #fff;
         }
 
         .category-text-btn{
@@ -68,7 +76,6 @@ page-home {
             background-color: #fff;
             width: 100%;
             height: 160px;
-            padding: 1rem;
             border-radius: 5px;
             //box-shadow: 2px 2px 2px grey;  
             overflow: hidden;
@@ -77,27 +84,7 @@ page-home {
             left: 0;
         }
 
-        .breakfastandlunch-container{
-            border: 3px solid color($headercolors, breakfastandlunch)
-        }
-
-        .dinner-container{
-            border: 3px solid color($headercolors, dinner)
-        }
-
-        .fruitandvegetables-container{
-            border: 3px solid color($headercolors, fruitandvegetables)
-        }
-
-        .snacksanddessert-container{
-            border: 3px solid color($headercolors, snacksanddessert)
-        }
-
-        .householdandleisure-container{
-            border: 3px solid color($headercolors,  householdandleisure)
-        }
-
-        .allcategories-container{
-            border: 3px solid color($headercolors, allcategories)
+        .card-home-page {
+            width: 100%;
         }
 }
