@@ -1,14 +1,8 @@
 <ion-header class="header" no-border class="header-background-orange">
 
-<<<<<<< HEAD
     <ion-navbar>
-        <ion-title class="title-page">Ønsker</ion-title>
+        <h1 class="header-title-white title-without-back">Ønsker</h1>
     </ion-navbar>
-=======
-        <ion-navbar>
-                <h1 class="header-title-white title-without-back">Ønsker</h1>
-            </ion-navbar>
->>>>>>> 7c2a0c9398ccd70647329ec53df87f8231563caa
 
 </ion-header>
 
@@ -17,23 +11,23 @@
         <!--<p class="wish-info-text-first">Her er dine ønsker, og du kan se om varene: </p> -->
         <ion-row no-padding no-margin class="wish-info-text-container">
             <ion-col col-1 no-padding no-margin>
-                <p class="round-wish-approved">&#9679;</p> 
+                <p class="round-wish-approved">&#9679;</p>
             </ion-col>
             <ion-col col-11>
                 <p class="text-wish-approved">Er godkjent og blir kjøpt.</p>
             </ion-col>
 
             <ion-col col-1 no-padding no-margin>
-                <p class="round-wish-waiting">&#9679;</p> 
+                <p class="round-wish-waiting">&#9679;</p>
             </ion-col>
             <ion-col col-11>
                 <p class="text-wish-waiting">Venter på godkjenning </p>
             </ion-col>
 
             <ion-col col-1 no-padding no-margin>
-                <p class="round-wish-denied">&#9679;</p> 
+                <p class="round-wish-denied">&#9679;</p>
             </ion-col>
-             <ion-col col-11>
+            <ion-col col-11>
                 <p class="text-wish-denied">Er avslått, og blir ikke kjøpt.</p>
             </ion-col>
 
@@ -42,36 +36,20 @@
 
     <ion-row no-padding>
         <ion-col col-6 class="item" *ngFor="let item of items  " no-shadow no-border no-padding>
-            
+
             <div class="card card-wishlist">
 
                 <div (click)="pushToDetailPage(item)">
                     <img class="displayed item-picture" style="max-height:100px; width:auto" [src]="item.image" />
                     <p class="item-name">{{item.name}}</p>
                     <p class="item-price">Kr {{item.price}},- </p>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    <div *ngSwitch="item['status']">
-                            <img *ngSwitchCase="'venter'" src="assets/imgs/frokostoglunsj.png">
-                            <img *ngSwitchCase="'ikke godkjent'" src="assets/imgs/middagogtilbehør.png">
-                            <img *ngSwitchCase="'godkjent'" src="assets/imgs/middagogtilbehør.png">
-                                  
-=======
-                    
+
                     <div [ngSwitch]="item.status">
-                            <img class="status-img" *ngSwitchCase="'venter'" src="assets/imgs/venter.png">
-                            <img class="status-img" *ngSwitchCase="'ikke godkjent'" src="assets/imgs/avslatt.png">
-                            <img class="status-img" *ngSwitchCase="'godkjent'" src="assets/imgs/godkjent.png">
-                        </div>
-                        
->>>>>>> 7c2a0c9398ccd70647329ec53df87f8231563caa
-=======
-                    <div [ngSwitch]="item.status">
-                        <img *ngSwitchCase="'venter'" src="assets/imgs/frokostoglunsj.png">
-                        <img *ngSwitchCase="'ikke godkjent'" src="assets/imgs/middagogtilbehør.png">
-                        <img *ngSwitchCase="'godkjent'" src="assets/imgs/fruktoggrønt.png">
+                        <img class="status-img" *ngSwitchCase="'venter'" src="assets/imgs/venter.png">
+                        <img class="status-img" *ngSwitchCase="'ikke godkjent'" src="assets/imgs/avslatt.png">
+                        <img class="status-img" *ngSwitchCase="'godkjent'" src="assets/imgs/godkjent.png">
                     </div>
->>>>>>> servant
+
                 </div>
             </div>
         </ion-col>
