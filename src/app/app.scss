@@ -68,8 +68,24 @@
       color: #fff;
       font-size: 2rem;
       text-align: center;
-      font-weight: bold;
+      font-weight: 500;
   }
+
+  .header-title-with-back {
+        //margin: 1.5rem 0 0 8rem;
+        text-align: center;
+  }
+
+  .second-title-white {
+      text-align: center; 
+      font-size: 1.8rem;
+      padding: 3rem 0 0 0;
+  }
+
+  .navbar-with-back {
+    width: 80%;
+    margin-left: 0.7rem;
+}
 
 
   .small-title {
@@ -108,6 +124,10 @@
 // all buttons 
 .back-button {
     margin: 1.6rem 0 0 0;
+    color: #fff;
+}
+ion-header ion-icon.back-button-icon.icon{
+    color: #fff;
 }
 
 .btn {
@@ -181,13 +201,16 @@
 
   .label-white {
       color: #fff;
-      font-size: 2rem;
+      font-size: 1.8rem;
       width: 90%;
       margin: auto;
       left: 0;
       right: 0;
       display: block;
+      padding-top: 3rem;
   }
+
+
 
   $item-ios-divider-background: none; 
 
@@ -242,6 +265,7 @@
     right: 0;
     left: 0;
     font-size: 1.3rem;
+    box-shadow: none;
 }
 
 // toast
