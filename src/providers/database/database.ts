@@ -123,7 +123,7 @@ export class DatabaseProvider {
           this.addItemToWishlist(familyId, item);
           this.toast.create({
             duration: 1500,
-            message: 'Vare lagt til i dine ønsker',
+            message: item.name + ' lagt til i dine ønsker',
             position: 'top',
             cssClass: "greenToastStyle",
             showCloseButton: true,
