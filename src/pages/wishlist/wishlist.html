@@ -17,14 +17,13 @@
                     <img class="displayed item-picture" style="max-height:100px; width:auto" [src]="item.image" />
                     <p class="item-name">{{item.name}}</p>
                     <p class="item-price">Kr {{item.price}},- </p>
-                    <div *ngSwitch="item['status']">
-                            <img *ngSwitchCase="'venter'" src="assets/imgs/frokostoglunsj.png">
-                            <img *ngSwitchCase="'ikke godkjent'" src="assets/imgs/middagogtilbehør.png">
-                            <img *ngSwitchCase="'godkjent'" src="assets/imgs/middagogtilbehør.png">
-                                  
-                </div>
+                    <div [ngSwitch]="item.status">
+                        <img *ngSwitchCase="'venter'" src="assets/imgs/frokostoglunsj.png">
+                        <img *ngSwitchCase="'ikke godkjent'" src="assets/imgs/middagogtilbehør.png">
+                        <img *ngSwitchCase="'godkjent'" src="assets/imgs/fruktoggrønt.png">
+                    </div>
 
-            </div>
+                </div>
             </div>
         </ion-col>
     </ion-row>
