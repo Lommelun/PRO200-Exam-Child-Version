@@ -118,6 +118,6 @@ export class HomePage {
   }
 
   getStyle(item) {
-    return item[`wish`] ? { "background-color": "lightgrey" } : {};
+    return item[`wish`] ? { "color": "lightgrey"} : {};
   }
 }

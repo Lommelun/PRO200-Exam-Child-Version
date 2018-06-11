@@ -34,5 +34,36 @@ page-category-overview {
      .next-page-button {
          text-align: right;
      }
+
+     .item-text-overview {
+         position: absolute;
+         bottom: 2rem;
+         padding: 1rem;
+     }
+
+     // change color on header
      
+     .breakfastandlunch-container{
+        background-color: color($headercolors, breakfastandlunch)
+    }
+
+    .dinner-container{
+        background-color: color($headercolors, dinner)
+    }
+
+    .fruitandvegetables-container{
+        border: 3px solid color($headercolors, fruitandvegetables)
+    }
+
+    .snacksanddessert-container{
+        border: 3px solid color($headercolors, snacksanddessert)
+    }
+
+    .householdandleisure-container{
+        border: 3px solid color($headercolors,  householdandleisure)
+    }
+
+    .allcategories-container{
+        border: 3px solid color($headercolors, allcategories)
+    }
 }
