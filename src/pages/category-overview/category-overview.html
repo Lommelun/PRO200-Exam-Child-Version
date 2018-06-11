@@ -1,19 +1,55 @@
-<ion-header class="header" no-border class="header-background-orange">
-    
-    <ion-navbar [ngSwitch]="category">
+<div [ngSwitch]="category">
+<ion-header class="header" *ngSwitchCase="'breakfastandlunch'"  no-border class="breakfastandlunch-container header">
+    <ion-navbar>
         <div class="navbar-with-back">
-        <h1 *ngSwitchCase="'breakfastandlunch'" class="header-title-with-back header-title-white">Frokost og lunsj</h1>
-        <h1 *ngSwitchCase="'dinner'" lass="header-title-with-back header-title-white">Middag og tilbehør</h1>
-        <h1 *ngSwitchCase="'fruitandvegetables'" class="header-title-with-back header-title-white">Frukt og grønt</h1>
-        <h1 *ngSwitchCase="'snack'" class="header-title-with-back header-title-white">Snacks og dessert</h1>
-        <h1 *ngSwitchCase="'householdandleisure'" class="header-title-with-back header-title-white">Husholdning og fritid</h1>
-        <h1 *ngSwitchCase="'Alle varer'" class="header-title-with-back header-title-white">Alle varer</h1>
+        <h1 class="header-title-with-back header-title-white">Frokost og lunsj</h1>
         </div>
-      </ion-navbar>
-      
+    </ion-navbar>
 </ion-header>
 
-<ion-content padding class="background-grey"  no-padding no-margin>  
+<ion-header *ngSwitchCase="'dinner'"  no-border class="dinner-container header">
+    <ion-navbar>
+        <div class="navbar-with-back">
+        <h1 class="header-title-with-back header-title-white">Middag og tilbehør</h1>
+        </div>
+    </ion-navbar>
+</ion-header>
+
+<ion-header *ngSwitchCase="'fruitandvegetables'" no-border class="fruitandvegetables-container header">
+    <ion-navbar>
+        <div class="navbar-with-back">
+        <h1 class="header-title-with-back header-title-white">Frukt og grønt</h1>
+        </div>
+    </ion-navbar>
+</ion-header>
+
+<ion-header *ngSwitchCase="'snack'" no-border class="snacksanddessert-container header">
+    <ion-navbar>
+        <div class="navbar-with-back">
+        <h1 class="header-title-with-back header-title-white">Snacks og dessert</h1>
+        </div>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-header *ngSwitchCase="'householdandleisure'" no-border class="householdandleisure-container header">
+    <ion-navbar>
+        <div class="navbar-with-back">
+        <h1 class="header-title-with-back header-title-white">Husholdning og fritid</h1>
+        </div>
+    </ion-navbar>
+</ion-header>
+
+<ion-header *ngSwitchCase="'Alle varer'" no-border class="allcategories-container header">
+    <ion-navbar>
+        <div class="navbar-with-back">
+        <h1 class="header-title-with-back header-title-white">Alle varer</h1>
+        </div>
+    </ion-navbar>
+</ion-header>
+</div>
+
+<ion-content padding class="background-grey category-overview-content">  
 
   <!--<div class="subcategory-container" no-padding>
     <ion-list>
