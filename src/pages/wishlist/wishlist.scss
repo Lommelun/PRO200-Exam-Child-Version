@@ -62,27 +62,9 @@ page-wishlist {
         margin: 0;
     }
 
-    .round-wish-approved {
-        color: color($primary-profile, gronn);
-        font-size: 2rem;
-        text-align: center;
-        margin-top: 0.2rem;
-    }
-
-    .round-wish-denied {
-        color: color($colors, bringebar);
-        font-size: 2rem;
-        text-align: center;
-        margin-top: 0.2rem;
-
-    }
-
-    .round-wish-waiting {
-        color: color($primary-profile, eggeplomme);
-        font-size: 2rem;
-        text-align: center;
-        margin-top: 0.2rem;
-
+    .round-wish {
+        width: 80%;
+        margin-top: 0.3rem;
     }
 
     .wish-info-text-first {
