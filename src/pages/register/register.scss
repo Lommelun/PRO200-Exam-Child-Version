@@ -16,7 +16,7 @@ page-register {
     .info-text {
         margin-left: 5%;
         width: 80%;
-        color: #fff;
+        color: #000;
         display: block;
         font-size: 1.5rem;
     }
@@ -33,6 +33,7 @@ page-register {
 
     .next-btn {
         display: block;
+        color: #fff !important;
     }
 
     .info-text-container {
@@ -56,5 +57,7 @@ page-register {
         display: block;
         background-color: red;
     }
+
+
 
 } 

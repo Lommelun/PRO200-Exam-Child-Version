@@ -52,7 +52,6 @@
 // font 
 * {
     font-family: 'Nunito', sans-serif;
-    //color:color($primary-profile, grå);;
     text-transform: none;
   }
 
@@ -67,7 +66,7 @@
     // title
 
   .header-title-white {
-      color: #fff;
+      color: #000;
       font-size: 2rem;
       text-align: center;
       font-weight: 500;
@@ -126,18 +125,15 @@
 // all buttons 
 .back-button {
     margin: 1.6rem 0 0 0;
-    color: #fff;
+    color: #000;
 }
 ion-header ion-icon.back-button-icon.icon{
-    color: #fff;
+    color: #000;
 }
 
 .btn {
     border-radius: 5px; 
-    color: #fff !important;
     font-size: 1.7rem;
-    $button-md-text-color: #fff !important;
-    $button-ios-text-color: #fff !important;
     
   }
   
@@ -151,6 +147,7 @@ ion-header ion-icon.back-button-icon.icon{
   .btn-orange {
     background-color: color($primary-profile, eggeplomme);;
     color: #fff;
+    //font-size: 1.5rem;
 
   }
   
@@ -162,7 +159,7 @@ ion-header ion-icon.back-button-icon.icon{
 
   .btn-aubergine {
     background-color: color($primary-profile, aubergine);;
-    color: #fff;
+    color: #fff !important;;
 
   }
 
@@ -202,7 +199,7 @@ ion-header ion-icon.back-button-icon.icon{
   }
 
   .label-white {
-      color: #fff;
+      color: #000;
       font-size: 1.8rem;
       width: 90%;
       margin: auto;
@@ -229,8 +226,7 @@ ion-header ion-icon.back-button-icon.icon{
     position: absolute;
     bottom: 2rem;
     padding: 1rem;
-}
-
+     }
 .card {
     background-color: #fff;
     padding: 1rem 1rem 2rem 1rem;
@@ -281,12 +277,15 @@ ion-header ion-icon.back-button-icon.icon{
 .redToastStyle{
     > div{
         background-color:color($colors, bringebar)!important;;
+        color: #000 !important;;
     }
  }
 
  .greenToastStyle {
     > div{
         background-color:color($primary-profile, gronn)!important;;
+        color: #000 !important;;
+
     }
  }
 

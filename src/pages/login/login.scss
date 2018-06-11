@@ -20,9 +20,8 @@ page-login {
         text-align: center;
         font-size: 2rem;
         margin-top: 0;
+        color: #000;
     }
-
-
 
     .btn-add-user {
         top: 5rem;
@@ -31,6 +30,7 @@ page-login {
         left: 0;
         right: 0;
         box-shadow: none;
+        color: #fff !important;;
     }
 
     * {
