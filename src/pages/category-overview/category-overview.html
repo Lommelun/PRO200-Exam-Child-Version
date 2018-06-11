@@ -37,12 +37,8 @@
           <div (click)="pushToDetailPage(item)">
           <img class="displayed item-picture" style="max-height:100px; width:auto" [src]="item.image" />
         <p class="item-name">{{item.name}}</p>
-<<<<<<< HEAD
         
         <p class="item-price">Kr {{item.price}},- </p>
-=======
-        <p class="item-price">Kr {{item.price}}</p>
->>>>>>> 2575386cb596267405934eaa387cc4a67374eec6
           </div>
           <button *ngIf="!item.wish" class="btn-orange btn show-item-btn" ion-button (click)="addItemToWishlist(item)">Legg til i ønsker</button>
         </div>
