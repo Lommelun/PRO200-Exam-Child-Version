@@ -1,5 +1,5 @@
 <div [ngSwitch]="category">
-<ion-header class="header" *ngSwitchCase="'breakfastandlunch'"  no-border class="breakfastandlunch-container header">
+<ion-header *ngSwitchCase="'breakfastandlunch'"  no-border class="breakfastandlunch-container header">
     <ion-navbar>
         <div class="navbar-with-back">
         <h1 class="header-title-with-back header-title-white">Frokost og lunsj</h1>
@@ -7,7 +7,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-header *ngSwitchCase="'dinner'"  no-border class="dinner-container header">
+<ion-header *ngSwitchCase="'dinner'" no-border class="dinner-container header">
     <ion-navbar>
         <div class="navbar-with-back">
         <h1 class="header-title-with-back header-title-white">Middag og tilbehør</h1>
@@ -67,8 +67,7 @@
       </ion-list>
   </div>-->
 
-  
-      <ion-row no-padding>
+      <ion-row padding class="category-overview-row">
       <ion-col class="item" col-6 col-sm *ngFor="let item of items" no-shadow no-border no-padding >
       
         <div class="card" [ngStyle]="getStyle(item)">

@@ -23,14 +23,15 @@
 
   <ion-row no-padding *ngIf="searchQuery.length > 0">
       <ion-col class="item" col-6 col-sm *ngFor='let item of items' no-shadow no-border no-padding >
-          <ion-card [ngStyle]="getStyle(item)">
+          <div class="card"[ngStyle]="getStyle(item)">
             <ion-icon name="checkmark" *ngIf="item.childToken  == user.token"></ion-icon>
-            <img class="item-picture" (click)="pushToDetailPage(item)" style="height:200px" class="displayed" style="max-height:100px; width:auto" [src]="item.image" />
+            <img class="displayed item-picture" (click)="pushToDetailPage(item)" style="max-height:100px; width: auto;" class="displayed"  [src]="item.image" />
+            <div class="item-text-overview"> 
             <p class="item-name">{{item.name}}</p>
             <p class="item-price">Kr {{item.price}}</p>
-            
+            </div>
             <button *ngIf="!item['wish']" class="btn-orange btn show-item-btn" ion-button (click)="addItemToWishlist(item)">Legg til i ønsker</button>
-        </ion-card>
+          </div>
       </ion-col>
     </ion-row> 
 

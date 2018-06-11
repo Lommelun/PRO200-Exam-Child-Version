@@ -225,6 +225,11 @@ ion-header ion-icon.back-button-icon.icon{
     background-image: none !important;
     border-bottom: none !important;
 }
+.item-text-overview {
+    position: absolute;
+    bottom: 2rem;
+    padding: 1rem;
+}
 
 .card {
     background-color: #fff;
