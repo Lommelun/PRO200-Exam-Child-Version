@@ -24,9 +24,10 @@ export class CategoryOverviewPage {
     public navParams: NavParams,
     public db: DatabaseProvider,
     private toast: ToastController) {
+      this.category = this.navParams.get('type');
 
     if (!(this.navParams.get('type') == "")) {
-      
+      console.log(this.navParams.get('type'))
       this.getItemsByCategory();
     } else {
       this.category = 'Alle varer';
